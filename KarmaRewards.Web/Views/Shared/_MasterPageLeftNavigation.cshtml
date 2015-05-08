@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.ActiveSection = @HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+}
+
+@functions {
+
+    
+    public string IsActive(String section)
+    {
+        return section.Equals(ViewBag.ActiveSection, StringComparison.InvariantCultureIgnoreCase) ? "open active" : "";
+    }
+
+    public string IfBigScreen()
+    {
+        if (ViewBag.BigScreen == true) return "page-sidebar-menu-closed";
+        return "";
+    }
+}
+
+
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <ul class="sidebar-menu">
+            <li class="treeview active">
+                <a href="/">
+                    <i class="icon-home"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="javascript:;">
+                    <i class="icon-diamond"></i>
+                    <span>Karma Points</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="../layout/top-nav.html">Add Points</a></li>
+                    <li><a href="../layout/boxed.html">Moderate Points</a></li>
+                    <li><a href="../layout/fixed.html">Leader Board</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="javascript:;">
+                    <i class="icon-user"></i>
+                    <span>Access Control</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="ui_general.html">Add User</a></li>
+                    <li><a href="ui_general.html">Manage Access</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="javascript:;">
+                    <i class="icon-settings"></i>
+                    <span>Settings</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="ui_general.html">General Components</a></li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

@@ -1,0 +1,45 @@
+﻿<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>Karma Reward System</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+    <!--  ******** Styles ************* -->
+    <link rel="shortcut icon" href="~/Resources/img/favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+
+    @System.Web.Optimization.Styles.Render("~/resources/css/primary")
+
+    <!--  ******** JS Libs ************* -->
+
+    @System.Web.Optimization.Scripts.Render("~/bundles/scripts/primary")
+
+
+    <!-- ******** Library Files End *********** -->
+    @RenderSection("customcss", false)
+
+    @RenderSection("customjs", false)
+
+</head>
+<body class="login">
+    <!-- BEGIN LOGO -->
+    <div class="logo">
+        <h2 class="margin0">my<span class="karma">Karma</span></h2>
+    </div>
+    <!-- END LOGO -->
+    <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+    <div class="menu-toggler sidebar-toggler">
+    </div>
+    <!-- END SIDEBAR TOGGLER BUTTON -->
+    <!-- BEGIN LOGIN -->
+    <div class="content">
+        @RenderBody()
+    </div>
+    <!-- END LOGIN -->
+    <!-- BEGIN COPYRIGHT -->
+    <div class="copyright">
+        @RenderPage("~/Views/Shared/_CopyRight.cshtml", null)
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "~/Views/Shared/_MasterPageAnonymous.cshtml";
+}
+
+@section customcss{
+    <link href="~/Resources/css/login.css" rel="stylesheet" />
+}
+
+@section customjs{
+    @System.Web.Optimization.Scripts.Render("~/bundles/scripts/login")
+}
+
+
+<dev class="login-form">
+    <h3 class="form-title">Login to your account with</h3>
+    
+    <div class="login-options text-center margin15-top margin20-bottom pad10-top pad20-bottom">
+        <a href="/"><img src="~/Resources/img/logo-sprite.png" /></a>
+        <div class="help-block white">Use your tavisca domain account</div>
+    </div>
+    <div class="create-account">
+        <p>
+            Don't have an account ?&nbsp; <a href="mailto:hr@tavisca.com" id="register-btn">Contact tavisca HR </a>
+        </p>
+    </div>
+</dev>
+
+
+<script>
+    $(document).ready(function () {
+        // init background slide images
+        $.backstretch([
+         "/resources/media/bg/2.jpg",
+         "/resources/media/bg/3.jpg",
+         "/resources/media/bg/4.jpg",
+         "/resources/media/bg/5.jpg"
+        ], {
+            fade: 1000,
+            duration: 8000
+        }
+     );
+    });
+</script>
