@@ -7,7 +7,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 
-namespace KarmaRewards.Web.App_Start
+namespace KarmaRewards.Web
 {
     public partial class Startup
     {

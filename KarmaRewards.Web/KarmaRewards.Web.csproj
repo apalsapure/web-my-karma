@@ -53,6 +53,10 @@
       <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
       <Private>True</Private>
@@ -204,7 +208,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessControl\AuthorizeAttribute.cs" />
-    <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -214,11 +217,13 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Extensions\Helper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -906,6 +911,23 @@
     <Content Include="Views\Shared\Http403.cshtml" />
     <Content Include="Views\Shared\Http404.cshtml" />
     <Content Include="Views\Shared\Http500.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KarmaRewards.Appacitive\KarmaRewards.Appacitive.csproj">
+      <Project>{e5b58c31-7ca9-4f4b-9ae9-0dad9c4d6f6e}</Project>
+      <Name>KarmaRewards.Appacitive</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KarmaRewards.Infrastructure\KarmaRewards.Infrastructure.csproj">
+      <Project>{8dbc6695-422e-4f0f-a788-8ec2c586f4eb}</Project>
+      <Name>KarmaRewards.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KarmaRewards.Model\KarmaRewards.Model.csproj">
+      <Project>{9ebb24f7-ca30-4d94-9ff4-8d4804cf7fce}</Project>
+      <Name>KarmaRewards.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\DomainAuth.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

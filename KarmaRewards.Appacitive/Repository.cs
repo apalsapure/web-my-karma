@@ -28,9 +28,9 @@ namespace KarmaRewards.Appacitive
                 env = ConfigurationManager.AppSettings["appacitive-environment"];
 
 
-            if (!string.IsNullOrWhiteSpace(appId)
-                || !string.IsNullOrWhiteSpace(key)
-                || !string.IsNullOrWhiteSpace(env))
+            if (string.IsNullOrWhiteSpace(appId)
+                || string.IsNullOrWhiteSpace(key)
+                || string.IsNullOrWhiteSpace(env))
                 throw new System.Configuration.ConfigurationErrorsException("One or more appacitive settings are incorrect");
 
 

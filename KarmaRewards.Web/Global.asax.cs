@@ -1,6 +1,9 @@
-﻿using System;
+﻿using KarmaRewards.Appacitive;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -17,12 +20,19 @@ namespace KarmaRewards.Web
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            AuthConfig.RegisterAuth();
+
+            WebApiConfig.Register(GlobalConfiguration.Configuration);
+
+            System.Web.Helpers.AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.Name;
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+
+
+            // initialize appacitive
+            string enableDebugging = ConfigurationManager.AppSettings["appacitive-enable-debugging"];
+            if (string.IsNullOrWhiteSpace(enableDebugging)) enableDebugging = "false";
+            Repository.Init(string.Equals(enableDebugging, "true", StringComparison.InvariantCultureIgnoreCase));
         }
     }
 }
