@@ -39,13 +39,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IIdentityProvider.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />
     <Compile Include="Model\AuthenticationProvider.cs" />
+    <Compile Include="Model\Credentials.cs" />
     <Compile Include="Model\PagedList.cs" />
     <Compile Include="Model\Entity.cs" />
     <Compile Include="Model\Identity.cs" />
-    <Compile Include="Model\Profile.cs" />
+    <Compile Include="Model\Strings.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

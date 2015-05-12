@@ -19,7 +19,12 @@ namespace KarmaRewards.Appacitive
             throw new NotImplementedException();
         }
 
-        public Task<PagedList<User>> FindUsersAsync(string query, string freeText, string orderBy, bool isAscending, int pagenumber = 1, int pagesize = 10)
+        public Task<User> GetByIdAsync(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<User> CreateUserProfileAsync(User user)
         {
             throw new NotImplementedException();
         }

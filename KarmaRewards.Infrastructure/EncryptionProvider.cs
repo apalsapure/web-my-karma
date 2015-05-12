@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 
 namespace KarmaRewards.Infrastructure
 {
-    public static class EncryptionHelper
+    public static class EncryptionProvider
     {
         #region Constants
         private const string ENCRYPT_KEY = "weVMJtWXUGlq2IL1HLiTt0p0g6gR8FOQidVJV/Db2rQ=";

@@ -1,6 +1,7 @@
 ﻿using DotNetOpenAuth.AspNet;
 using KarmaRewards.Infrastructure;
 using KarmaRewards.Model;
+using KarmaRewards.Services;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using System;
@@ -21,6 +22,18 @@ namespace KarmaRewards.Web.Controllers
     public class AccountController : ErrorController
     {
 
+        [InjectionConstructor]
+        public AccountController(IIdentityService identityService, IUserService userService)
+        {
+            this.IdentityService = identityService;
+            this.UserService = userService;
+        }
+
+        public IIdentityService IdentityService { get; set; }
+
+        public IUserService UserService { get; set; }
+
+
         IAuthenticationManager Authentication
         {
             get { return HttpContext.GetOwinContext().Authentication; }
@@ -38,7 +51,7 @@ namespace KarmaRewards.Web.Controllers
 
         [AllowAnonymous]
         [ActionName("Domain-Auth")]
-        public ActionResult DomainAuth()
+        public async Task<ActionResult> DomainAuth()
         {
             #region Domain Authentication
             HttpRequest req = System.Web.HttpContext.Current.Request;
@@ -48,7 +61,7 @@ namespace KarmaRewards.Web.Controllers
             // If "data" token found, decrypt it and create the User's Identity
             if (data != null)
             {
-                string token = EncryptionHelper.Decrypt<string>(data);
+                string token = EncryptionProvider.Decrypt<string>(data);
                 string[] userInfo = token.Split('|');
                 identity = Helper.BuildIdentity(userInfo[0], userInfo[1], userInfo[2],
                                                             userInfo[3], userInfo[4]);
@@ -56,24 +69,31 @@ namespace KarmaRewards.Web.Controllers
             #endregion
 
             #region Redirect User Back
-            if (identity != null) { FormAuth(identity); }
+            if (identity != null) { await FormAuth(identity); }
             #endregion
 
             return RedirectToLocal("~/");
         }
 
-        private void FormAuth(Identity identity)
+        private async Task FormAuth(Identity identity)
         {
-            //Save User Identity, if required, if fails redirect user to Home Page
-            //if (UserServiceManager.SaveIdentity(identity) == false) { res.Redirect(ConfigManager.AppSettings[ConfigManager.Define.DEFAULT_REDIRECT]); return; }
-            identity.Id = "TESTTHIS";
-            var claimIdentity = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, identity.Id) }, DefaultAuthenticationTypes.ApplicationCookie, ClaimTypes.Name, ClaimTypes.Role);
+            // Authenticate User
+            var response = await this.IdentityService.AuthenticateAsync(new Credentials()
+            {
+                Type = "usernamepassword",
+                Tokens = new Dictionary<string, string>() { 
+                { "username", identity.Username}, 
+                { "password", identity.Password } }
+            });
+            
+            // Save Identity in cookie
+            var claimIdentity = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, response.User.Id) }, DefaultAuthenticationTypes.ApplicationCookie, ClaimTypes.Name, ClaimTypes.Role);
 
-            claimIdentity.AddClaim(new Claim("UserName", identity.Username));
-            claimIdentity.AddClaim(new Claim("FirstName", identity.FirstName));
-            claimIdentity.AddClaim(new Claim("LastName", identity.LastName));
-            claimIdentity.AddClaim(new Claim("Email", identity.Email));
-            claimIdentity.AddClaim(new Claim("Type", identity.Provider));
+            claimIdentity.AddClaim(new Claim("UserName", response.User.Username));
+            claimIdentity.AddClaim(new Claim("FirstName", response.User.FirstName));
+            claimIdentity.AddClaim(new Claim("LastName", response.User.LastName));
+            claimIdentity.AddClaim(new Claim("Email", response.User.Email));
+            claimIdentity.AddClaim(new Claim("Type", response.User.Type));
 
             // Authenticate user to Owin
             Authentication.SignIn(new AuthenticationProperties() { IsPersistent = true }, claimIdentity);

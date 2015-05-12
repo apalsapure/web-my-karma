@@ -8,10 +8,12 @@ namespace KarmaRewards.Model
 {
     public interface IUserRepository
     {
+        Task<User> GetByIdAsync(string id);
+
         Task<User> GetByNameAsync(string name);
 
         Task<User> CreateAsync(User user);
 
-        Task<Model.PagedList<User>> FindUsersAsync(string query, string freeText, string orderBy, bool isAscending, int pagenumber = 1, int pagesize = 10);
+        Task<User> CreateUserProfileAsync(User user);
     }
 }

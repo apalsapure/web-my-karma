@@ -33,11 +33,16 @@ namespace KarmaRewards.Web
             {
                 return (T)Enum.Parse(typeof(T), enumValue, true);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
                 //ExceptionManager.Log(ex); throw;
             }
+        }
+
+        public static string EncrypPassword(string token)
+        {
+
         }
     }
 }

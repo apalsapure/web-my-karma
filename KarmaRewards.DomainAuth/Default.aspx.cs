@@ -62,7 +62,7 @@ namespace KarmaRewards.DomainAuth
             #endregion
 
             Identity identity = new Identity(domainUserName, emailAddress, AuthenticationProvider.Windows, firstName, lastName);
-            return EncryptionHelper.Encrypt(identity.ToString());
+            return EncryptionProvider.Encrypt(identity.ToString());
         }
 
         private string GetProperty(SearchResult sResultSet, string key)
