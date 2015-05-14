@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KarmaRewards.Infrastructure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KarmaRewards.Services", "KarmaRewards.Services\KarmaRewards.Services.csproj", "{0A24E595-6922-431F-A916-BF61057D0D7A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KarmaRewards.Infrastructure.Unity", "KarmaRewards.Infrastructure.Unity\KarmaRewards.Infrastructure.Unity.csproj", "{AA9FAA2B-2FBE-408F-8D33-03C0FB1BD5D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{0A24E595-6922-431F-A916-BF61057D0D7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A24E595-6922-431F-A916-BF61057D0D7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A24E595-6922-431F-A916-BF61057D0D7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA9FAA2B-2FBE-408F-8D33-03C0FB1BD5D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA9FAA2B-2FBE-408F-8D33-03C0FB1BD5D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA9FAA2B-2FBE-408F-8D33-03C0FB1BD5D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA9FAA2B-2FBE-408F-8D33-03C0FB1BD5D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +65,7 @@ Global
 		{9EBB24F7-CA30-4D94-9FF4-8D4804CF7FCE} = {C14F3B85-349C-4A1B-A21F-C250BC0CF1E0}
 		{8DBC6695-422E-4F0F-A788-8EC2C586F4EB} = {C14F3B85-349C-4A1B-A21F-C250BC0CF1E0}
 		{0A24E595-6922-431F-A916-BF61057D0D7A} = {C14F3B85-349C-4A1B-A21F-C250BC0CF1E0}
+		{AA9FAA2B-2FBE-408F-8D33-03C0FB1BD5D8} = {C14F3B85-349C-4A1B-A21F-C250BC0CF1E0}
 		{E5B58C31-7CA9-4F4B-9AE9-0DAD9C4D6F6E} = {983BFCE1-DAD7-4255-A4AE-05C166A52D50}
 	EndGlobalSection
 EndGlobal

@@ -1,4 +1,5 @@
-﻿using KarmaRewards.Model;
+﻿using KarmaRewards.Infrastructure;
+using KarmaRewards.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,9 +41,11 @@ namespace KarmaRewards.Web
             }
         }
 
-        public static string EncrypPassword(string token)
+        public static string EncryptPassword(string token)
         {
-
+            var encryptedPwd = EncryptionProvider.Encrypt(token);
+            if (encryptedPwd.Length > 100) encryptedPwd = encryptedPwd.Substring(0, 99);
+            return encryptedPwd;
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SDK = Appacitive.Sdk;
 
 namespace KarmaRewards.Appacitive
 {
@@ -19,9 +20,10 @@ namespace KarmaRewards.Appacitive
             throw new NotImplementedException();
         }
 
-        public Task<User> GetByIdAsync(string id)
+        public async Task<User> GetByIdAsync(string id)
         {
-            throw new NotImplementedException();
+            var aUser = await SDK.APUsers.GetByIdAsync(id);
+            return aUser.ToUser();
         }
 
         public Task<User> CreateUserProfileAsync(User user)

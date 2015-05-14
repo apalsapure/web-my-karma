@@ -83,9 +83,9 @@ namespace KarmaRewards.Web.Controllers
                 Type = "usernamepassword",
                 Tokens = new Dictionary<string, string>() { 
                 { "username", identity.Username}, 
-                { "password", identity.Password } }
+                { "password", Helper.EncryptPassword(identity.Username)} }
             });
-            
+
             // Save Identity in cookie
             var claimIdentity = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, response.User.Id) }, DefaultAuthenticationTypes.ApplicationCookie, ClaimTypes.Name, ClaimTypes.Role);
 
@@ -93,22 +93,30 @@ namespace KarmaRewards.Web.Controllers
             claimIdentity.AddClaim(new Claim("FirstName", response.User.FirstName));
             claimIdentity.AddClaim(new Claim("LastName", response.User.LastName));
             claimIdentity.AddClaim(new Claim("Email", response.User.Email));
-            claimIdentity.AddClaim(new Claim("Type", response.User.Type));
+            claimIdentity.AddClaim(new Claim("Type", identity.Provider));
 
             // Authenticate user to Owin
             Authentication.SignIn(new AuthenticationProperties() { IsPersistent = true }, claimIdentity);
-
         }
 
 
         //
         // POST: /Account/LogOff
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult LogOff()
+        public async Task<ActionResult> LogOff(string returnUrl)
         {
-            return RedirectToAction("Index", "Home");
+            Authentication.SignOut();
+
+            try
+            {
+                await IdentityService.LogoutAsync();
+            }
+            catch
+            {
+                // suppress the error
+            }
+
+            return RedirectToAction("login", new { returnUrl = returnUrl });
         }
 
         //

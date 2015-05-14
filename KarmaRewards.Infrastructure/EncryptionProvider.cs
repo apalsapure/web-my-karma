@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.IO;
 using System.Security.Cryptography;
 using System.Xml.Serialization;
@@ -8,7 +9,7 @@ namespace KarmaRewards.Infrastructure
     public static class EncryptionProvider
     {
         #region Constants
-        private const string ENCRYPT_KEY = "weVMJtWXUGlq2IL1HLiTt0p0g6gR8FOQidVJV/Db2rQ=";
+        private static readonly string ENCRYPT_KEY = ConfigurationManager.AppSettings["encrypt-key"];
         #endregion
 
         #region Public Methods

@@ -15,6 +15,11 @@ namespace KarmaRewards.Appacitive
             container
                 .Register<IUserRepository, UserRepository>()
                 .Register<IIdentityProvider, IdentityProvider>()
+                .Register<ICredentialTranslator, UsernamePasswordCredentialTranslator>("usernamepassword")
+                .Register<ICredentialTranslator, TokenCredentialTranslator>("token")
+                .Register<ICredentialTranslator, FacebookCredentialTranslator>("facebook")
+                .Register<ICredentialTranslator, TwitterCredentialTranslator>("twitter")
+                .Register<ICredentialTranslator, GooglePlusCredentialTranslator>("google+")
                 ;
         }
     }
