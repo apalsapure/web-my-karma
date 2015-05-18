@@ -10,12 +10,16 @@ namespace KarmaRewards.Web.Controllers
 {
     public class UserController : ErrorController
     {
+        [AuthorizeAccess("user-add", "get")]
         public ActionResult Add()
         {
+            ViewBag.Primary = "Access Control";
+            ViewBag.Secondary = "Add User";
             return View();
         }
 
-        public ActionResult List()
+        [AuthorizeAccess("user-manage", "get")]
+        public ActionResult Manage()
         {
             return View();
         }

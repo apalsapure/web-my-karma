@@ -1,1 +1,14 @@
-﻿
+﻿<section class="content-header">
+    <h1>Add User <small>New User Creation</small></h1>
+</section>
+
+@model KarmaRewards.Web.Models.User
+
+@using (Html.BeginForm("Create", "User", FormMethod.Post))
+{
+    @Html.TextBoxFor(m => m.Username, new { @class = @ViewBag.ValidationClassForEmail, disabled = "disabled", placeholder = "Username" })
+
+    <button type="submit" class="btn btn-primary pull-right" disabled="disabled" id="btnLogin">
+        Login <i class="m-icon-swapright m-icon-white"></i>
+    </button>
+}

@@ -234,6 +234,7 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\configuration.js" />
     <Content Include="Resources\css\base.css" />
     <Content Include="Resources\css\components.css" />
     <Content Include="Resources\css\custom.css" />
@@ -611,10 +612,13 @@
     <Content Include="Resources\img\social\youtube.png" />
     <Content Include="Resources\img\syncfusion-icons-white.png" />
     <Content Include="Resources\img\syncfusion-icons.png" />
+    <Content Include="Scripts\init.js" />
     <Content Include="Resources\media\bg\1.jpg" />
     <Content Include="Resources\media\bg\2.jpg" />
     <Content Include="Resources\media\bg\3.jpg" />
     <Content Include="Resources\media\bg\4.jpg" />
+    <Content Include="Resources\plugins\appacitive-js-sdk.js" />
+    <Content Include="Resources\plugins\backbone.js" />
     <Content Include="Resources\plugins\backstretch\jquery.backstretch.js" />
     <Content Include="Resources\plugins\backstretch\jquery.backstretch.min.js" />
     <Content Include="Resources\plugins\bootstrap-hover-dropdown\bootstrap-hover-dropdown.js" />
@@ -632,6 +636,7 @@
     <Content Include="Resources\plugins\font-awesome\css\font-awesome.css" />
     <Content Include="Resources\plugins\font-awesome\css\font-awesome.min.css" />
     <Content Include="Resources\plugins\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Resources\plugins\handlebars-1.3.js" />
     <Content Include="Resources\plugins\jquery-migrate.min.js" />
     <Content Include="Resources\plugins\jquery-slimscroll\jquery.slimscroll.js" />
     <Content Include="Resources\plugins\jquery-slimscroll\jquery.slimscroll.min.js" />
@@ -785,6 +790,7 @@
     <Content Include="Resources\plugins\simple-line-icons\Readme.txt" />
     <Content Include="Resources\plugins\simple-line-icons\simple-line-icons.css" />
     <Content Include="Resources\plugins\simple-line-icons\simple-line-icons.min.css" />
+    <Content Include="Resources\plugins\underscore-min.js" />
     <Content Include="Resources\plugins\uniform\css\uniform.default.css" />
     <Content Include="Resources\plugins\uniform\css\uniform.default.min.css" />
     <Content Include="Resources\plugins\uniform\images\bg-input-focus.png" />
@@ -794,6 +800,7 @@
     <Content Include="Resources\plugins\uniform\jquery.uniform.js" />
     <Content Include="Resources\plugins\uniform\jquery.uniform.min.js" />
     <Content Include="Resources\plugins\app.js" />
+    <Content Include="Resources\plugins\utils\appacitiveInit.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -803,7 +810,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Resources\_references.js" />
+    <Content Include="Scripts\_references.js" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
@@ -817,13 +824,12 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Scripts\Configurations\" />
+    <Folder Include="Scripts\Views\Common\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -947,10 +953,10 @@
     <Content Include="Views\Account\DomainAuth.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\User\add.cshtml" />
+    <Content Include="Views\User\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\User\list.cshtml" />
+    <Content Include="Views\User\Manage.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -53,8 +53,22 @@ namespace KarmaRewards.Web
                     );
 
             primaryBundle.Orderer = new NonOrderingBundleOrderer();
-
             bundles.Add(primaryBundle);
+
+
+            var secondaryBundle = new ScriptBundle("~/bundles/scripts/secondary")
+                 .Include(
+                    "~/Scripts/init.js",
+                    "~/Scripts/configuration.js",
+                    "~/Resources/plugins/appacitive-js-sdk.js",
+                    "~/Resources/plugins/utils/appacitiveInit.js",
+                    "~/Resources/plugins/underscore-min.js",
+                    "~/Resources/plugins/backbone.js",
+                    "~/Resources/plugins/handlebars-1.3.js"
+                    );
+
+            secondaryBundle.Orderer = new NonOrderingBundleOrderer();
+            bundles.Add(secondaryBundle);
 
             bundles.Add(new ScriptBundle("~/bundles/scripts/login")
                 .Include(
