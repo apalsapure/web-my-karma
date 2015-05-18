@@ -1,4 +1,10 @@
-﻿<header class="main-header">
+﻿@functions {
+    public string GetProfileImage()
+    {
+        return string.IsNullOrEmpty(ViewBag.User.ImageUrl) ? "/Resources/img/avatar.png" : ViewBag.User.ImageUrl;
+    }
+}
+<header class="main-header">
     <!-- Logo -->
     <div class="logo">
         <a href="/" class="pull-left">
@@ -17,17 +23,17 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="~/Resources/img/avatar.png" class="user-image" alt="User Image" />
+                        <img src="@GetProfileImage()" class="user-image" alt="User Image" />
                         <span class="hidden-xs">@ViewBag.User.FirstName @ViewBag.User.LastName</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="~/Resources/img/avatar.png" class="img-circle" alt="User Image" />
+                            <img src="@GetProfileImage()" class="img-circle" alt="User Image" />
                             <p>
                                 <span class="block">@ViewBag.User.FirstName @ViewBag.User.LastName</span>
-                                <span class="block font-14" style="margin: 2px 0">( Web Developer )</span>
-                                <small>Member since Nov. 2012</small>
+                                <span class="block font-14" style="margin: 2px 0">( @ViewBag.User.Designation )</span>
+                                <small>Member since  @ViewBag.User.JoiningDate.ToString("MMM"). @ViewBag.User.JoiningDate.ToString("yyyy")</small>
                             </p>
                         </li>
                         <!-- Menu Footer-->
@@ -36,7 +42,7 @@
                                 <a href="#" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
-                                <a href="/account/logoff" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="/account/logout" class="btn btn-default btn-flat">Sign out</a>
                             </div>
                         </li>
                     </ul>

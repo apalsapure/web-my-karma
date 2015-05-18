@@ -30,12 +30,13 @@ namespace KarmaRewards.Appacitive
                 LastName = obj.Get<string>("lastname"),
                 Username = obj.Get<string>("username", null),
                 Email = obj.Get<string>("email", null),
-                Type = obj.Get<string>("type", null),
+                Provider = obj.Get<string>("provider", null),
                 DateOfBirth = obj.Get<DateTime>("birthdate", DateTime.MinValue),
-                ImageUrl = obj.Get<string>("profile_image", null),
-                Gender = obj.Get<string>("gender", null)
+                ImageUrl = obj.Get<string>("image_url", null),
+                Gender = obj.Get<string>("gender", null),
+                Designation = obj.Get<string>("designation", null),
+                JoiningDate = obj.Get<DateTime>("joining_date")
             };
-            user.Roles.AddRange(obj.GetList<string>("roles"));
             obj.CopyEntity(user);
             return user;
         }

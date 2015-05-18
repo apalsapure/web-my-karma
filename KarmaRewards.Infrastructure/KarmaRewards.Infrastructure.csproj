@@ -67,14 +67,6 @@
     <Compile Include="Container\IContainerFactory.cs" />
     <Compile Include="Container\IContainerSetup.cs" />
     <Compile Include="Container\IDependencyContainer.cs" />
-    <Compile Include="Context\ApplicationContext.cs" />
-    <Compile Include="Context\ApplicationContextScope.cs" />
-    <Compile Include="Context\BaseApplicationContext.cs" />
-    <Compile Include="Context\BaseApplicationContextScope.cs" />
-    <Compile Include="Context\ContextControllerLifetimeManager.cs" />
-    <Compile Include="Context\IApplicationContext.cs" />
-    <Compile Include="Context\ILifetimeManager.cs" />
-    <Compile Include="Context\ObjectContainer.cs" />
     <Compile Include="Errors.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

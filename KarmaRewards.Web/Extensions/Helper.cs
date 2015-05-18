@@ -22,6 +22,8 @@ namespace KarmaRewards.Web
             AuthenticationProvider authProvider = Helper.EnumTryParse<AuthenticationProvider>(authenticationProvider);
             return new Identity(pUserName, emailAddress, authProvider, firstName, lastName);
         }
+
+
         /// <summary>
         /// Tries to Parse Given Enum
         /// </summary>

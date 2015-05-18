@@ -1,33 +1,14 @@
-﻿@{
-    Layout = null;
-}
-<!doctype html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta charset="UTF-8">
-    <title>HuntersForLuck - Page Not Found</title>
-
-    <!-- ******** Styles ************* -->
-
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,...' rel='stylesheet' type='text/css'>
-    @System.Web.Optimization.Styles.Render("~/resources/css/primary")
-
-    <link href="~/Resources/pages/error.css" rel="stylesheet" />
-    <link rel="icon" type="image/ico" href="~/Resources/images/favicon.ico">
-</head>
-<body class="page-500-full-page" cz-shortcut-listen="true">
-    <div class="row">
-        <div class="col-md-12 page-500">
-            <div class="number">
-                404
-            </div>
-            <div class="details">
-                <h3>Oops! You're lost.</h3>
-                <p>We can not find the page you're looking for.</p>
-                <p><a href="/">Return home </a></p>
-            </div>
+﻿<section class="content">
+    <div class="error-page">
+        <h2 class="headline text-yellow margin0-top">404</h2>
+        <div class="error-content">
+            <h3><i class="fa fa-warning text-yellow margin10-right margin20-top"></i>Oops! Page not found.</h3>
+            <p class="margin0-bottom">
+                We could not find the page you were looking for.
+            </p>
+            <p>
+                You may <a href='/'>return to dashboard</a>.
+            </p>
         </div>
     </div>
-</body>
-</html>
+</section>

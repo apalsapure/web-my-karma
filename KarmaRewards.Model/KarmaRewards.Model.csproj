@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,19 +43,50 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContainerSetup.cs" />
+    <Compile Include="Interfaces\IUserAccessConfiguration.cs" />
+    <Compile Include="Model\AccessControl.cs" />
     <Compile Include="Interfaces\IIdentityProvider.cs" />
+    <Compile Include="Interfaces\IUserAccessRepository.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />
+    <Compile Include="Model\AccessPermissions.cs" />
     <Compile Include="Model\AuthenticationProvider.cs" />
     <Compile Include="Model\Credentials.cs" />
+    <Compile Include="Model\Feature.cs" />
     <Compile Include="Model\PagedList.cs" />
     <Compile Include="Model\Entity.cs" />
     <Compile Include="Model\Identity.cs" />
+    <Compile Include="Model\ResourceBasedUserAccessConfiguration.cs" />
+    <Compile Include="Model\UserPermissions.cs" />
+    <Compile Include="Model\Profile.cs" />
+    <Compile Include="Model\Role.cs" />
     <Compile Include="Model\Strings.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserAccess.cs" />
     <Compile Include="Model\UserSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserAccessResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserAccessResources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Json\Permissions.json" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserAccessResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>UserAccessResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KarmaRewards.Infrastructure\KarmaRewards.Infrastructure.csproj">
+      <Project>{8dbc6695-422e-4f0f-a788-8ec2c586f4eb}</Project>
+      <Name>KarmaRewards.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

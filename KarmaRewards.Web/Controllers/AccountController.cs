@@ -93,17 +93,23 @@ namespace KarmaRewards.Web.Controllers
             claimIdentity.AddClaim(new Claim("FirstName", response.User.FirstName));
             claimIdentity.AddClaim(new Claim("LastName", response.User.LastName));
             claimIdentity.AddClaim(new Claim("Email", response.User.Email));
-            claimIdentity.AddClaim(new Claim("Type", identity.Provider));
+            claimIdentity.AddClaim(new Claim("Provider", identity.Provider));
+            claimIdentity.AddClaim(new Claim("Joined", response.User.JoiningDate.ToString("MM/dd/yyyy")));
+            claimIdentity.AddClaim(new Claim("Designation", response.User.Designation));
+            claimIdentity.AddClaim(new Claim("Image", response.User.ImageUrl));
 
             // Authenticate user to Owin
             Authentication.SignIn(new AuthenticationProperties() { IsPersistent = true }, claimIdentity);
+
+            await AccessManager.SetFeatureList(response.User);
+
         }
 
 
         //
         // POST: /Account/LogOff
 
-        public async Task<ActionResult> LogOff(string returnUrl)
+        public async Task<ActionResult> Logout(string returnUrl)
         {
             Authentication.SignOut();
 

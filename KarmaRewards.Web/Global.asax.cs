@@ -22,19 +22,21 @@ namespace KarmaRewards.Web
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+            
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
+            DIContainer.Register();
 
             System.Web.Helpers.AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.Name;
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-
 
             // initialize appacitive
             string enableDebugging = ConfigurationManager.AppSettings["appacitive-enable-debugging"];
             if (string.IsNullOrWhiteSpace(enableDebugging)) enableDebugging = "false";
             Repository.Init(string.Equals(enableDebugging, "true", StringComparison.InvariantCultureIgnoreCase));
+
+            AccessRules.Setup();
         }
 
         // reference http://stackoverflow.com/questions/21999409/web-api-2-session

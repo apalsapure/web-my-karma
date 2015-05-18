@@ -10,7 +10,7 @@ namespace KarmaRewards.Model
     {
         public User()
         {
-            this.Roles = new List<string>();
+            this.Profile = new Profile();
             this.DateOfBirth = null;
         }
 
@@ -19,8 +19,6 @@ namespace KarmaRewards.Model
         public string Password { get; set; }
 
         public string Email { get; set; }
-
-        public List<string> Roles { get; private set; }
 
         public string FirstName { get; set; }
 
@@ -32,6 +30,12 @@ namespace KarmaRewards.Model
 
         public string Gender { get; set; }
 
-        public string Type { get; set; }
+        public string Provider { get; set; }
+
+        public string Designation { get; set; }
+
+        public DateTime JoiningDate { get; set; }
+
+        public Profile Profile { get; set; }
     }
 }

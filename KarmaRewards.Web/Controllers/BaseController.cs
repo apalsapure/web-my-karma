@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 using System.Web;
@@ -14,11 +15,10 @@ namespace KarmaRewards.Web.Controllers
 
         private List<Claim> _claims = new List<Claim>();
         private NameValueCollection _collection = new NameValueCollection();
-        private Identity _user = null;
+        private User _user = null;
         private string _sessionId = null;
 
         public List<Claim> Claims { get { return _claims; } }
-        public Identity CurrentIdentity { get { return _user; } }
         public string SessionId { get { return _sessionId; } }
         public bool IsInRole(string role)
         {
@@ -50,14 +50,27 @@ namespace KarmaRewards.Web.Controllers
             // Important:
             // Following fields are populated when user is logged in
             // not doing any error handling
-            //var roles = _collection["Role"].Split('|').ToList();
 
-            this._user = Helper.BuildIdentity(_collection["UserName"], _collection["Email"], _collection["Type"], _collection["FirstName"], _collection["LastName"]);
+            this._user = new Model.User()
+            {
+                Username = _collection["UserName"],
+                Email = _collection["Email"],
+                Provider = _collection["Provider"],
+                FirstName = _collection["FirstName"],
+                LastName = _collection["LastName"],
+                Designation = _collection["Designation"],
+                ImageUrl = _collection["Image"],
+                JoiningDate = DateTime.ParseExact(_collection["Joined"], "MM/dd/yyyy", new CultureInfo("en-US"))
+            };
             this._sessionId = _collection["SessionId"];
+
             // setting user in the view bag
             this.ViewBag.User = this._user;
 
             var routeData = System.Web.HttpContext.Current.Request.RequestContext.RouteData;
+
+
+            ViewBag.Features = AccessManager.GetFeatureList();
         }
 
     }

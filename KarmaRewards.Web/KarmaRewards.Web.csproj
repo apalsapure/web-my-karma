@@ -209,21 +209,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccessControl\AccessManager.cs" />
+    <Compile Include="AccessControl\AuthorizeAccessAttribute.cs" />
     <Compile Include="AccessControl\AuthorizeAttribute.cs" />
+    <Compile Include="App_Start\AccessRules.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\DIContainer.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Extensions\Helper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Plugins\ContainerSetup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -820,6 +823,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -941,6 +945,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Account\DomainAuth.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\add.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\list.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

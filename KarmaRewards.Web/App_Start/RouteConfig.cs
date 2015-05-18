@@ -18,8 +18,6 @@ namespace KarmaRewards.Web
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
-
-            System.Web.Mvc.DependencyResolver.SetResolver(new KarmaRewards.Infrastructure.WebApi.DependencyResolver());
         }
     }
 }
