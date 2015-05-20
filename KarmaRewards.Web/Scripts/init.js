@@ -9,8 +9,9 @@ window.karma.Translator = window.karma.Translator || {};
 
 // Storage
 window.karma.Storage = window.karma.Storage || {};
-window.karma.Storage._Models = window.karma.Storage._Models || {};
-window.karma.Storage._Connections = window.karma.Storage._Connections || {};
+window.karma.Storage.Models = window.karma.Storage.Models || {};
+window.karma.Storage.Collection = window.karma.Storage.Collection || {};
+window.karma.Storage.Connections = window.karma.Storage.Connections || {};
 
 // name space for handlebar compiled templates
 window.karma.hb = window.karma.hb || {};

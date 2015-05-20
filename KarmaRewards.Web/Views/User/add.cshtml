@@ -1,14 +1,105 @@
-﻿<section class="content-header">
-    <h1>Add User <small>New User Creation</small></h1>
-</section>
+﻿@model KarmaRewards.Model.User
 
-@model KarmaRewards.Web.Models.User
-
-@using (Html.BeginForm("Create", "User", FormMethod.Post))
-{
-    @Html.TextBoxFor(m => m.Username, new { @class = @ViewBag.ValidationClassForEmail, disabled = "disabled", placeholder = "Username" })
-
-    <button type="submit" class="btn btn-primary pull-right" disabled="disabled" id="btnLogin">
-        Login <i class="m-icon-swapright m-icon-white"></i>
-    </button>
+@section customjs{
+    @System.Web.Optimization.Scripts.Render("~/bundles/scripts/input-mask")
+    @System.Web.Optimization.Scripts.Render("~/bundles/scripts/user-add")
 }
+
+<section class="content-header">
+    <h1>Add Employee <small>New Employee Registration</small></h1>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-lg-9 col-md-10 col-sm-12">
+            <div id="divAddUser" class="box box-primary">
+                @using (Html.BeginForm("Add", "User", FormMethod.Post, new { role = "form" }))
+                {
+                    <div class="box-header">
+                        <h3 class="box-title">Basic Information</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="Username">User Name</label>
+                            @Html.TextBoxFor(m => m.Username, new { placeholder = "User Name", @class = "form-control", spellcheck = "false", autocomplete = "off" })
+                            <span class="help-block">User Name should be unique.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="Email">Email Address</label>
+                            @Html.TextBoxFor(m => m.Email, new { placeholder = "Tavisca Email Address of the Employee", @class = "form-control", spellcheck = "false", autocomplete = "off" })
+                            <span class="help-block">If user name is valid, email address will be auto-filled.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="FirstName">First Name</label>
+                            @Html.TextBoxFor(m => m.FirstName, new { placeholder = "First Name of the Employee", @class = "form-control", spellcheck = "false", autocomplete = "off" })
+                        </div>
+                        <div class="form-group">
+                            <label for="LastName">Last Name</label>
+                            @Html.TextBoxFor(m => m.LastName, new { placeholder = "Last Name of the Employee", @class = "form-control", spellcheck = "false", autocomplete = "off" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Gender">Gender</label>
+                            @Html.DropDownList("Gender", new List<SelectListItem>() {
+                                            new SelectListItem{ Text = "Male", Value="m"},
+                                            new SelectListItem{ Text = "Female", Value="f"}
+                                        }, new { @class = "form-control" })
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="JoiningDate">Joining Date *</label>
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(m => m.JoiningDateStr, new { placeholder = "Date of Joining", @class = "form-control" })
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="JoiningDate">Date of Birth <small class="font-normal">(optional)</small></label>
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(m => m.DateOfBirthStr, new { placeholder = "Date of Birth", @class = "form-control" })
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="Designation">Designation</label>
+                            @Html.TextBoxFor(m => m.Designation, new { placeholder = "Designation of the Employee", @class = "form-control", autocomplete = "off" })
+                        </div>
+                    </div>
+                    
+                    <div class="box-header">
+                        <h3 class="box-title">Access Information</h3>
+                    </div>                    
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label>User Group</label>
+                            @Html.DropDownList("Roles", new List<SelectListItem>() {
+                                            new SelectListItem{ Text = "Employee", Value="user"},
+                                            new SelectListItem{ Text = "Admin", Value="admin"},
+                                            new SelectListItem{ Text = "HR", Value="hr"}
+                                        }, new { @class = "form-control" })
+                            <span class="help-block">This user will get access according to the group which he/she belong.</span>
+                        </div>
+                    </div>
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary pad20-right"><i class="fa fa-plus margin5-right"></i>Add</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+    $(document).ready(function () {
+        new karma.Views.AddUserView().render($('#divAddUser'));
+    });
+</script>

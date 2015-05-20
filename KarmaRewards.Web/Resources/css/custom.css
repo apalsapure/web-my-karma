@@ -1,3 +1,5 @@
+body, .form-control, .btn { font-size: 13px; }
+
 /* Header */
 .skin-blue .main-header li.user-header { background-color: #14b9d6; }
 .skin-blue .main-header .logo, .skin-blue .main-header .logo:hover { background-color: #14b9d6; height: 64px; padding-left: 20px; padding-right: 20px; }
@@ -19,6 +21,10 @@
 
 .main-header .sidebar-toggle { float: right; padding: 8px; }
 .main-sidebar, .left-side { padding-top: 64px; }
+
+.form-group { margin-bottom: 12px; }
+.help-block { margin: 2px; font-size: 0.85em; font-style: italic; }
+.has-error .help-block { color: #dd4b39; }
 
 @media (max-width: 767px) {
     .main-header .navbar-custom-menu { float: right; margin-right: -55px; }
@@ -259,3 +265,20 @@
 .text-title-case { text-transform: capitalize; }
 
 .no-wrap { white-space: nowrap; }
+
+
+
+input[type="text"].spinner,
+input[type="password"].spinner,
+input[type="datetime"].spinner,
+input[type="datetime-local"].spinner,
+input[type="date"].spinner,
+input[type="month"].spinner,
+input[type="time"].spinner,
+input[type="week"].spinner,
+input[type="number"].spinner,
+input[type="email"].spinner,
+input[type="url"].spinner,
+input[type="search"].spinner,
+input[type="tel"].spinner,
+input[type="color"].spinner { background-image: url("../images/spinner.gif") !important; background-repeat: no-repeat; background-position: 99% 8px; }

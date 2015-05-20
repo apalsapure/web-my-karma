@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KarmaRewards.Model
 {
@@ -11,6 +7,7 @@ namespace KarmaRewards.Model
         public User()
         {
             this.Profile = new Profile();
+            this.Permissions = new UserPermissions();
             this.DateOfBirth = null;
         }
 
@@ -26,6 +23,8 @@ namespace KarmaRewards.Model
 
         public Nullable<DateTime> DateOfBirth { get; set; }
 
+        public string DateOfBirthStr { get; set; }
+
         public string ImageUrl { get; set; }
 
         public string Gender { get; set; }
@@ -33,9 +32,13 @@ namespace KarmaRewards.Model
         public string Provider { get; set; }
 
         public string Designation { get; set; }
-
+        
         public DateTime JoiningDate { get; set; }
 
+        public string JoiningDateStr { get; set; }
+
         public Profile Profile { get; set; }
+
+        public UserPermissions Permissions { get; set; }
     }
 }

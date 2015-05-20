@@ -2,6 +2,7 @@
 using KarmaRewards.Model;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -48,6 +49,11 @@ namespace KarmaRewards.Web
             var encryptedPwd = EncryptionProvider.Encrypt(token);
             if (encryptedPwd.Length > 100) encryptedPwd = encryptedPwd.Substring(0, 99);
             return encryptedPwd;
+        }
+
+        public static bool TryParseDate(string date, out DateTime dateTime)
+        {
+            return DateTime.TryParseExact(date, "dd/MM/yyyy", new CultureInfo("en-US"), System.Globalization.DateTimeStyles.None, out dateTime);
         }
     }
 }

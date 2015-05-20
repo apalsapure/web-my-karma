@@ -60,6 +60,9 @@ namespace KarmaRewards.Web
                  .Include(
                     "~/Scripts/init.js",
                     "~/Scripts/configuration.js",
+                    "~/Scripts/utils/utils.js",
+                    "~/Resources/plugins/jquery-validation/js/jquery.validate.js",
+                    "~/Resources/plugins/jquery-validation/js/additional-methods.js",
                     "~/Resources/plugins/appacitive-js-sdk.js",
                     "~/Resources/plugins/utils/appacitiveInit.js",
                     "~/Resources/plugins/underscore-min.js",
@@ -69,6 +72,19 @@ namespace KarmaRewards.Web
 
             secondaryBundle.Orderer = new NonOrderingBundleOrderer();
             bundles.Add(secondaryBundle);
+
+            bundles.Add(new ScriptBundle("~/bundles/scripts/user-add")
+                .Include(
+                    "~/Scripts/Models/userModel.js",
+                    "~/Scripts/Views/User/addUserView.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/scripts/input-mask")
+                .Include(
+                    "~/Resources/plugins/input-mask/jquery.inputmask.js",
+                    "~/Resources/plugins/input-mask/jquery.inputmask.date.extensions.js",
+                    "~/Resources/plugins/input-mask/jquery.inputmask.extensions.js"
+                ));
 
             bundles.Add(new ScriptBundle("~/bundles/scripts/login")
                 .Include(
