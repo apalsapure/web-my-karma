@@ -245,7 +245,6 @@
     <Content Include="Resources\plugins\input-mask\phone-codes\readme.txt" />
     <Content Include="Scripts\configuration.js" />
     <Content Include="Resources\css\base.css" />
-    <Content Include="Resources\css\components.css" />
     <Content Include="Resources\css\custom.css" />
     <Content Include="Resources\css\login.css" />
     <Content Include="Resources\css\structure.css" />
