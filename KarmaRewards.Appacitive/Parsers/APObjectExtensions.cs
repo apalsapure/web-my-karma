@@ -48,6 +48,28 @@ namespace KarmaRewards.Appacitive
             entity.UtcLastUpdatedAt = obj.LastUpdatedAt;
         }
 
+        public static APUser ToAPUser(this User user)
+        {
+            APUser obj = null;
+            if (string.IsNullOrWhiteSpace(user.Id) == true)
+                obj = new APUser();
+            else
+                obj = new APUser(user.Id);
+            obj.Password = user.Password;
+            obj.Username = user.Username;
+            obj.Set("designation", user.Designation);
+            obj.Set("provider", user.Provider);
+            obj.Set("gender", user.Gender);
+            obj.Set<DateTime>("joining_date", user.JoiningDate);
+            obj.Set("image_url", user.ImageUrl);
+
+            obj.FirstName = user.FirstName;
+            obj.LastName = user.LastName;
+            obj.Email = user.Email;
+            obj.DateOfBirth = user.DateOfBirth;
+            return obj;
+        }
+
         private static void EnsureTypeMatches(APObject obj, string type)
         {
             if (obj.Type.Equals(type, StringComparison.OrdinalIgnoreCase) == false)

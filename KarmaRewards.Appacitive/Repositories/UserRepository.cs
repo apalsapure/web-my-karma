@@ -15,8 +15,19 @@ namespace KarmaRewards.Appacitive
             throw new NotImplementedException();
         }
 
-        public Task<User> CreateAsync(User user)
+        public async Task<User> CreateAsync(User user)
         {
+            // Create user
+            var userObj = user.ToAPUser();
+
+            await userObj.SaveAsync();
+
+            userObj.CopyEntity(user);
+
+            // Create profile
+            //await Repository.CreateUserProfileAsync(user, user.Profile);
+            return user;
+
             throw new NotImplementedException();
         }
 

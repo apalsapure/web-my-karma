@@ -32,9 +32,6 @@ body, .form-control, .btn { font-size: 13px; }
     .main-sidebar, .left-side { padding-top: 118px !important; }
 }
 
-
-
-
 .logo h2 { color: white; margin-top: 14px; font-size: 28px; font-weight: 400; }
 .karma { color: #FF270B; font-weight: 300; }
 .white { color: #fff; }
@@ -265,8 +262,6 @@ body, .form-control, .btn { font-size: 13px; }
 .text-title-case { text-transform: capitalize; }
 
 .no-wrap { white-space: nowrap; }
-
-
 
 input[type="text"].spinner,
 input[type="password"].spinner,

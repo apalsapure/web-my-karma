@@ -5,80 +5,95 @@
     @System.Web.Optimization.Scripts.Render("~/bundles/scripts/user-add")
 }
 
+@functions{
+    public bool IsActive(string tab)
+    {
+        return string.Equals(ViewBag.ActiveTab, tab);
+    }
+}
+
 <section class="content-header">
     <h1>Add Employee <small>New Employee Registration</small></h1>
 </section>
 <section class="content">
     <div class="row">
         <div class="col-lg-9 col-md-10 col-sm-12">
-            <div id="divAddUser" class="box box-primary">
-                @using (Html.BeginForm("Add", "User", FormMethod.Post, new { role = "form" }))
-                {
-                    <div class="box-header">
-                        <h3 class="box-title">Basic Information</h3>
-                    </div>
-                    <div class="box-body">
-                        <div class="form-group">
-                            <label for="Username">User Name</label>
-                            @Html.TextBoxFor(m => m.Username, new { placeholder = "User Name", @class = "form-control", spellcheck = "false", autocomplete = "off" })
-                            <span class="help-block">User Name should be unique.</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="Email">Email Address</label>
-                            @Html.TextBoxFor(m => m.Email, new { placeholder = "Tavisca Email Address of the Employee", @class = "form-control", spellcheck = "false", autocomplete = "off" })
-                            <span class="help-block">If user name is valid, email address will be auto-filled.</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="FirstName">First Name</label>
-                            @Html.TextBoxFor(m => m.FirstName, new { placeholder = "First Name of the Employee", @class = "form-control", spellcheck = "false", autocomplete = "off" })
-                        </div>
-                        <div class="form-group">
-                            <label for="LastName">Last Name</label>
-                            @Html.TextBoxFor(m => m.LastName, new { placeholder = "Last Name of the Employee", @class = "form-control", spellcheck = "false", autocomplete = "off" })
-                        </div>
-                        <div class="form-group">
-                            <label for="Gender">Gender</label>
-                            @Html.DropDownList("Gender", new List<SelectListItem>() {
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="@IsActive("Basic")"><a href="#tab_1" data-toggle="tab">Basic Information</a></li>
+                    <li class="@IsActive("Advance")"><a href="#tab_2" data-toggle="tab">Advance Information</a></li>
+                    <li class="@IsActive("Basic")"><a href="#tab_3" data-toggle="tab">Access Control</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab_1">
+                        <div id="divAddUser">
+                            @using (Html.BeginForm("Add", "User", FormMethod.Post, new { role = "form" }))
+                            {
+                                
+                                <div class="form-group">
+                                    <label for="Username">User Name</label>
+                                    @Html.TextBoxFor(m => m.Username, new { placeholder = "User Name", @class = "form-control", spellcheck = "false", autocomplete = "off" })
+                                    <span class="help-block">User Name should be unique.</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Email">Email Address</label>
+                                    @Html.TextBoxFor(m => m.Email, new { placeholder = "Tavisca Email Address of the Employee", @class = "form-control", spellcheck = "false", autocomplete = "off" })
+                                    <span class="help-block">If user name is valid, email address will be auto-filled.</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="FirstName">First Name</label>
+                                    @Html.TextBoxFor(m => m.FirstName, new { placeholder = "First Name of the Employee", @class = "form-control", spellcheck = "false", autocomplete = "off" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="LastName">Last Name</label>
+                                    @Html.TextBoxFor(m => m.LastName, new { placeholder = "Last Name of the Employee", @class = "form-control", spellcheck = "false", autocomplete = "off" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="Gender">Gender</label>
+                                    @Html.DropDownList("Gender", new List<SelectListItem>() {
                                             new SelectListItem{ Text = "Male", Value="m"},
                                             new SelectListItem{ Text = "Female", Value="f"}
                                         }, new { @class = "form-control" })
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="JoiningDate">Joining Date *</label>
-                                    <div class="input-group">
-                                        @Html.TextBoxFor(m => m.JoiningDateStr, new { placeholder = "Date of Joining", @class = "form-control" })
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="JoiningDate">Joining Date *</label>
+                                            <div class="input-group">
+                                                @Html.TextBoxFor(m => m.JoiningDateStr, new { placeholder = "Date of Joining", @class = "form-control" })
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="JoiningDate">Date of Birth <small class="font-normal">(optional)</small></label>
-                                    <div class="input-group">
-                                        @Html.TextBoxFor(m => m.DateOfBirthStr, new { placeholder = "Date of Birth", @class = "form-control" })
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label for="JoiningDate">Date of Birth <small class="font-normal">(optional)</small></label>
+                                            <div class="input-group">
+                                                @Html.TextBoxFor(m => m.DateOfBirthStr, new { placeholder = "Date of Birth", @class = "form-control" })
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
-                        </div>
-                        <div class="form-group">
-                            <label for="Designation">Designation</label>
-                            @Html.TextBoxFor(m => m.Designation, new { placeholder = "Designation of the Employee", @class = "form-control", autocomplete = "off" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="Designation">Designation</label>
+                                    @Html.TextBoxFor(m => m.Designation, new { placeholder = "Designation of the Employee", @class = "form-control", autocomplete = "off" })
+                                </div>
+
+                                <div class="box-footer pad0-left pad0-right">
+                                    <button type="submit" class="btn btn-primary pad20-right"><i class="fa fa-plus margin5-right"></i>Add</button>
+                                </div>
+                            }
                         </div>
                     </div>
-                    
-                    <div class="box-header">
-                        <h3 class="box-title">Access Information</h3>
-                    </div>                    
-                    <div class="box-body">
+                    <div class="tab-pane" id="tab_2">
+                    </div>
+                    <div class="tab-pane" id="tab_3">
                         <div class="form-group">
                             <label>User Group</label>
                             @Html.DropDownList("Roles", new List<SelectListItem>() {
@@ -89,11 +104,7 @@
                             <span class="help-block">This user will get access according to the group which he/she belong.</span>
                         </div>
                     </div>
-
-                    <div class="box-footer">
-                        <button type="submit" class="btn btn-primary pad20-right"><i class="fa fa-plus margin5-right"></i>Add</button>
-                    </div>
-                }
+                </div>
             </div>
         </div>
     </div>
