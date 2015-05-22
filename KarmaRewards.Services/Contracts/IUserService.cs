@@ -11,8 +11,10 @@ namespace KarmaRewards.Services
     {
         Task<User> Get(string idOrUserName);
 
-        Task<User> Create(User user);
+        Task<User> Save(User user);
 
-        Task<User> CreateProfile(User user);
+        Task<Profile> GetProfile(User user);
+
+        Task<Profile> SaveProfile(User user);
     }
 }

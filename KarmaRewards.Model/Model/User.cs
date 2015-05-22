@@ -9,6 +9,7 @@ namespace KarmaRewards.Model
             this.Profile = new Profile();
             this.Permissions = new UserPermissions();
             this.DateOfBirth = null;
+            this.DateOfBirthStr = "";
         }
 
         public string Username { get; set; }
@@ -34,6 +35,8 @@ namespace KarmaRewards.Model
         public string Designation { get; set; }
         
         public DateTime JoiningDate { get; set; }
+
+        public bool IsEnabled { get; set; }
 
         public string JoiningDateStr { get; set; }
 

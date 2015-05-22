@@ -50,6 +50,11 @@ namespace KarmaRewards.Web.Controllers
             return View("Http403");
         }
 
+        public ActionResult Http500()
+        {
+            return View("Http500");
+        }
+
         public ActionResult AccessDenied()
         {
             return Http403();

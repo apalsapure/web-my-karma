@@ -28,14 +28,19 @@ namespace KarmaRewards.Services
                 return await this.Repository.GetByNameAsync(idOrUserName);
         }
 
-        public async Task<User> Create(User user)
+        public async Task<User> Save(User user)
         {
-            return await this.Repository.CreateAsync(user);
+            return await this.Repository.SaveAsync(user);
         }
 
-        public async Task<User> CreateProfile(User user)
+        public async Task<Profile> GetProfile(User user)
         {
-            return await this.Repository.CreateUserProfileAsync(user);
+            return await this.Repository.GetUserProfileAsync(user.Id);
+        }
+
+        public async Task<Profile> SaveProfile(User user)
+        {
+            return await this.Repository.SaveUserProfileAsync(user.Id, user.Profile);
         }
     }
 }

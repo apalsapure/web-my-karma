@@ -53,26 +53,34 @@ namespace KarmaRewards.Web.Controllers
         [ActionName("Domain-Auth")]
         public async Task<ActionResult> DomainAuth()
         {
-            #region Domain Authentication
-            HttpRequest req = System.Web.HttpContext.Current.Request;
-            Identity identity = null;
-            // Extract the 'data' parameter from the request, if any.
-            string data = req["data"];
-            // If "data" token found, decrypt it and create the User's Identity
-            if (data != null)
+            try
             {
-                string token = EncryptionProvider.Decrypt<string>(data);
-                string[] userInfo = token.Split('|');
-                identity = Helper.BuildIdentity(userInfo[0], userInfo[1], userInfo[2],
-                                                            userInfo[3], userInfo[4]);
+                #region Domain Authentication
+                HttpRequest req = System.Web.HttpContext.Current.Request;
+                Identity identity = null;
+                // Extract the 'data' parameter from the request, if any.
+                string data = req["data"];
+                // If "data" token found, decrypt it and create the User's Identity
+                if (data != null)
+                {
+                    string token = EncryptionProvider.Decrypt<string>(data);
+                    string[] userInfo = token.Split('|');
+                    identity = Helper.BuildIdentity(userInfo[0], userInfo[1], userInfo[2],
+                                                                userInfo[3], userInfo[4]);
+                }
+                #endregion
+
+                #region Redirect User Back
+                if (identity != null) { await FormAuth(identity); }
+
+                return RedirectToLocal("~/");
+                #endregion
             }
-            #endregion
-
-            #region Redirect User Back
-            if (identity != null) { await FormAuth(identity); }
-            #endregion
-
-            return RedirectToLocal("~/");
+            catch (Exception)
+            {
+                // TODO: handle error
+            }
+            return RedirectToAction("login", "account");
         }
 
         private async Task FormAuth(Identity identity)
@@ -85,6 +93,14 @@ namespace KarmaRewards.Web.Controllers
                 { "username", identity.Username}, 
                 { "password", Helper.EncryptPassword(identity.Username)} }
             });
+
+            // check if user is enabled
+            // if not redirect to login page
+            if (!response.User.IsEnabled)
+            {
+                // TODO: Error Space
+                throw new Exception("User is enabled");
+            }
 
             // Save Identity in cookie
             var claimIdentity = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, response.User.Id) }, DefaultAuthenticationTypes.ApplicationCookie, ClaimTypes.Name, ClaimTypes.Role);

@@ -17,7 +17,7 @@ namespace KarmaRewards.Model
                 return Enumerable.Empty<Feature>();
 
             // Get override rules.
-            var permissions = await AccessControl.AccessControlRepository.GetUsersPermissionsAsync();
+            var permissions = await AccessControl.AccessControlRepository.GetLoggedInUserPermissionsAsync();
             List<Feature> results = new List<Feature>();
             foreach (var feature in AccessControl.Configuration.Features)
             {

@@ -1,0 +1,55 @@
+﻿@model KarmaRewards.Model.User
+
+@{
+    Layout = "~/Views/Shared/_MasterPage.cshtml";
+}
+
+@section customjs{
+    @System.Web.Optimization.Scripts.Render("~/bundles/scripts/input-mask")
+    @System.Web.Optimization.Scripts.Render("~/bundles/scripts/user-add")
+}
+
+@functions{
+    public string IsActive(string tab)
+    {
+        return string.Equals(ViewBag.ActiveTab, tab) ? "active" : "";
+    }
+}
+
+<section class="content-header">
+    @if (Model == null || !Model.IsEnabled)
+    {
+        <h1>Add Employee <small>New Employee Registration</small></h1>
+    }
+    else
+    {
+        <h1>Edit Employee <small>Modify Employee Information</small></h1>
+    }
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-lg-9 col-md-10 col-sm-12">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    @if (Model == null)
+                    {
+                        <li class="active"><a href="javascript:void(0)">Basic Information</a></li>
+                        <li><a href="javascript:void(0)">Profile Information</a></li>
+                        <li><a href="javascript:void(0)">Roles & Permissions</a></li>
+                        <li><a href="javascript:void(0)">Access Management</a></li>
+                    }
+                    else
+                    {
+                        <li class="@IsActive("basic")">@Html.ActionLink("Basic Information", "edit", new { id = Model.Id })</li>
+                        <li class="@IsActive("profile")">@Html.ActionLink("Profile Information", "profile", new { id = Model.Id })</li>
+                        <li class="@IsActive("roles")">@Html.ActionLink("Roles & Permissions", "roles", new { id = Model.Id })</li>
+                        <li class="@IsActive("access")">@Html.ActionLink("Access Control", "access", new { id = Model.Id })</li>
+                    }
+                </ul>
+                <div class="tab-content">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

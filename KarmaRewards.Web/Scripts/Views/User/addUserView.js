@@ -23,7 +23,7 @@
     render: function ($container) {
         this.$el = $container;
 
-        this._bindEvents();       
+        this._bindEvents();
 
         this._bindFormValidation();
     },

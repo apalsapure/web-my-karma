@@ -1,0 +1,33 @@
+﻿@model KarmaRewards.Model.User
+
+@{
+    Layout = "~/Views/User/_AddLayout.cshtml";
+}
+
+@functions {
+    public bool IsSelected(string option)
+    {
+        return Model != null && Model.Permissions != null && Model.Permissions.Roles.Contains(option);
+    }
+}
+
+
+<div class="tab-pane active" id="tab_3">
+    <div id="divAccessUser">
+        @using (Html.BeginForm("Roles", "User", new { permissionId = (Model != null && Model.Permissions != null) ? Model.Permissions.Id : null }, FormMethod.Post, new { role = "form" }))
+        {
+            <div class="form-group">
+                <label>User Group</label>
+                @Html.DropDownList("Roles", new List<SelectListItem>() {
+                                            new SelectListItem{ Text = "Employee", Value="user", Selected = IsSelected("user")},
+                                            new SelectListItem{ Text = "Admin", Value="admin", Selected = IsSelected("admin")},
+                                            new SelectListItem{ Text = "HR", Value="hr", Selected = IsSelected("hr")}
+                                        }, new { @class = "form-control" })
+                <span class="help-block">This user will get access according to the group which he/she belong.</span>
+            </div>
+            <div class="box-footer pad0-left pad0-right">
+                <button type="submit" class="btn btn-primary pad20-right"><i class="fa fa-check margin5-right"></i>Save</button>
+            </div>
+        }
+    </div>
+</div>

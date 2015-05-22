@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KarmaRewards.Model
 {
-    public class UserPermissions
+    public class UserPermissions : Entity
     {
         public UserPermissions()
         {

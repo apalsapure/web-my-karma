@@ -50,6 +50,7 @@
     <Compile Include="Interfaces\IUserAccessRepository.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />
     <Compile Include="Model\AccessPermissions.cs" />
+    <Compile Include="Model\Address.cs" />
     <Compile Include="Model\AuthenticationProvider.cs" />
     <Compile Include="Model\Credentials.cs" />
     <Compile Include="Model\Feature.cs" />

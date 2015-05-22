@@ -8,6 +8,10 @@ namespace KarmaRewards.Model
 {
     public interface IUserAccessRepository
     {
-        Task<UserPermissions> GetUsersPermissionsAsync();
+        Task<UserPermissions> GetLoggedInUserPermissionsAsync();
+
+        Task<UserPermissions> GetUserPermissionsAsync(string userId);
+
+        Task<UserPermissions> SaveUserPermissionsAsync(string userId, UserPermissions userPermissions);
     }
 }

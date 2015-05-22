@@ -61,7 +61,7 @@ namespace KarmaRewards.DomainAuth
             }
             #endregion
 
-            Identity identity = new Identity(domainUserName, emailAddress, AuthenticationProvider.Windows, firstName, lastName);
+            Identity identity = new Identity(userName.ToLower(), emailAddress, AuthenticationProvider.Windows, firstName, lastName);
             return EncryptionProvider.Encrypt(identity.ToString());
         }
 

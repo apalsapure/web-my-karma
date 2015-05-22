@@ -10,6 +10,7 @@ namespace KarmaRewards.Web
 {
     public static class Helper
     {
+        private const string DATE_FORMAT = "dd/MM/yyyy";
         /// <summary>
         /// Creates Current Identity Instance with specified parameters
         /// </summary>
@@ -53,7 +54,12 @@ namespace KarmaRewards.Web
 
         public static bool TryParseDate(string date, out DateTime dateTime)
         {
-            return DateTime.TryParseExact(date, "dd/MM/yyyy", new CultureInfo("en-US"), System.Globalization.DateTimeStyles.None, out dateTime);
+            return DateTime.TryParseExact(date, DATE_FORMAT, new CultureInfo("en-US"), System.Globalization.DateTimeStyles.None, out dateTime);
+        }
+
+        public static string ToDateString(DateTime dateTime)
+        {
+            return dateTime.ToString(DATE_FORMAT);
         }
     }
 }

@@ -56,7 +56,6 @@
     <Compile Include="Parsers\APObjectExtensions.cs" />
     <Compile Include="Parsers\CredentialTranslator.cs" />
     <Compile Include="Parsers\PermissionsParser.cs" />
-    <Compile Include="Parsers\ProfileParser.cs" />
     <Compile Include="Repositories\IdentityProvider.cs" />
     <Compile Include="Repositories\UserAccessRepository.cs" />
     <Compile Include="Repository.cs" />

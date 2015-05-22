@@ -50,7 +50,7 @@
                         }
                         @if (ViewBag.Features.Contains("user-manage"))
                         {
-                            <li><a href="/user/manage">Manage Access</a></li>
+                            <li><a href="/user/manage">Manage User</a></li>
                         }
                     </ul>
                 </li>
@@ -72,8 +72,8 @@
     $(function () {
         setTimeout(function () {
             if (_.isEmpty(hfl.nav.primary)) return;
-            $('a:contains("' + hfl.nav.primary + '")').parent().addClass('active');
-            $('a:contains("' + hfl.nav.secondary + '")').parent().addClass('active');
+            $('a:contains("' + hfl.nav.primary + '")', $('.main-sidebar')).parent().addClass('active');
+            $('a:contains("' + hfl.nav.secondary + '")', $('.main-sidebar')).parent().addClass('active');
         }, 0);
     });
 </script>

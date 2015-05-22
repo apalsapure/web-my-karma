@@ -12,8 +12,10 @@ namespace KarmaRewards.Model
 
         Task<User> GetByNameAsync(string name);
 
-        Task<User> CreateAsync(User user);
+        Task<User> SaveAsync(User user);
 
-        Task<User> CreateUserProfileAsync(User user);
+        Task<Profile> GetUserProfileAsync(string userId);
+
+        Task<Profile> SaveUserProfileAsync(string userId, Profile profile);
     }
 }

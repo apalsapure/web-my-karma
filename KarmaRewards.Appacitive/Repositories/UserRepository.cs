@@ -15,7 +15,7 @@ namespace KarmaRewards.Appacitive
             throw new NotImplementedException();
         }
 
-        public async Task<User> CreateAsync(User user)
+        public async Task<User> SaveAsync(User user)
         {
             // Create user
             var userObj = user.ToAPUser();
@@ -24,11 +24,7 @@ namespace KarmaRewards.Appacitive
 
             userObj.CopyEntity(user);
 
-            // Create profile
-            //await Repository.CreateUserProfileAsync(user, user.Profile);
             return user;
-
-            throw new NotImplementedException();
         }
 
         public async Task<User> GetByIdAsync(string id)
@@ -37,9 +33,39 @@ namespace KarmaRewards.Appacitive
             return aUser.ToUser();
         }
 
-        public Task<User> CreateUserProfileAsync(User user)
+        public async Task<Profile> GetUserProfileAsync(string userId)
         {
-            throw new NotImplementedException();
+            var user = new SDK.APUser(userId);
+            var profiles = await user.GetConnectedObjectsAsync("user_profile");
+            if (profiles.Count == 0) return null;
+            var profile = new Profile();
+            profiles[0].CopyProfile(profile);
+            return profile;
+        }
+
+        public async Task<Profile> SaveUserProfileAsync(string userId, Profile profile)
+        {
+            var obj = profile.ToAPObject();
+
+            // create connection
+            if (string.IsNullOrEmpty(profile.Id))
+            {
+                await SDK.APConnection
+                        .New("user_profile")
+                        .FromExistingObject("user", userId)
+                        .ToNewObject("profile", obj)
+                        .SaveAsync();
+            }
+            else
+            {
+                // update permissions
+                await obj.SaveAsync();
+            }
+
+            // translate back
+            obj.CopyProfile(profile);
+
+            return profile;
         }
     }
 }
