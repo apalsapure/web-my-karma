@@ -4,22 +4,36 @@
     Layout = "~/Views/User/_AddLayout.cshtml";
 }
 
+@functions{
+    public bool HasPermissions()
+    {
+        return Model.Permissions != null && !string.IsNullOrEmpty(Model.Permissions.Id);
+    }
+}
+
 <div class="tab-pane active" id="tab_3">
     <div id="divAccessUser">
         @using (Html.BeginForm("Access", "User", new { permissionId = (Model != null && Model.Permissions != null) ? Model.Permissions.Id : null }, FormMethod.Post, new { role = "form" }))
         {
-            <div class="pad5-top pad5-bottom">
-                Note: Employee can be enabled only if he/she has a role.
+            if (!HasPermissions())
+            {
+            <div class="pad5-top pad10-bottom text-yellow">
+                <strong>Note:</strong> Employee can be enabled only if he/she has a role assigned.
             </div>
+            }
             <div class="form-group">
                 <label>Enable User</label>
-                @Html.DropDownList("Roles", new List<SelectListItem>() {
+                @Html.DropDownList("IsEnabled", new List<SelectListItem>() {
                                             new SelectListItem{ Text = "Yes", Value="true", Selected = Model.IsEnabled},
-                                            new SelectListItem{ Text = "No", Value="false", Selected = Model.IsEnabled}
+                                            new SelectListItem{ Text = "No", Value="false", Selected = !Model.IsEnabled}
                                         }, new { @class = "form-control" })
             </div>
+            
             <div class="box-footer pad0-left pad0-right">
-                <button type="submit" class="btn btn-primary pad20-right"><i class="fa fa-check margin5-right"></i>Save</button>
+                @if (HasPermissions())
+                {
+                    <button type="submit" class="btn btn-primary pad20-right"><i class="fa fa-check margin5-right"></i>Save</button>
+                }
             </div>
         }
     </div>

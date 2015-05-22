@@ -145,7 +145,6 @@ namespace KarmaRewards.Web.Controllers
         {
             try
             {
-
                 if (!string.IsNullOrEmpty(permissionId)) user.Permissions.Id = permissionId;
                 // set the role
                 user.Permissions.Roles.Add(Request.Form["Roles"]);
@@ -171,12 +170,17 @@ namespace KarmaRewards.Web.Controllers
             ViewBag.ActiveTab = "access";
             var user = await this.UserService.Get(id);
             if (user == null) return this.Http404();
+            user.Permissions = await AccessControl.AccessControlRepository.GetUserPermissionsAsync(user.Id);
             return View("Access", user);
         }
         [HttpPost]
         [AuthorizeAccess("user-add", "get")]
         public async Task<ActionResult> Access(User user)
         {
+            var isEnabled = user.IsEnabled;
+            user = await this.UserService.Get(user.Id);
+            user.IsEnabled = isEnabled;
+            await this.UserService.Save(user);
             return RedirectToAction("index", "home");
         }
         #endregion
