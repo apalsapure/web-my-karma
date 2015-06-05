@@ -29,6 +29,7 @@ namespace KarmaRewards.Web
                     "~/Resources/plugins/bootstrap-switch/css/bootstrap-switch.min.css",
                     "~/Resources/plugins/simple-line-icons/simple-line-icons.css",
 
+                    "~/Resources/plugins/iCheck/minimal/_all.css",
                     "~/Resources/plugins/select2/select2.css",
                     "~/Resources/css/plugins.css",
                     "~/Resources/css/structure.css",
@@ -68,7 +69,11 @@ namespace KarmaRewards.Web
                     "~/Resources/plugins/underscore-min.js",
                     "~/Resources/plugins/backbone.js",
                     "~/Resources/plugins/handlebars-1.3.js",
-                    "~/Resources/Plugins/select2/select2.js"
+                    "~/Resources/Plugins/select2/select2.js",
+                    "~/Resources/Plugins/iCheck/icheck.min.js",
+                    "~/Scripts/Utils/modalWin.js",
+                    "~/Scripts/Models/Common/errorModel.js",
+                    "~/Scripts/Views/Common/Error/errorView.js"
                     );
 
             secondaryBundle.Orderer = new NonOrderingBundleOrderer();

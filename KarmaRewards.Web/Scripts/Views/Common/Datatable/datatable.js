@@ -74,7 +74,7 @@ var Datatable = function () {
                         }, 100);
                         rowCount = $('tbody > tr', table).size();
 
-                        Metronic.initUniform($('input[type="checkbox"]', table)); // reinitialize uniform check boxes on each table reload
+                        //Metronic.initUniform($('input[type="checkbox"]', table)); // reinitialize uniform check boxes on each table reload
                         countSelectedRecords(); // reset selected records indicator
                     },
 

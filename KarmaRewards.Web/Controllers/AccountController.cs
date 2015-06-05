@@ -115,7 +115,7 @@ namespace KarmaRewards.Web.Controllers
             claimIdentity.AddClaim(new Claim("Image", response.User.ImageUrl));
 
             // Authenticate user to Owin
-            Authentication.SignIn(new AuthenticationProperties() { IsPersistent = true }, claimIdentity);
+            Authentication.SignIn(new AuthenticationProperties() { IsPersistent = false }, claimIdentity);
 
             await AccessManager.SetFeatureList(response.User);
 

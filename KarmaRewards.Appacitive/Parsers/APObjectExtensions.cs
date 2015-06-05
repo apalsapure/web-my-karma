@@ -32,7 +32,7 @@ namespace KarmaRewards.Appacitive
                 Email = obj.Get<string>("email", null),
                 Provider = obj.Get<string>("provider", null),
                 DateOfBirth = obj.Get<DateTime>("birthdate", DateTime.MinValue),
-                ImageUrl = obj.Get<string>("image_url", null),
+                ImageUrl = obj.Get<string>("image_url", string.Empty),
                 IsEnabled = obj.Get<bool>("isenabled", false),
                 Gender = obj.Get<string>("gender", null),
                 Designation = obj.Get<string>("designation", null),

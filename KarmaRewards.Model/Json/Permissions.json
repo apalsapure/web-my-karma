@@ -4,23 +4,23 @@
       "index": "1",
       "name": "dashboard-view"
     },
-	{
+    {
       "index": "2",
       "name": "karma-reward"
     },
-	{
+    {
       "index": "3",
       "name": "karma-moderate"
     },
-	{
+    {
       "index": "4",
       "name": "karma-leader-board"
     },
-	{
+    {
       "index": "5",
       "name": "user-add"
     },
-	{
+    {
       "index": "6",
       "name": "user-manage"
     }
@@ -31,6 +31,14 @@
         {
           "role": "sa",
           "permission": "1,2,3,4,5,6,7,8,9,10"
+        },
+		{
+          "role": "hr",
+          "permission": "1,2,3,4,5,6,7,8,9,10"
+        },
+        {
+          "role": "user",
+          "permission": "1,4"
         }
       ]
     }

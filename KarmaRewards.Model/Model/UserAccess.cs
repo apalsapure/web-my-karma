@@ -32,6 +32,7 @@ namespace KarmaRewards.Model
         {
             var hasAccess = true;
             var roles = AccessControl.Configuration.Roles.ToList().Where(x => permissions.Roles.Contains(x.Name)).ToList();
+            hasAccess = roles.Count > 0;
             for (int i = 0; i < roles.Count; i++)
             {
                 var role = roles[i];

@@ -1,0 +1,30 @@
+﻿@*In this element error will be shown*@
+<div id="divErrorModalContainer"></div>
+@*Template for error modal*@
+<script type="text/template" id="errorModalTemplate">
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">{{title}}</h4>
+                </div>
+                <div class="modal-body padding5-bottom">
+                    <p class="paragraph">{{message}}</p>
+                    <p><a href="javascript:void(0)" class='show-error-details hide'>Show Details</a></p>
+                    <div id="divErrorDetails" class="hide">
+                        <div class="margin0-top">
+                            <div class="clearfix"><strong>Error Code: </strong></div>
+                            <div class="error-code margin15-bottom">{{code}}</div>
+                            <div class="clearfix"><strong>Error Message: </strong></div>
+                            <div class="error-details">{{error}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">{{{btnLabel}}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

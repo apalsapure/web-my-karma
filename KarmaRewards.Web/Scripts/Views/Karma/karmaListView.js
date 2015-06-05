@@ -12,7 +12,7 @@
 
 $(document).ready(function () {
 
-    var $container = $('.content-wrapper'),
+    var $container = $('.leader-board-container'),
              args = {
                  showActions: true,
                  allowGlobalSearch: true,
@@ -29,11 +29,15 @@ $(document).ready(function () {
                      allowGroupSelect: false,
                      columns: [
                          {
-                             email: 'Email Address',
-                             binding: 'email',
-                             property: 'email',
+                             dName: 'Employee Name',
+                             binding: 'name',
+                             property: 'name',
                              allowSort: true,
-                             style: ''
+                             style: '',
+                             filter: {
+                                 cssClass: 'filter-width-225 name-filter',
+                                 type: 'string'
+                             }
                          }]
                  }
              };

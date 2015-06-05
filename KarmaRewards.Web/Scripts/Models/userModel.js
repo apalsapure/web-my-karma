@@ -46,12 +46,20 @@ karma.Collection.UserCollection = Backbone.Collection.extend({
             if (options.reset) that.reset(undefined, { silent: true });
 
             // add current set of users to collection
-            that.add(users.models);
+            var usersArr = [];
+            _.forEach(users.models, function (user) {
+                var u = user.toJSON();
+                u['name'] = u.firstname + ' ' + u.lastname;
+                usersArr.push(new karma.Model.User(u));
+            });
+            that.add(usersArr);
 
             // set the options on the collection,
             // with total records count inside paging
             options.paging.total = users.query().results.total;
             that.options = $.extend({}, options);
+
+            if (_type.isFunction(options.success)) options.success.apply(options.context, [that, that.response, that.options]);
 
             // raise a reset event
             if (!that.options.silent)
@@ -80,6 +88,7 @@ karma.Collection.UserCollection = Backbone.Collection.extend({
     },
 
     _triggerError: function (error) {
+        error = new karma.Model.Error(error);
         this.trigger('error', this, error);
     }
 });

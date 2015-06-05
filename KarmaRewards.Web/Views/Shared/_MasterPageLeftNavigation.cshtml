@@ -22,15 +22,15 @@
                     <ul class="treeview-menu">
                         @if (ViewBag.Features.Contains("karma-reward"))
                         {
-                            <li><a href="../layout/top-nav.html">Reward Points</a></li>
+                            <li><a href="/karma/reward">Reward Points</a></li>
                         }
                         @if (ViewBag.Features.Contains("karma-moderate"))
                         {
-                            <li><a href="../layout/boxed.html">Moderate Points</a></li>
+                            <li><a href="/karma/moderate">Moderate Points</a></li>
                         }
                         @if (ViewBag.Features.Contains("karma-leader-board"))
                         {
-                            <li><a href="../layout/fixed.html">Leader Board</a></li>
+                            <li><a href="/karma/list">Leader Board</a></li>
                         }
                     </ul>
                 </li>

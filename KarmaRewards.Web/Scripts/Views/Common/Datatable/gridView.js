@@ -260,7 +260,7 @@
                                 $('.th-check', that.$table).html('<input type="checkbox" class="group-checkable"/>');
 
                             $('.group-checkable', that.$table).attr("checked", false);
-                            Metronic.initUniform($('.group-checkable', that.$table));
+                            $('.group-checkable', that.$table).initUniform();
 
                             setTimeout(function () {
                                 that.grid.bindGroupSelect();
@@ -484,7 +484,7 @@ karma.Views.stringFilterView = karma.Views.baseFilterView.extend({
     renderChild: function () {
         var that = this;
         setTimeout(function () {
-            Metronic.initUniform()
+            $(document).initUniform()
         }, 1000);
     },
 
@@ -658,7 +658,7 @@ karma.Views.multiChoiceFilterView = karma.Views.baseFilterView.extend({
 
         // apply the metro look
         setTimeout(function () {
-            Metronic.initUniform()
+            $(document).initUniform()
         }, 1000);
     },
 
@@ -698,7 +698,7 @@ karma.Views.boolFilterView = karma.Views.baseFilterView.extend({
     renderChild: function () {
         var that = this;
         setTimeout(function () {
-            Metronic.initUniform()
+            $(document).initUniform()
         }, 1000);
     },
 
@@ -745,7 +745,7 @@ karma.Views.boolLabeledFilterView = karma.Views.boolFilterView.extend({
             falseLabel: this.args.filter.falseLabel || 'False'
         }));
         setTimeout(function () {
-            Metronic.initUniform();
+            $(document).initUniform();
         }, 1000);
     },
 
@@ -796,7 +796,7 @@ karma.Views.numberFilterView = karma.Views.baseFilterView.extend({
         this.$text.parent().css('width', this.args.filter.width);
 
         setTimeout(function () {
-            Metronic.initUniform()
+            $(document).initUniform()
         }, 1000);
 
         this.$text.TouchSpin({
@@ -884,7 +884,7 @@ karma.Views.autocompleteFilterView = karma.Views.baseFilterView.extend({
     renderChild: function () {
         var that = this;
         setTimeout(function () {
-            Metronic.initUniform();
+            $(document).initUniform();
         }, 1000);
         this.bindAutocomplete();
     },

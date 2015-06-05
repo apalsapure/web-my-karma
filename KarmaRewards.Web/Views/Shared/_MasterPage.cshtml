@@ -33,7 +33,7 @@
 </head>
 <body class="skin-blue">
     <div class="wrapper">
-
+        @RenderPage("~/Views/Shared/_Common.cshtml", null)
         @RenderPage("~/Views/Shared/_MasterPageHeader.cshtml", null)
 
 
@@ -50,10 +50,5 @@
             @RenderPage("~/Views/Shared/_CopyRight.cshtml", null)
         </div>
     </div>
-
-    <script>
-        jQuery(document).ready(function () {
-        });
-    </script>
 </body>
 </html>
