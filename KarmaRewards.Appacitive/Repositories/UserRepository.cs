@@ -17,14 +17,21 @@ namespace KarmaRewards.Appacitive
 
         public async Task<User> SaveAsync(User user)
         {
-            // Create user
-            var userObj = user.ToAPUser();
+            try
+            {
+                // Create user
+                var userObj = user.ToAPUser();
 
-            await userObj.SaveAsync();
+                await userObj.SaveAsync();
 
-            userObj.CopyEntity(user);
+                userObj.CopyEntity(user);
 
-            return user;
+                return user;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         public async Task<User> GetByIdAsync(string id)

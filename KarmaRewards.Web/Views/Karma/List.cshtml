@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "~/Views/Shared/_MasterPage.cshtml";
+}
+
+@section customjs{
+    @System.Web.Optimization.Scripts.Render("~/bundles/scripts/grid-lib")
+    @System.Web.Optimization.Scripts.Render("~/bundles/scripts/karma-list")
+}
+
+@RenderPage("~/Views/Shared/_GridView.cshtml")
+
+<script id="tmplKarmaListDetailsRow" type="text/template"></script>

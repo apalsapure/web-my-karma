@@ -29,7 +29,7 @@ namespace KarmaRewards.Web
                     "~/Resources/plugins/bootstrap-switch/css/bootstrap-switch.min.css",
                     "~/Resources/plugins/simple-line-icons/simple-line-icons.css",
 
-                    //"~/Resources/css/components.css",
+                    "~/Resources/plugins/select2/select2.css",
                     "~/Resources/css/plugins.css",
                     "~/Resources/css/structure.css",
                     "~/Resources/css/base.css",
@@ -67,11 +67,21 @@ namespace KarmaRewards.Web
                     "~/Resources/plugins/utils/appacitiveInit.js",
                     "~/Resources/plugins/underscore-min.js",
                     "~/Resources/plugins/backbone.js",
-                    "~/Resources/plugins/handlebars-1.3.js"
+                    "~/Resources/plugins/handlebars-1.3.js",
+                    "~/Resources/Plugins/select2/select2.js"
                     );
 
             secondaryBundle.Orderer = new NonOrderingBundleOrderer();
             bundles.Add(secondaryBundle);
+
+            bundles.Add(new ScriptBundle("~/bundles/scripts/grid-lib")
+                .Include(
+                    "~/Resources/plugins/datatables/jquery.dataTables.js",
+                    "~/Resources/plugins/datatables/dataTables.bootstrap.js",
+                    "~/Scripts/Views/Common/Datatable/datatable.js",
+                    "~/Scripts/Views/Common/Datatable/gridView.js"
+                ));
+
 
             bundles.Add(new ScriptBundle("~/bundles/scripts/user-add")
                 .Include(
@@ -89,6 +99,12 @@ namespace KarmaRewards.Web
             bundles.Add(new ScriptBundle("~/bundles/scripts/login")
                 .Include(
                     "~/Resources/plugins/backstretch/jquery.backstretch.min.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/scripts/karma-list")
+                .Include(
+                "~/Scripts/Models/userModel.js",
+                "~/Scripts/Views/Karma/karmaListView.js"
                 ));
         }
     }

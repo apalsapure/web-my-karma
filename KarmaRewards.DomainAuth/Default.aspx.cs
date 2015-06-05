@@ -47,18 +47,6 @@ namespace KarmaRewards.DomainAuth
 
             #region Get User Details from Active Directory
             string userName = HttpContext.Current.User.Identity.Name.Substring(HttpContext.Current.User.Identity.Name.IndexOf('\\') + 1);
-            DirectoryEntry dirEntry = new DirectoryEntry();
-            DirectorySearcher dSearch = new DirectorySearcher(dirEntry);
-            dSearch.Filter = "samaccountname=" + userName;
-            System.DirectoryServices.SearchResult sResultSet = dSearch.FindOne();
-            displayName = GetProperty(sResultSet, "cn");//full name
-            emailAddress = GetProperty(sResultSet, "mail");
-            if (displayName.Contains(" "))
-            {
-                List<string> splits = new List<string>(displayName.Split(' '));
-                lastName = splits.Last().Trim();
-                firstName = displayName.Replace(lastName, string.Empty).Trim();
-            }
             #endregion
 
             Identity identity = new Identity(userName.ToLower(), emailAddress, AuthenticationProvider.Windows, firstName, lastName);

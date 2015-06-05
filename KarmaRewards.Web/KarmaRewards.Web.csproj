@@ -222,6 +222,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KarmaController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Extensions\ExtensionMethods.cs" />
     <Compile Include="Extensions\Helper.cs" />
@@ -235,7 +236,23 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Resources\images\sort_asc.png" />
+    <Content Include="Resources\images\sort_asc_disabled.png" />
+    <Content Include="Resources\images\sort_both.png" />
+    <Content Include="Resources\images\sort_desc.png" />
+    <Content Include="Resources\images\sort_desc_disabled.png" />
     <Content Include="Resources\images\spinner.gif" />
+    <Content Include="Resources\img\select2-spinner.gif" />
+    <Content Include="Resources\img\select2.png" />
+    <Content Include="Resources\img\select2x2.png" />
+    <Content Include="Resources\plugins\datatables\dataTables.bootstrap.css" />
+    <Content Include="Resources\plugins\datatables\dataTables.bootstrap.js" />
+    <Content Include="Resources\plugins\datatables\images\sort_asc.png" />
+    <Content Include="Resources\plugins\datatables\images\sort_asc_disabled.png" />
+    <Content Include="Resources\plugins\datatables\images\sort_both.png" />
+    <Content Include="Resources\plugins\datatables\images\sort_desc.png" />
+    <Content Include="Resources\plugins\datatables\images\sort_desc_disabled.png" />
+    <Content Include="Resources\plugins\datatables\jquery.dataTables.js" />
     <Content Include="Resources\plugins\input-mask\jquery.inputmask.date.extensions.js" />
     <Content Include="Resources\plugins\input-mask\jquery.inputmask.extensions.js" />
     <Content Include="Resources\plugins\input-mask\jquery.inputmask.js" />
@@ -243,6 +260,12 @@
     <Content Include="Resources\plugins\input-mask\jquery.inputmask.phone.extensions.js" />
     <Content Include="Resources\plugins\input-mask\jquery.inputmask.regex.extensions.js" />
     <Content Include="Resources\plugins\input-mask\phone-codes\readme.txt" />
+    <Content Include="Resources\plugins\select2\img\select2-spinner.gif" />
+    <Content Include="Resources\plugins\select2\img\select2.png" />
+    <Content Include="Resources\plugins\select2\img\select2x2.png" />
+    <Content Include="Resources\plugins\select2\select2-bootstrap.css" />
+    <Content Include="Resources\plugins\select2\select2.css" />
+    <Content Include="Resources\plugins\select2\select2.js" />
     <Content Include="Scripts\configuration.js" />
     <Content Include="Resources\css\base.css" />
     <Content Include="Resources\css\custom.css" />
@@ -278,13 +301,8 @@
     <Content Include="Resources\images\ui-icons_ef8c08_256x240.png" />
     <Content Include="Resources\images\ui-icons_ffd27a_256x240.png" />
     <Content Include="Resources\images\ui-icons_ffffff_256x240.png" />
-    <Content Include="Resources\img\accordion-plusminus.png" />
-    <Content Include="Resources\img\ajax-loading.gif" />
-    <Content Include="Resources\img\ajax-modal-loading.gif" />
-    <Content Include="Resources\img\arrow-down.png" />
     <Content Include="Resources\img\avatar.png" />
     <Content Include="Resources\img\bg-white-lock.png" />
-    <Content Include="Resources\img\datatable-row-openclose.png" />
     <Content Include="Resources\img\favicon.ico" />
     <Content Include="Resources\img\flags\ad.png" />
     <Content Include="Resources\img\flags\ae.png" />
@@ -534,53 +552,7 @@
     <Content Include="Resources\img\flags\za.png" />
     <Content Include="Resources\img\flags\zm.png" />
     <Content Include="Resources\img\flags\zw.png" />
-    <Content Include="Resources\img\hor-menu-red-arrow.png" />
-    <Content Include="Resources\img\icon-color-close.png" />
-    <Content Include="Resources\img\icon-color.png" />
-    <Content Include="Resources\img\icon-img-down.png" />
-    <Content Include="Resources\img\icon-img-up.png" />
-    <Content Include="Resources\img\inbox-nav-arrow-blue.png" />
-    <Content Include="Resources\img\input-spinner.gif" />
-    <Content Include="Resources\img\loading-spinner-blue.gif" />
-    <Content Include="Resources\img\loading-spinner-default.gif" />
-    <Content Include="Resources\img\loading-spinner-grey.gif" />
-    <Content Include="Resources\img\loading.gif" />
     <Content Include="Resources\img\logo-sprite.png" />
-    <Content Include="Resources\img\menu-toggler.png" />
-    <Content Include="Resources\img\overlay-icon.png" />
-    <Content Include="Resources\img\photo1.jpg" />
-    <Content Include="Resources\img\photo2.jpg" />
-    <Content Include="Resources\img\portlet-collapse-icon-white.png" />
-    <Content Include="Resources\img\portlet-collapse-icon.png" />
-    <Content Include="Resources\img\portlet-config-icon-white.png" />
-    <Content Include="Resources\img\portlet-config-icon.png" />
-    <Content Include="Resources\img\portlet-expand-icon-white.png" />
-    <Content Include="Resources\img\portlet-expand-icon.png" />
-    <Content Include="Resources\img\portlet-reload-icon-white.png" />
-    <Content Include="Resources\img\portlet-reload-icon.png" />
-    <Content Include="Resources\img\portlet-remove-icon-white.png" />
-    <Content Include="Resources\img\portlet-remove-icon.png" />
-    <Content Include="Resources\img\remove-icon-small.png" />
-    <Content Include="Resources\img\search_icon_light.png" />
-    <Content Include="Resources\img\sidebar-menu-arrow-reverse.png" />
-    <Content Include="Resources\img\sidebar-menu-arrow-right.png" />
-    <Content Include="Resources\img\sidebar-menu-arrow.png" />
-    <Content Include="Resources\img\sidebar-toggler-inverse.png" />
-    <Content Include="Resources\img\sidebar-toggler.png" />
-    <Content Include="Resources\img\sidebar_arrow_icon_light.png" />
-    <Content Include="Resources\img\sidebar_arrow_icon_light_rtl.png" />
-    <Content Include="Resources\img\sidebar_inline_toggler_icon_blue.jpg" />
-    <Content Include="Resources\img\sidebar_inline_toggler_icon_darkblue.jpg" />
-    <Content Include="Resources\img\sidebar_inline_toggler_icon_default.jpg" />
-    <Content Include="Resources\img\sidebar_inline_toggler_icon_grey.jpg" />
-    <Content Include="Resources\img\sidebar_inline_toggler_icon_light.jpg" />
-    <Content Include="Resources\img\sidebar_inline_toggler_icon_light2.jpg" />
-    <Content Include="Resources\img\sidebar_toggler_icon_blue.png" />
-    <Content Include="Resources\img\sidebar_toggler_icon_darkblue.png" />
-    <Content Include="Resources\img\sidebar_toggler_icon_default.png" />
-    <Content Include="Resources\img\sidebar_toggler_icon_grey.png" />
-    <Content Include="Resources\img\sidebar_toggler_icon_light.png" />
-    <Content Include="Resources\img\sidebar_toggler_icon_light2.png" />
     <Content Include="Resources\img\social\aboutme.png" />
     <Content Include="Resources\img\social\amazon.png" />
     <Content Include="Resources\img\social\behance.png" />
@@ -618,8 +590,6 @@
     <Content Include="Resources\img\social\xing.png" />
     <Content Include="Resources\img\social\yahoo.png" />
     <Content Include="Resources\img\social\youtube.png" />
-    <Content Include="Resources\img\syncfusion-icons-white.png" />
-    <Content Include="Resources\img\syncfusion-icons.png" />
     <Content Include="Scripts\init.js" />
     <Content Include="Resources\media\bg\1.jpg" />
     <Content Include="Resources\media\bg\2.jpg" />
@@ -811,6 +781,9 @@
     <Content Include="Resources\plugins\utils\appacitiveInit.js" />
     <Content Include="Scripts\Models\userModel.js" />
     <Content Include="Scripts\Utils\utils.js" />
+    <Content Include="Scripts\Views\Common\Datatable\datatable.js" />
+    <Content Include="Scripts\Views\Common\Datatable\gridView.js" />
+    <Content Include="Scripts\Views\Karma\karmaListView.js" />
     <Content Include="Scripts\Views\User\addUserView.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -840,7 +813,6 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Scripts\Configurations\" />
-    <Folder Include="Scripts\Views\Common\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -984,6 +956,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\User\Roles.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Karma\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Karma\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_GridView.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

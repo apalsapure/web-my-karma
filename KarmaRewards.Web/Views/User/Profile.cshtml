@@ -32,7 +32,7 @@
                 <button type="submit" class="btn btn-primary pad20-right"><i class="fa fa-check margin5-right"></i>Save</button> 
                 @if (Model != null && !Model.IsEnabled)
                 {
-                    @Html.ActionLink("Skip", "access", new { id = Model.Id }, new { @class = "btn btn-link pad20-right" })
+                    @Html.ActionLink("Skip", "roles", new { id = Model.Id }, new { @class = "btn btn-link pad20-right" })
                 }
             </div>
         }

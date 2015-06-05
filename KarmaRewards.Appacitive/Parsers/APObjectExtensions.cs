@@ -68,7 +68,8 @@ namespace KarmaRewards.Appacitive
             obj.FirstName = user.FirstName;
             obj.LastName = user.LastName;
             obj.Email = user.Email;
-            obj.DateOfBirth = user.DateOfBirth;
+            if (user.DateOfBirth != DateTime.MinValue)
+                obj.DateOfBirth = user.DateOfBirth;
             return obj;
         }
 
