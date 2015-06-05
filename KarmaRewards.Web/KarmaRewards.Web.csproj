@@ -904,6 +904,7 @@
     <Content Include="Scripts\Views\Common\Error\errorView.js" />
     <Content Include="Scripts\Views\Karma\karmaListView.js" />
     <Content Include="Scripts\Views\User\addUserView.js" />
+    <Content Include="Scripts\Views\User\userListView.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

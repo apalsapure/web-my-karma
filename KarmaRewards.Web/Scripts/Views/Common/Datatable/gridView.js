@@ -87,7 +87,7 @@
 
         // add a column if details is allowed
         if (this.args.grid.allowDetails) {
-            this.thColumns.push({ cssClass: 'no-bg th-expand', style: 'width:1%' });
+            this.thColumns.push({ cssClass: 'no-bg th-expand', style: 'width:4px' });
             this.tdColumns.push({ defaultContent: '<span class="row-details row-details-close"></span>', orderable: false });
         }
 

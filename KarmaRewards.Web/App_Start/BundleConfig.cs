@@ -29,6 +29,7 @@ namespace KarmaRewards.Web
                     "~/Resources/plugins/bootstrap-switch/css/bootstrap-switch.min.css",
                     "~/Resources/plugins/simple-line-icons/simple-line-icons.css",
 
+                    "~/Resources/plugins/datatables/dataTables.bootstrap.css",
                     "~/Resources/plugins/iCheck/minimal/_all.css",
                     "~/Resources/plugins/select2/select2.css",
                     "~/Resources/css/plugins.css",
@@ -106,10 +107,10 @@ namespace KarmaRewards.Web
                     "~/Resources/plugins/backstretch/jquery.backstretch.min.js"
                 ));
 
-            bundles.Add(new ScriptBundle("~/bundles/scripts/karma-list")
+            bundles.Add(new ScriptBundle("~/bundles/scripts/user-manage")
                 .Include(
                 "~/Scripts/Models/userModel.js",
-                "~/Scripts/Views/Karma/karmaListView.js"
+                "~/Scripts/Views/User/userListView.js"
                 ));
         }
     }

@@ -1,20 +1,14 @@
-﻿using DotNetOpenAuth.AspNet;
-using KarmaRewards.Infrastructure;
+﻿using KarmaRewards.Infrastructure;
 using KarmaRewards.Model;
 using KarmaRewards.Services;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Routing;
-using System.Web.Security;
-using System.Web.SessionState;
 
 namespace KarmaRewards.Web.Controllers
 {

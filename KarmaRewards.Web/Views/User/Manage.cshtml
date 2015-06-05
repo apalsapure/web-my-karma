@@ -1,1 +1,52 @@
-﻿
+﻿@{
+    Layout = "~/Views/Shared/_MasterPage.cshtml";
+}
+
+@section customjs{
+    @System.Web.Optimization.Scripts.Render("~/bundles/scripts/grid-lib")
+    @System.Web.Optimization.Scripts.Render("~/bundles/scripts/user-manage")
+}
+
+@RenderPage("~/Views/Shared/_GridView.cshtml")
+
+<section class="content-header">
+    <h1>Access Control
+            <small>Manage Employee</small>
+    </h1>
+</section>
+<section class="content">
+    <div class="box">
+        <div class="box-body">
+            <div class="leader-board-container"></div>
+        </div>
+    </div>
+</section>
+<script id="tmplUserListDetailsRow" type="text/template">
+    <div class="inner-table-container" data-companyid="{{id}}">
+        <div class="hide updated-date">{{updated}}</div>
+        <div class="hide created-date">{{created}}</div>
+        <table class="inner-table width100">
+            <tr>
+                <td width="5%"><strong class="no-wrap">Contact Person</strong></td>
+                <td class="pre-line">{{name}}</td>
+            </tr>
+            <tr>
+                <td><strong>Email</strong></td>
+                <td>{{email}}</td>
+            </tr>
+            <tr>
+                <td><strong class="no-wrap">Phone / Cellphone</strong></td>
+                <td>{{joining_date}}</td>
+            </tr>
+            <tr>
+                <td><strong class="no-wrap">Invited On</strong></td>
+                <td>{{createdWhen}} (<span class="time-text">{{createdHuman}}</span>)</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-right width100">
+                    <a href="/user/edit/{{__id}}" class="btn btn-xs bg-green"><i class="fa fa-pencil margin5-right"></i>Edit </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</script>

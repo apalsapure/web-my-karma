@@ -189,6 +189,8 @@ namespace KarmaRewards.Web.Controllers
         [AuthorizeAccess("user-manage", "get")]
         public ActionResult Manage()
         {
+            ViewBag.Primary = "Access Control";
+            ViewBag.Secondary = "Manage User";
             return View();
         }
     }
