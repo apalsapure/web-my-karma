@@ -21,22 +21,25 @@ namespace KarmaRewards.Web.Controllers
         }
 
         public IUserService UserService { get; set; }
+        private const string ROOT_TAB = "Access Control";
+        private const string ADD_USER = "Add User";
+        private const string MANAGE_USER = "Manage User";
 
         #region Add User
         #region Add / Edit
         [AuthorizeAccess("user-add", "get")]
         public ActionResult Add()
         {
-            ViewBag.Primary = "Access Control";
-            ViewBag.Secondary = "Add User";
+            ViewBag.Primary = ROOT_TAB;
+            ViewBag.Secondary = ADD_USER;
             ViewBag.ActiveTab = "basic";
             return View();
         }
         [AuthorizeAccess("user-add", "get")]
         public async Task<ActionResult> Edit(string id)
         {
-            ViewBag.Primary = "Access Control";
-            ViewBag.Secondary = "Manage User";
+            ViewBag.Primary = ROOT_TAB;
+            ViewBag.Secondary = MANAGE_USER;
             ViewBag.ActiveTab = "basic";
 
             var user = await this.UserService.Get(id);
@@ -64,13 +67,21 @@ namespace KarmaRewards.Web.Controllers
                     // check date of birth (optional)
                     if (!string.IsNullOrWhiteSpace(user.DateOfBirthStr))
                     {
-                        var birthDate = DateTime.Now;
-                        if (!Helper.TryParseDate(user.DateOfBirthStr, out birthDate))
+                        // date control on client side initialize to this date
+                        if (user.DateOfBirthStr == "01/01/2000")
                         {
-                            ViewBag.ErrorMessage = "Birth Date is Incorrect.";
-                            return View();
+                            user.DateOfBirth = null;
                         }
-                        user.DateOfBirth = birthDate;
+                        else
+                        {
+                            var birthDate = DateTime.Now;
+                            if (!Helper.TryParseDate(user.DateOfBirthStr, out birthDate))
+                            {
+                                ViewBag.ErrorMessage = "Birth Date is Incorrect.";
+                                return View();
+                            }
+                            user.DateOfBirth = birthDate;
+                        }
                     }
 
                     // set user name in lower case
@@ -97,8 +108,8 @@ namespace KarmaRewards.Web.Controllers
         [AuthorizeAccess("user-add", "get")]
         public new async Task<ActionResult> Profile(string id)
         {
-            ViewBag.Primary = "Access Control";
-            ViewBag.Secondary = "Add User";
+            ViewBag.Primary = ROOT_TAB;
+            ViewBag.Secondary = ADD_USER;
             ViewBag.ActiveTab = "profile";
             var user = await this.UserService.Get(id);
             if (user == null) return this.Http404();
@@ -130,8 +141,8 @@ namespace KarmaRewards.Web.Controllers
         [AuthorizeAccess("user-add", "get")]
         public async Task<ActionResult> Roles(string id)
         {
-            ViewBag.Primary = "Access Control";
-            ViewBag.Secondary = "Add User";
+            ViewBag.Primary = ROOT_TAB;
+            ViewBag.Secondary = ADD_USER;
             ViewBag.ActiveTab = "roles";
             var user = await this.UserService.Get(id);
             if (user == null) return this.Http404();
@@ -165,8 +176,8 @@ namespace KarmaRewards.Web.Controllers
         [AuthorizeAccess("user-add", "get")]
         public async Task<ActionResult> Access(string id)
         {
-            ViewBag.Primary = "Access Control";
-            ViewBag.Secondary = "Add User";
+            ViewBag.Primary = ROOT_TAB;
+            ViewBag.Secondary = ADD_USER;
             ViewBag.ActiveTab = "access";
             var user = await this.UserService.Get(id);
             if (user == null) return this.Http404();
@@ -181,7 +192,7 @@ namespace KarmaRewards.Web.Controllers
             user = await this.UserService.Get(user.Id);
             user.IsEnabled = isEnabled;
             await this.UserService.Save(user);
-            return RedirectToAction("index", "home");
+            return RedirectToAction("manage", "user");
         }
         #endregion
         #endregion
@@ -189,8 +200,8 @@ namespace KarmaRewards.Web.Controllers
         [AuthorizeAccess("user-manage", "get")]
         public ActionResult Manage()
         {
-            ViewBag.Primary = "Access Control";
-            ViewBag.Secondary = "Manage User";
+            ViewBag.Primary = ROOT_TAB;
+            ViewBag.Secondary = MANAGE_USER;
             return View();
         }
     }

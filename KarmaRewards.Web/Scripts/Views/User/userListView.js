@@ -3,6 +3,11 @@
     detailsRowTemplate: '#tmplUserListDetailsRow',
 
     initializeChild: function (args) {
+        this.options.sorting = {
+            sortBy: 'joining_date',
+            ascending: karma.config.sortAscending
+        };
+
         this.collection = new karma.Collection.UserCollection();
 
         this.hbDetailTemplateName = 'tourListDetailRow';
@@ -22,10 +27,6 @@ $(document).ready(function () {
                  allowGlobalSearch: true,
                  allowFilters: true,
                  filter: {
-                     isPublished: hfl.viewPublished === '1',
-                     enabledOnly: hfl.viewEnabledOnly === '1',
-                     ownerId: hfl.ownerId,
-                     ownerType: hfl.ownerType
                  },
                  grid: {
                      allowDetails: true,
@@ -33,7 +34,7 @@ $(document).ready(function () {
                      allowGroupSelect: false,
                      columns: [
                          {
-                             dName: 'Employee Name',
+                             dName: 'Name',
                              binding: 'name',
                              property: 'firstname',
                              allowSort: true,
@@ -41,6 +42,37 @@ $(document).ready(function () {
                              filter: {
                                  cssClass: 'filter-width-225 name-filter',
                                  type: 'string'
+                             }
+                         }, {
+                             dName: 'Birth Date',
+                             binding: 'birthdate',
+                             property: 'birthdate',
+                             allowSort: true,
+                             style: 'width: 160px',
+                             format: 'DD-MMM-YYYY',
+                             type: 'date'
+                         }, {
+                             dName: 'Is Enabled',
+                             displayColumn: false,
+                             binding: 'isenabled',
+                             property: 'isenabled',
+                             filter: {
+                                 cssClass: 'filter-width-225 name-filter',
+                                 type: 'boolLabeled',
+                                 trueLabel: 'Yes',
+                                 falseLabel: 'No'
+                             }
+                         }, {
+                             dName: 'Joining Date',
+                             binding: 'joining_date',
+                             property: 'joining_date',
+                             allowSort: true,
+                             style: 'width: 160px',
+                             format: 'DD-MMM-YYYY',
+                             type: 'date',
+                             filter: {
+                                 cssClass: 'filter-width-225 name-filter',
+                                 type: 'date'
                              }
                          }]
                  }

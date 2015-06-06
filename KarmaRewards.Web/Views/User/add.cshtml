@@ -34,6 +34,10 @@
                                             new SelectListItem{ Text = "Female", Value="f"}
                                         }, new { @class = "form-control" })
             </div>
+            <div class="hide">
+                @Html.HiddenFor(m => m.IsEnabled)
+                @Html.HiddenFor(m => m.ImageUrl)
+            </div>
             <div class="row">
                 <div class="col-sm-12 col-md-6">
                     <div class="form-group">

@@ -49,7 +49,7 @@ window.karma.Views.ErrorView = Backbone.View.extend({
         this.model.set('title', 'Your session has expired');
         this.model.set('message', 'Looks like your session has expired. \nFor security reasons; we automatically end sessions after an hour of inactivity. \n\nNow you will be redirected to login page.');
         this.model.set('error', '');
-        this.model.set('btnLabel', 'Login <i class="m-icon-swapright m-icon-white"></i>');
+        this.model.set('btnLabel', '<i class="fa fa-key margin5-right"></i>Login ');
         return true;
     },
 

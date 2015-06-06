@@ -11,7 +11,7 @@
 
 <section class="content-header">
     <h1>Access Control
-            <small>Manage Employee</small>
+            <small>Manage User</small>
     </h1>
 </section>
 <section class="content">
@@ -23,24 +23,30 @@
 </section>
 <script id="tmplUserListDetailsRow" type="text/template">
     <div class="inner-table-container" data-companyid="{{id}}">
-        <div class="hide updated-date">{{updated}}</div>
-        <div class="hide created-date">{{created}}</div>
         <table class="inner-table width100">
             <tr>
-                <td width="5%"><strong class="no-wrap">Contact Person</strong></td>
-                <td class="pre-line">{{name}}</td>
+                <td width="5%"><strong class="no-wrap">User Name</strong></td>
+                <td class="pre-line">{{username}}</td>
             </tr>
             <tr>
                 <td><strong>Email</strong></td>
                 <td>{{email}}</td>
             </tr>
             <tr>
-                <td><strong class="no-wrap">Phone / Cellphone</strong></td>
-                <td>{{joining_date}}</td>
+                <td><strong class="no-wrap">Gender</strong></td>
+                <td>{{#xif "this.gender == 'm'"}}Male{{else}}Female{{/xif}}</td>
             </tr>
             <tr>
-                <td><strong class="no-wrap">Invited On</strong></td>
-                <td>{{createdWhen}} (<span class="time-text">{{createdHuman}}</span>)</td>
+                <td><strong class="no-wrap">Designation</strong></td>
+                <td>{{designation}}</td>
+            </tr>
+            <tr>
+                <td><strong class="no-wrap">Is Enabled</strong></td>
+                <td>{{#if isenabled}}Yes{{else}}No{{/if}}</td>
+            </tr>
+            <tr>
+                <td><strong class="no-wrap">Last Updated</strong></td>
+                <td><span class="time-text">{{#humanDate __utclastupdateddate}}{{/humanDate}}</span></td>
             </tr>
             <tr>
                 <td colspan="2" class="text-right width100">

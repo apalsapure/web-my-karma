@@ -30,6 +30,7 @@ namespace KarmaRewards.Web
                     "~/Resources/plugins/simple-line-icons/simple-line-icons.css",
 
                     "~/Resources/plugins/datatables/dataTables.bootstrap.css",
+                    "~/Resources/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css",
                     "~/Resources/plugins/iCheck/minimal/_all.css",
                     "~/Resources/plugins/select2/select2.css",
                     "~/Resources/css/plugins.css",
@@ -70,8 +71,12 @@ namespace KarmaRewards.Web
                     "~/Resources/plugins/underscore-min.js",
                     "~/Resources/plugins/backbone.js",
                     "~/Resources/plugins/handlebars-1.3.js",
-                    "~/Resources/Plugins/select2/select2.js",
-                    "~/Resources/Plugins/iCheck/icheck.min.js",
+                    "~/Resources/plugins/swag-handlebar-helpers.js",
+                    "~/Resources/plugins/handlebar-helpers.js",
+                    "~/Resources/plugins/select2/select2.js",
+                    "~/Resources/plugins/iCheck/icheck.min.js",
+                    "~/Resources/plugins/bootstrap-daterangepicker/moment.min.js",
+                    "~/Resources/plugins/bootstrap-daterangepicker/daterangepicker.js",
                     "~/Scripts/Utils/modalWin.js",
                     "~/Scripts/Models/Common/errorModel.js",
                     "~/Scripts/Views/Common/Error/errorView.js"

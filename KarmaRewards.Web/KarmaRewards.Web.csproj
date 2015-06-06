@@ -246,6 +246,11 @@
     <Content Include="Resources\img\select2-spinner.gif" />
     <Content Include="Resources\img\select2.png" />
     <Content Include="Resources\img\select2x2.png" />
+    <Content Include="Resources\plugins\bootstrap-daterangepicker\date.js" />
+    <Content Include="Resources\plugins\bootstrap-daterangepicker\daterangepicker-bs2.css" />
+    <Content Include="Resources\plugins\bootstrap-daterangepicker\daterangepicker-bs3.css" />
+    <Content Include="Resources\plugins\bootstrap-daterangepicker\daterangepicker.js" />
+    <Content Include="Resources\plugins\bootstrap-daterangepicker\moment.min.js" />
     <Content Include="Resources\plugins\datatables\dataTables.bootstrap.css" />
     <Content Include="Resources\plugins\datatables\dataTables.bootstrap.js" />
     <Content Include="Resources\plugins\datatables\images\sort_asc.png" />
@@ -254,6 +259,7 @@
     <Content Include="Resources\plugins\datatables\images\sort_desc.png" />
     <Content Include="Resources\plugins\datatables\images\sort_desc_disabled.png" />
     <Content Include="Resources\plugins\datatables\jquery.dataTables.js" />
+    <Content Include="Resources\plugins\handlebar-helpers.js" />
     <Content Include="Resources\plugins\iCheck\all.css" />
     <Content Include="Resources\plugins\iCheck\flat\aero%402x.png" />
     <Content Include="Resources\plugins\iCheck\flat\aero.css" />
@@ -382,6 +388,7 @@
     <Content Include="Resources\plugins\select2\select2-bootstrap.css" />
     <Content Include="Resources\plugins\select2\select2.css" />
     <Content Include="Resources\plugins\select2\select2.js" />
+    <Content Include="Resources\plugins\swag-handlebar-helpers.js" />
     <Content Include="Scripts\configuration.js" />
     <Content Include="Resources\css\base.css" />
     <Content Include="Resources\css\custom.css" />

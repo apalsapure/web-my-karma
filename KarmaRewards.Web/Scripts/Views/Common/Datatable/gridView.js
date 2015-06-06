@@ -218,6 +218,8 @@
                         // which will render the data table
                         var data = that.collection.toJSON();
 
+                        data = that._formatData(data);
+
                         // mark disable rows
                         if (that.collection.disabled) {
                             that.disabled = $.extend(true, {}, that.collection.disabled);
@@ -286,6 +288,21 @@
 
             allowSingleSelect: this.args.grid.allowSingleSelect
         });
+    },
+
+    _formatData: function (data) {
+        _.forEach(this.args.grid.columns, function (col) {
+            switch (col.type) {
+                case 'date':
+                    if (!col.format) return;
+                    _.forEach(data, function (d) {
+                        if (!d[col.binding]) d[col.binding] = '-';
+                        else d[col.binding] = moment(d[col.binding]).format(col.format);
+                    });
+                    break;
+            }
+        });
+        return data;
     },
 
     // check box change handle
