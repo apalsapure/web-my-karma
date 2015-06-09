@@ -87,7 +87,7 @@
 
         // add a column if details is allowed
         if (this.args.grid.allowDetails) {
-            this.thColumns.push({ cssClass: 'no-bg th-expand', style: 'width:4px' });
+            this.thColumns.push({ cssClass: 'no-bg th-expand', style: 'width:1%' });
             this.tdColumns.push({ defaultContent: '<span class="row-details row-details-close"></span>', orderable: false });
         }
 
@@ -206,7 +206,15 @@
                          col = that.tdColumns[sorting[0]],
                          isAscending = sorting[1] === 'asc';
 
-                    if (col && col.orderable) {
+                    if (that.options.sorting && !that.first) {
+                        // set the sorted columns
+                        for (var i = 0; i < that.tdColumns.length; i++)
+                            if (that.tdColumns[i].property === that.options.sorting.sortBy) oSettings.aaSorting[0][0] = i;
+                        // set sort direction on grid
+                        if (!that.options.sorting.ascending) oSettings.aaSorting[0][1] = 'desc';
+                        // mark that sorting is done only once
+                        that.first = true;
+                    } else if (col && col.orderable) {
                         that.options.sorting.sortBy = col.property;
                         // ascending or not
                         that.options.sorting.ascending = isAscending;
@@ -498,13 +506,6 @@ karma.Views.stringFilterView = karma.Views.baseFilterView.extend({
     template: '#tmplStringFilterTemplate',
     hbTemplateName: 'stringFilterView',
 
-    renderChild: function () {
-        var that = this;
-        setTimeout(function () {
-            $(document).initUniform()
-        }, 1000);
-    },
-
     bindEvents: function () {
         var that = this;
 
@@ -521,11 +522,14 @@ karma.Views.stringFilterView = karma.Views.baseFilterView.extend({
         this.$text.blur(function () { that._search(); });
 
         // on radio buttons change do search
-        $('.radio-list input', this.$el).change(function () {
-            // this will enforce a search
-            that.query = '';
-            that._search();
-        });
+        //$('.radio-list input', this.$el).on('ifChecked', function (e) {
+        //    // this will enforce a search
+        //    that.query = '';
+        //    that._search();
+        //}).iCheck({
+        //    checkboxClass: 'icheckbox_minimal-blue',
+        //    radioClass: 'iradio_minimal-blue'
+        //});
     },
 
     _search: function () {
@@ -672,22 +676,20 @@ karma.Views.multiChoiceFilterView = karma.Views.baseFilterView.extend({
             label: this.args.label,
             items: this.args.filter.choices
         }));
-
-        // apply the metro look
-        setTimeout(function () {
-            $(document).initUniform()
-        }, 1000);
     },
 
     bindEvents: function () {
         var that = this;
 
         // on radio buttons change do search
-        $('.checkbox-list input', this.$el).change(function () {
-            // this will enforce a search
-            that.query = '';
-            that._search();
-        });
+        //$('.checkbox-list input', this.$el).on('ifChecked', function (e) {
+        //    // this will enforce a search
+        //    that.query = '';
+        //    that._search();
+        //}).iCheck({
+        //    checkboxClass: 'icheckbox_minimal-blue',
+        //    radioClass: 'iradio_minimal-blue'
+        //});
     },
 
     _search: function () {
@@ -712,22 +714,18 @@ karma.Views.boolFilterView = karma.Views.baseFilterView.extend({
     template: '#tmplBoolFilterTemplate',
     hbTemplateName: 'boolFilterView',
 
-    renderChild: function () {
-        var that = this;
-        setTimeout(function () {
-            $(document).initUniform()
-        }, 1000);
-    },
-
     bindEvents: function () {
         var that = this;
 
         // on radio buttons change do search
-        $('.radio-list input', this.$el).change(function () {
-            // this will enforce a search
-            that.query = '';
-            that._search();
-        });
+        //$('.radio-list input', this.$el).on('ifChecked', function (e) {
+        //    // this will enforce a search
+        //    that.query = '';
+        //    that._search();
+        //}).iCheck({
+        //    checkboxClass: 'icheckbox_minimal-blue',
+        //    radioClass: 'iradio_minimal-blue'
+        //});
     },
 
     _search: function () {
@@ -761,20 +759,20 @@ karma.Views.boolLabeledFilterView = karma.Views.boolFilterView.extend({
             trueLabel: this.args.filter.trueLabel || 'True',
             falseLabel: this.args.filter.falseLabel || 'False'
         }));
-        setTimeout(function () {
-            $(document).initUniform();
-        }, 1000);
     },
 
     bindEvents: function () {
         var that = this;
 
         // on radio buttons change do search
-        $('.radio-list input', this.$el).change(function () {
-            // this will enforce a search
-            that.query = '';
-            that._search();
-        });
+        //$('.radio-list input', this.$el).on('ifChecked', function (e) {
+        //    // this will enforce a search
+        //    that.query = '';
+        //    that._search();
+        //}).iCheck({
+        //    checkboxClass: 'icheckbox_minimal-blue',
+        //    radioClass: 'iradio_minimal-blue'
+        //});
     },
 
     _search: function () {
@@ -812,10 +810,6 @@ karma.Views.numberFilterView = karma.Views.baseFilterView.extend({
         this.args.filter.width = this.args.filter.width || '180px';
         this.$text.parent().css('width', this.args.filter.width);
 
-        setTimeout(function () {
-            $(document).initUniform()
-        }, 1000);
-
         this.$text.TouchSpin({
             buttondown_class: 'btn btn-grey-cascade',
             buttonup_class: 'btn btn-grey-cascade',
@@ -829,7 +823,6 @@ karma.Views.numberFilterView = karma.Views.baseFilterView.extend({
     bindEvents: function () {
         var that = this;
 
-
         // keyup on search text box (to catch enter)
         this.$text.keyup(function (e) {
             if (e.keyCode != 13) return;
@@ -840,11 +833,14 @@ karma.Views.numberFilterView = karma.Views.baseFilterView.extend({
         this.$text.blur(function () { that._search(); });
 
         // on radio buttons change do search
-        $('.radio-list input', this.$el).change(function () {
-            // this will enforce a search
-            that.query = '';
-            that._search();
-        });
+        //$('.radio-list input', this.$el).on('ifChecked', function (e) {
+        //    // this will enforce a search
+        //    that.query = '';
+        //    that._search();
+        //}).iCheck({
+        //    checkboxClass: 'icheckbox_minimal-blue',
+        //    radioClass: 'iradio_minimal-blue'
+        //});
 
         // btn click events
         $('.btn-grey-cascade', this.$el).click(function () {
@@ -900,9 +896,7 @@ karma.Views.autocompleteFilterView = karma.Views.baseFilterView.extend({
 
     renderChild: function () {
         var that = this;
-        setTimeout(function () {
-            $(document).initUniform();
-        }, 1000);
+        
         this.bindAutocomplete();
     },
     bindAutocomplete: function () {

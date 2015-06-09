@@ -3258,6 +3258,14 @@ var extend = function (protoProps, staticProps) {
 
         var _fieldFilters = new _fieldFilterUtils("aggregate", name);
 
+        this.isNull = function (value) {
+            return _fieldFilters.isNull(value);
+        };
+
+        this.isNotNull = function (value) {
+            return _fieldFilters.isNotNull(value);
+        };
+
         this.equalTo = function (value) {
             return _fieldFilters.equalTo(value);
         };

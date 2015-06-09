@@ -2,7 +2,7 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
         <ul class="sidebar-menu">
-            @if (ViewBag.Features.Contains("dashboard-view"))
+            @if (ViewBag.Features.Contains(KarmaRewards.Web.Claims.DASHBOARD_VIEW))
             {
                 <li class="treeview">
                     <a href="/">
@@ -20,22 +20,26 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        @if (ViewBag.Features.Contains("karma-reward"))
+                        @if (ViewBag.Features.Contains(KarmaRewards.Web.Claims.KARMA_REWARD))
                         {
                             <li><a href="/karma/reward">Reward Points</a></li>
                         }
-                        @if (ViewBag.Features.Contains("karma-moderate"))
+                        @if (ViewBag.Features.Contains(KarmaRewards.Web.Claims.KARMA_MODERATE))
                         {
-                            <li><a href="/karma/moderate">Moderate Points</a></li>
+                            <li><a href="/karma/rewarded-points">Rewarded Points</a></li>
                         }
-                        @if (ViewBag.Features.Contains("karma-leader-board"))
+                        @if (ViewBag.Features.Contains(KarmaRewards.Web.Claims.KARMA_LEADER_BOARD))
                         {
-                            <li><a href="/karma/list">Leader Board</a></li>
+                            <li><a href="/karma/leader-board">Leader Board</a></li>
+                        }
+                        @if (ViewBag.Features.Contains(KarmaRewards.Web.Claims.KARMA_LEADER_BOARD))
+                        {
+                            <li><a href="/karma/my-account">My Account</a></li>
                         }
                     </ul>
                 </li>
             }
-            @if (ViewBag.Features.Contains("user-add") || ViewBag.Features.Contains("user-manage"))
+            @if (ViewBag.Features.Contains(KarmaRewards.Web.Claims.USER_ADD) || ViewBag.Features.Contains(KarmaRewards.Web.Claims.USER_MANAGE))
             {
                 <li class="treeview">
                     <a href="javascript:;">
@@ -44,11 +48,11 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        @if (ViewBag.Features.Contains("user-add"))
+                        @if (ViewBag.Features.Contains(KarmaRewards.Web.Claims.USER_ADD))
                         {
                             <li><a href="/user/add">Add User</a></li>
                         }
-                        @if (ViewBag.Features.Contains("user-manage"))
+                        @if (ViewBag.Features.Contains(KarmaRewards.Web.Claims.USER_MANAGE))
                         {
                             <li><a href="/user/manage">Manage User</a></li>
                         }

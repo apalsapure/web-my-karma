@@ -46,13 +46,11 @@ karma.Collection.UserCollection = Backbone.Collection.extend({
             if (options.reset) that.reset(undefined, { silent: true });
 
             // add current set of users to collection
-            var usersArr = [];
-            _.forEach(users.models, function (user) {
-                var u = user.toJSON();
-                u['name'] = u.firstname + ' ' + u.lastname;
-                usersArr.push(new karma.Model.User(u));
+            var lUsers = [];
+            _.forEach(users.models, function (sUser) {
+                lUsers.push(that._buildUser(sUser));
             });
-            that.add(usersArr);
+            that.add(lUsers);
 
             // set the options on the collection,
             // with total records count inside paging
@@ -67,7 +65,47 @@ karma.Collection.UserCollection = Backbone.Collection.extend({
         }, function (error) {
             that._triggerError(error);
         });
+    },
 
+    _buildUser: function (sUser) {
+        var json = sUser.toJSON();
+        json['name'] = json.firstname + ' ' + json.lastname;
+        json['total_points'] = 0;
+        if (sUser.aggregate('total_points')) json['total_points'] = sUser.aggregate('total_points').all;
+        return new karma.Model.User(json);
+    },
+
+    fetchByIds: function (ids, options) {
+        options.reset = options.reset ? true : false;
+        var that = this;
+        // get the tours
+        // according to options
+        karma.Storage.Models.User.multiGet({
+            ids: ids,
+            fields: options.fields
+        }).then(function (users) {
+            // first reset the local collection
+            // setting silent true, because this will tell backbone to not to raise 'reset' event
+            if (options.reset) that.reset(undefined, { silent: true });
+
+            // iterate over users retrieved by the storage
+            // and push them to local collection
+            var lUsers = [];
+            _.forEach(users, function (sUser) {
+                lUsers.push(that._buildUser(sUser));
+            });
+            that.add(lUsers);
+
+            // set the options on the collection
+            that.options = $.extend({}, options);
+
+            // raise a reset event
+            that.trigger('reset', that, users, options);
+        }, function (error) {
+            // check if there is any error or not
+            // if yes, trigger 'error' event on the collection
+            that.trigger('error', that, new hfl.Model.Error(error), options);
+        });
     },
 
     isValidUserName: function (userName) {

@@ -224,6 +224,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KarmaController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Extensions\Constants.cs" />
     <Compile Include="Extensions\ExtensionMethods.cs" />
     <Compile Include="Extensions\Helper.cs" />
     <Compile Include="Global.asax.cs">
@@ -251,6 +252,10 @@
     <Content Include="Resources\plugins\bootstrap-daterangepicker\daterangepicker-bs3.css" />
     <Content Include="Resources\plugins\bootstrap-daterangepicker\daterangepicker.js" />
     <Content Include="Resources\plugins\bootstrap-daterangepicker\moment.min.js" />
+    <Content Include="Resources\plugins\bootstrap-touchspin\bootstrap.touchspin.css" />
+    <Content Include="Resources\plugins\bootstrap-touchspin\bootstrap.touchspin.js" />
+    <Content Include="Resources\plugins\bootstrap-touchspin\bootstrap.touchspin.min.css" />
+    <Content Include="Resources\plugins\bootstrap-touchspin\bootstrap.touchspin.min.js" />
     <Content Include="Resources\plugins\datatables\dataTables.bootstrap.css" />
     <Content Include="Resources\plugins\datatables\dataTables.bootstrap.js" />
     <Content Include="Resources\plugins\datatables\images\sort_asc.png" />
@@ -903,13 +908,14 @@
     <Content Include="Resources\plugins\app.js" />
     <Content Include="Resources\plugins\utils\appacitiveInit.js" />
     <Content Include="Scripts\Models\Common\errorModel.js" />
-    <Content Include="Scripts\Models\userModel.js" />
+    <Content Include="Scripts\Models\Karma\pointModel.js" />
+    <Content Include="Scripts\Models\User\userModel.js" />
     <Content Include="Scripts\Utils\modalWin.js" />
     <Content Include="Scripts\Utils\utils.js" />
     <Content Include="Scripts\Views\Common\Datatable\datatable.js" />
     <Content Include="Scripts\Views\Common\Datatable\gridView.js" />
     <Content Include="Scripts\Views\Common\Error\errorView.js" />
-    <Content Include="Scripts\Views\Karma\karmaListView.js" />
+    <Content Include="Scripts\Views\Karma\pointListView.js" />
     <Content Include="Scripts\Views\User\addUserView.js" />
     <Content Include="Scripts\Views\User\userListView.js" />
     <Content Include="Web.config">
@@ -1085,16 +1091,26 @@
     <Content Include="Views\User\Roles.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Karma\Index.cshtml" />
+    <Content Include="Views\Karma\Reward.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Karma\List.cshtml" />
+    <Content Include="Views\Karma\RewardedPoints.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_GridView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_Common.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Karma\LeaderBoard.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Karma\MyAccount.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\plugins\bootstrap-touchspin\LICENSE.md" />
+    <Content Include="Resources\plugins\bootstrap-touchspin\README.md" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

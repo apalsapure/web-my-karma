@@ -53,6 +53,7 @@ namespace KarmaRewards.Web.Controllers
 
             this._user = new Model.User()
             {
+                Id = _collection["Id"],
                 Username = _collection["UserName"],
                 Email = _collection["Email"],
                 Provider = _collection["Provider"],

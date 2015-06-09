@@ -22,7 +22,7 @@
     </div>
 </section>
 <script id="tmplUserListDetailsRow" type="text/template">
-    <div class="inner-table-container" data-companyid="{{id}}">
+    <div class="inner-table-container">
         <table class="inner-table width100">
             <tr>
                 <td width="5%"><strong class="no-wrap">User Name</strong></td>
@@ -55,4 +55,72 @@
             </tr>
         </table>
     </div>
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var $container = $('.leader-board-container'),
+                 args = {
+                     showActions: true,
+                     allowGlobalSearch: true,
+                     allowFilters: false,
+                     sorting: {
+                         sortBy: 'joining_date',
+                         ascending: karma.config.sortAscending
+                     },
+                     filter: {
+                     },
+                     grid: {
+                         allowDetails: true,
+                         allowSelect: false,
+                         allowGroupSelect: false,
+                         columns: [
+                             {
+                                 dName: 'Name',
+                                 binding: 'name',
+                                 property: 'firstname',
+                                 allowSort: true,
+                                 style: '',
+                                 filter: {
+                                     cssClass: 'filter-width-225 name-filter',
+                                     type: 'string'
+                                 }
+                             }, {
+                                 dName: 'Birth Date',
+                                 binding: 'birthdate',
+                                 property: 'birthdate',
+                                 allowSort: true,
+                                 style: 'width: 160px',
+                                 format: 'DD-MMM-YYYY',
+                                 type: 'date'
+                             }, {
+                                 dName: 'Is Enabled',
+                                 displayColumn: false,
+                                 binding: 'isenabled',
+                                 property: 'isenabled',
+                                 filter: {
+                                     cssClass: 'filter-width-225 name-filter',
+                                     type: 'boolLabeled',
+                                     trueLabel: 'Yes',
+                                     falseLabel: 'No'
+                                 }
+                             }, {
+                                 dName: 'Joining Date',
+                                 binding: 'joining_date',
+                                 property: 'joining_date',
+                                 allowSort: true,
+                                 style: 'width: 160px',
+                                 format: 'DD-MMM-YYYY',
+                                 type: 'date',
+                                 filter: {
+                                     cssClass: 'filter-width-225 name-filter',
+                                     type: 'date'
+                                 }
+                             }]
+                     }
+                 };
+
+        new karma.Views.UserListView(args).render($container);
+    });
 </script>

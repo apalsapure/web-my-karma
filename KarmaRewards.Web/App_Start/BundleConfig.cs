@@ -74,9 +74,10 @@ namespace KarmaRewards.Web
                     "~/Resources/plugins/swag-handlebar-helpers.js",
                     "~/Resources/plugins/handlebar-helpers.js",
                     "~/Resources/plugins/select2/select2.js",
-                    "~/Resources/plugins/iCheck/icheck.min.js",
+                    "~/Resources/plugins/iCheck/icheck.js",
                     "~/Resources/plugins/bootstrap-daterangepicker/moment.min.js",
                     "~/Resources/plugins/bootstrap-daterangepicker/daterangepicker.js",
+                    "~/Resources/plugins/bootstrap-touchspin/bootstrap.touchspin.js",
                     "~/Scripts/Utils/modalWin.js",
                     "~/Scripts/Models/Common/errorModel.js",
                     "~/Scripts/Views/Common/Error/errorView.js"
@@ -93,13 +94,6 @@ namespace KarmaRewards.Web
                     "~/Scripts/Views/Common/Datatable/gridView.js"
                 ));
 
-
-            bundles.Add(new ScriptBundle("~/bundles/scripts/user-add")
-                .Include(
-                    "~/Scripts/Models/userModel.js",
-                    "~/Scripts/Views/User/addUserView.js"
-                ));
-
             bundles.Add(new ScriptBundle("~/bundles/scripts/input-mask")
                 .Include(
                     "~/Resources/plugins/input-mask/jquery.inputmask.js",
@@ -112,11 +106,34 @@ namespace KarmaRewards.Web
                     "~/Resources/plugins/backstretch/jquery.backstretch.min.js"
                 ));
 
+            #region Karma
+            bundles.Add(new ScriptBundle("~/bundles/scripts/points-list")
+                    .Include(
+                        "~/Scripts/Models/User/userModel.js", 
+                        "~/Scripts/Models/Karma/pointModel.js",
+                        "~/Scripts/Views/Karma/pointListView.js"
+                    ));
+            bundles.Add(new ScriptBundle("~/bundles/scripts/points-manage")
+                    .Include(
+                        "~/Scripts/Models/User/userModel.js",
+                        "~/Scripts/Models/Karma/pointModel.js",
+                        "~/Scripts/Views/Karma/pointListView.js"
+                    ));
+            #endregion
+
+            #region User
+            bundles.Add(new ScriptBundle("~/bundles/scripts/user-add")
+                    .Include(
+                        "~/Scripts/Models/User/userModel.js",
+                        "~/Scripts/Views/User/addUserView.js"
+                    ));
+
             bundles.Add(new ScriptBundle("~/bundles/scripts/user-manage")
                 .Include(
-                "~/Scripts/Models/userModel.js",
+                "~/Scripts/Models/User/userModel.js",
                 "~/Scripts/Views/User/userListView.js"
                 ));
+            #endregion
         }
     }
 }

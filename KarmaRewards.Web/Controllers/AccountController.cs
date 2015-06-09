@@ -100,6 +100,7 @@ namespace KarmaRewards.Web.Controllers
             // Save Identity in cookie
             var claimIdentity = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, response.User.Id) }, DefaultAuthenticationTypes.ApplicationCookie, ClaimTypes.Name, ClaimTypes.Role);
 
+            claimIdentity.AddClaim(new Claim("Id", response.User.Id));
             claimIdentity.AddClaim(new Claim("UserName", response.User.Username));
             claimIdentity.AddClaim(new Claim("FirstName", response.User.FirstName));
             claimIdentity.AddClaim(new Claim("LastName", response.User.LastName));
