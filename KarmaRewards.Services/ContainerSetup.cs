@@ -13,6 +13,7 @@ namespace KarmaRewards.Services
         {
             container
                 .Register<IUserService, UserService>()
+                .Register<IKarmaPointService, KarmaPointService>()
                 .Register<IIdentityService, IdentityService>()
                 ;
         }

@@ -10,11 +10,11 @@
     $.fn.showLoader = function (options) {
         options = options || {};
         $(this).block({
-            message: '<div class="loading-message"><div class="block-spinner-bar"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>',
+            message: '<div class="loading-message"><div class="loading-box"><img class="margin10-right" src="/resources/images/spinner.gif" /> Please wait...</div></div>',
             baseZ: options.zIndex ? options.zIndex : 1000,
             centerY: options.cenrerY !== undefined ? options.cenrerY : false,
             css: {
-                top: '10%',
+                top: '30%',
                 border: '0',
                 padding: '0',
                 backgroundColor: 'none'

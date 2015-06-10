@@ -10,7 +10,9 @@ karma.Storage.Collection.UserCollection = Appacitive.Collection.extend({
 
 
 // backbone model for user
-karma.Model.User = Backbone.Model.extend();
+karma.Model.User = Backbone.Model.extend({
+    idAttribute: "__id"
+});
 karma.Collection.UserCollection = Backbone.Collection.extend({
     model: karma.Model.User,
 
@@ -71,7 +73,7 @@ karma.Collection.UserCollection = Backbone.Collection.extend({
         var json = sUser.toJSON();
         json['name'] = json.firstname + ' ' + json.lastname;
         json['total_points'] = 0;
-        if (sUser.aggregate('total_points')) json['total_points'] = sUser.aggregate('total_points').all;
+        if (sUser.aggregate('total_points')) json['total_points'] = parseInt(sUser.aggregate('total_points').all, 10);
         return new karma.Model.User(json);
     },
 
@@ -126,7 +128,6 @@ karma.Collection.UserCollection = Backbone.Collection.extend({
     },
 
     _triggerError: function (error) {
-        error = new karma.Model.Error(error);
-        this.trigger('error', this, error);
+        this.trigger('error', this, new karma.Model.Error(error));
     }
 });

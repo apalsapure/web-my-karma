@@ -20,14 +20,7 @@ namespace KarmaRewards.Web.Controllers
 
         public List<Claim> Claims { get { return _claims; } }
         public string SessionId { get { return _sessionId; } }
-        public bool IsInRole(string role)
-        {
-            return false;
-            //if (this.CurrentIdentity == null || this.CurrentIdentity.Roles == null) return false;
-            //return this.CurrentIdentity.Roles.Any(r => string.Equals(r, role, StringComparison.InvariantCultureIgnoreCase));
-        }
-
-
+        protected User CurrentUser { get { return _user; } }
 
         public BaseController()
             : base()

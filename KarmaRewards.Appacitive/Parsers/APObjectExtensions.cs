@@ -119,6 +119,39 @@ namespace KarmaRewards.Appacitive
             obj.Set<string>("cur_zipcode", address.Zipcode);
         }
 
+        public static APObject ToAPPoint(this KarmaPoints points)
+        {
+            APObject obj = null;
+            if (string.IsNullOrWhiteSpace(points.Id) == true)
+                obj = new APObject("points");
+            else
+                obj = new APObject("points", points.Id);
+
+            obj.Set("to", points.To);
+            obj.Set("from", points.From);
+            obj.Set("reason", points.Reason);
+            obj.Set("points", points.Points);
+            obj.Set("moderated_by", points.ModeratedBy);
+            obj.Set("moderated_reason", points.ModerateReason);
+
+            return obj;
+        }
+
+        public static KarmaPoints ToPoints(this APObject obj)
+        {
+            var point = new KarmaPoints();
+
+            point.To = obj.Get<string>("to", string.Empty);
+            point.From = obj.Get<string>("from", string.Empty);
+            point.Reason = obj.Get<string>("reason", string.Empty);
+            point.ModeratedBy = obj.Get<string>("moderated_by", string.Empty);
+            point.ModerateReason = obj.Get<string>("moderated_reason", string.Empty);
+            point.Points = obj.Get<int>("points", 0);
+
+            obj.CopyEntity(point);
+            return point;
+        }
+
         private static void EnsureTypeMatches(APObject obj, string type)
         {
             if (obj.Type.Equals(type, StringComparison.OrdinalIgnoreCase) == false)

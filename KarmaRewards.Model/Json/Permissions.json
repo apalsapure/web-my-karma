@@ -20,6 +20,10 @@
       "index": "13",
       "name": "karma-leader-board"
     },
+	{
+      "index": "14",
+      "name": "karma-my-account"
+    },
     {
       "index": "21",
       "name": "user-add"
@@ -34,15 +38,15 @@
       "roles": [
         {
           "role": "sa",
-          "permission": "1,10,11,12,13,21,22"
+          "permission": "1,10,11,12,13,14,21,22"
         },
         {
           "role": "hr",
-          "permission": "1,10,11,12,13,21,22"
+          "permission": "1,10,11,12,13,14,21,22"
         },
         {
           "role": "user",
-          "permission": "1,11,13"
+          "permission": "1,11,13,14"
         }
       ]
     }

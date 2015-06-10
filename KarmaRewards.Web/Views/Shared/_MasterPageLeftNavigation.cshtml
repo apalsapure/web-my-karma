@@ -22,7 +22,7 @@
                     <ul class="treeview-menu">
                         @if (ViewBag.Features.Contains(KarmaRewards.Web.Claims.KARMA_REWARD))
                         {
-                            <li><a href="/karma/reward">Reward Points</a></li>
+                            <li><a href="/karma/reward-points">Reward Points</a></li>
                         }
                         @if (ViewBag.Features.Contains(KarmaRewards.Web.Claims.KARMA_MODERATE))
                         {
@@ -32,7 +32,7 @@
                         {
                             <li><a href="/karma/leader-board">Leader Board</a></li>
                         }
-                        @if (ViewBag.Features.Contains(KarmaRewards.Web.Claims.KARMA_LEADER_BOARD))
+                        @if (ViewBag.Features.Contains(KarmaRewards.Web.Claims.KARMA_MY_ACCOUNT))
                         {
                             <li><a href="/karma/my-account">My Account</a></li>
                         }

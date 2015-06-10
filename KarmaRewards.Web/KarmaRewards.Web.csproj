@@ -912,10 +912,12 @@
     <Content Include="Scripts\Models\User\userModel.js" />
     <Content Include="Scripts\Utils\modalWin.js" />
     <Content Include="Scripts\Utils\utils.js" />
+    <Content Include="Scripts\Views\Common\AutoComplete\autoCompleteView.js" />
     <Content Include="Scripts\Views\Common\Datatable\datatable.js" />
     <Content Include="Scripts\Views\Common\Datatable\gridView.js" />
     <Content Include="Scripts\Views\Common\Error\errorView.js" />
     <Content Include="Scripts\Views\Karma\pointListView.js" />
+    <Content Include="Scripts\Views\Karma\rewardPointView.js" />
     <Content Include="Scripts\Views\User\addUserView.js" />
     <Content Include="Scripts\Views\User\userListView.js" />
     <Content Include="Web.config">
@@ -1091,7 +1093,7 @@
     <Content Include="Views\User\Roles.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Karma\Reward.cshtml" />
+    <Content Include="Views\Karma\RewardPoints.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Karma\RewardedPoints.cshtml" />
@@ -1111,6 +1113,9 @@
   <ItemGroup>
     <Content Include="Resources\plugins\bootstrap-touchspin\LICENSE.md" />
     <Content Include="Resources\plugins\bootstrap-touchspin\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Karma\Moderate.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

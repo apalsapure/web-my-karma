@@ -80,7 +80,8 @@ namespace KarmaRewards.Web
                     "~/Resources/plugins/bootstrap-touchspin/bootstrap.touchspin.js",
                     "~/Scripts/Utils/modalWin.js",
                     "~/Scripts/Models/Common/errorModel.js",
-                    "~/Scripts/Views/Common/Error/errorView.js"
+                    "~/Scripts/Views/Common/Error/errorView.js",
+                    "~/Scripts/Views/Common/AutoComplete/autoCompleteView.js"
                     );
 
             secondaryBundle.Orderer = new NonOrderingBundleOrderer();
@@ -113,12 +114,17 @@ namespace KarmaRewards.Web
                         "~/Scripts/Models/Karma/pointModel.js",
                         "~/Scripts/Views/Karma/pointListView.js"
                     ));
-            bundles.Add(new ScriptBundle("~/bundles/scripts/points-manage")
+            bundles.Add(new ScriptBundle("~/bundles/scripts/rewarded-points")
                     .Include(
                         "~/Scripts/Models/User/userModel.js",
                         "~/Scripts/Models/Karma/pointModel.js",
                         "~/Scripts/Views/Karma/pointListView.js"
                     ));
+            bundles.Add(new ScriptBundle("~/bundles/scripts/reward-points")
+                   .Include(
+                       "~/Scripts/Models/User/userModel.js",
+                       "~/Scripts/Views/Karma/rewardPointView.js"
+                   ));
             #endregion
 
             #region User

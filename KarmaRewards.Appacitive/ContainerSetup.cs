@@ -16,6 +16,7 @@ namespace KarmaRewards.Appacitive
                 .Register<IUserRepository, UserRepository>()
                 .Register<IIdentityProvider, IdentityProvider>()
                 .Register<IUserAccessRepository, UserAccessRepository>()
+                .Register<IKarmaPointRepository, KarmaPointRepository>()
                 .Register<ICredentialTranslator, UsernamePasswordCredentialTranslator>("usernamepassword")
                 .Register<ICredentialTranslator, TokenCredentialTranslator>("token")
                 .Register<ICredentialTranslator, FacebookCredentialTranslator>("facebook")

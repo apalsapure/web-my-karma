@@ -1,1 +1,66 @@
-﻿
+﻿@{
+    Layout = "~/Views/Shared/_MasterPage.cshtml";
+}
+
+@section customjs{
+    @System.Web.Optimization.Scripts.Render("~/bundles/scripts/grid-lib")
+    @System.Web.Optimization.Scripts.Render("~/bundles/scripts/user-manage")
+}
+
+@RenderPage("~/Views/Shared/_GridView.cshtml")
+
+<section class="content-header">
+    <h1>Karma Points
+            <small>Reward Points</small>
+    </h1>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-lg-6 col-md-12 col-sm-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Leader Board</h3>
+                </div>
+                <div class="box-body">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var $container = $('.box-body'),
+                 args = {
+                     allowGlobalSearch: false,
+                     allowFilters: false,
+                     sorting: {
+                         sortBy: '$total_points',
+                         ascending: false
+                     },
+                     filter: {
+                         excludeZeroPoints: true
+                     },
+                     grid: {
+                         allowDetails: false,
+                         allowSelect: false,
+                         allowGroupSelect: false,
+                         columns: [
+                             {
+                                 dName: 'Employee Name',
+                                 binding: 'name',
+                                 property: 'firstname',
+                                 allowSort: true,
+                                 style: ''
+                             }, {
+                                 dName: 'Points',
+                                 binding: 'total_points',
+                                 property: '$total_points',
+                                 allowSort: true,
+                                 style: ''
+                             }]
+                     }
+                 };
+
+        new karma.Views.UserListView(args).render($container);
+    });
+</script>

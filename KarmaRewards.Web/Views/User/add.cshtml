@@ -8,7 +8,6 @@
     <div id="divAddUser">
         @using (Html.BeginForm("Edit", "User", FormMethod.Post, new { role = "form" }))
         {
-                                
             <div class="form-group">
                 <label for="Username">User Name</label>
                 @Html.TextBoxFor(m => m.Username, new { placeholder = "User Name", @class = "form-control", spellcheck = "false", autocomplete = "off" })

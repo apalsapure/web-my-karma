@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContainerSetup.cs" />
+    <Compile Include="Interfaces\IKarmaPointRepository.cs" />
     <Compile Include="Interfaces\IUserAccessConfiguration.cs" />
     <Compile Include="Model\AccessControl.cs" />
     <Compile Include="Interfaces\IIdentityProvider.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Model\PagedList.cs" />
     <Compile Include="Model\Entity.cs" />
     <Compile Include="Model\Identity.cs" />
+    <Compile Include="Model\KarmaPoints.cs" />
     <Compile Include="Model\ResourceBasedUserAccessConfiguration.cs" />
     <Compile Include="Model\UserPermissions.cs" />
     <Compile Include="Model\Profile.cs" />

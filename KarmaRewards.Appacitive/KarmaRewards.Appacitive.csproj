@@ -56,6 +56,7 @@
     <Compile Include="Parsers\APObjectExtensions.cs" />
     <Compile Include="Parsers\CredentialTranslator.cs" />
     <Compile Include="Parsers\PermissionsParser.cs" />
+    <Compile Include="Repositories\KarmaPointProvider.cs" />
     <Compile Include="Repositories\IdentityProvider.cs" />
     <Compile Include="Repositories\UserAccessRepository.cs" />
     <Compile Include="Repository.cs" />

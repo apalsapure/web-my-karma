@@ -20,7 +20,7 @@ body, .form-control, .btn { font-size: 13px; }
 .main-header .sidebar-toggle { float: right; padding: 7px; }
 .main-sidebar, .left-side { padding-top: 60px; }
 
-.content .box .box-body { min-height: 320px; }
+.content .box .box-body { min-height: 350px; }
 
 .form-group { margin-bottom: 12px; }
 .help-block { margin: 2px; font-size: 0.85em; font-style: italic; }
@@ -279,11 +279,9 @@ input[type="search"].spinner,
 input[type="tel"].spinner,
 input[type="color"].spinner { background-image: url("../images/spinner.gif") !important; background-repeat: no-repeat; background-position: 99% 8px; }
 
-.block-spinner-bar { display: inline-block; width: 80px; text-align: center; }
-    .block-spinner-bar > div { margin: 0 2px; width: 15px; height: 15px; background: #eee; border-radius: 100% !important; display: inline-block; -webkit-animation: bounceDelay 1.4s infinite ease-in-out; animation: bounceDelay 1.4s infinite ease-in-out; /* Prevent first frame from flickering when animation starts */ -webkit-animation-fill-mode: both; animation-fill-mode: both; }
-    .block-spinner-bar .bounce1 { -webkit-animation-delay: -0.32s; -moz-animation-delay: -0.32s; -o-animation-delay: -0.32s; animation-delay: -0.32s; }
-    .block-spinner-bar .bounce2 { -webkit-animation-delay: -0.16s; -moz-animation-delay: -0.16s; -o-animation-delay: -0.16s; animation-delay: -0.16s; }
-
+.loading-message { width: 180px; text-align: center; background-color: #fff; border: solid 1px #ccc; }
+    .loading-message .loading-box { display: inline-block; padding: 10px; }
+        .loading-message .loading-box img { vertical-align: top; }
 /* data table overrides */
 table { font-size: inherit; }
 .table .btn { margin-top: 0px; margin-left: 0px; margin-right: 5px; }
@@ -303,7 +301,6 @@ table.dataTable thead .no-bg.bg-dark-gray { background-image: none !important; }
 .table-condensed > thead > tr > th, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > tbody > tr > td, .table-condensed > tfoot > tr > td { padding: 6px; }
 .table-condensed > caption + thead > tr:first-child > th, .table-condensed > colgroup + thead > tr:first-child > th, .table-condensed > thead:first-child > tr:first-child > th, .table-condensed > caption + thead > tr:first-child > td, .table-condensed > colgroup + thead > tr:first-child > td, .table-condensed > thead:first-child > tr:first-child > td { border-top: solid 0px #fff; border-bottom: 0px; border-right: 1px solid #dddddd !important; }
 
-{ min-height: 400px; }
 .dataTable .row-details.row-details-open { background: url("../img/datatable-row-openclose.png") no-repeat 0 -23px; }
 .bg-dark-gray { border-color: #465461 !important; background-image: none !important; background-color: #465461 !important; color: white !important; }
 
