@@ -27,23 +27,36 @@
                 <td width="5%"><strong class="no-wrap">Reason</strong></td>
                 <td class="pre-line">{{reason}}</td>
             </tr>
+            {{#xif "this.moderated_by != '' && this.moderated_by"}}
             <tr>
                 <td><strong>Moderated By</strong></td>
-                <td>{{#xif "this.moderated_by == ''"}}-{{else}}{{moderated_by_name}}{{/xif}}</td>
+                <td>{{moderated_by_name}}</td>
             </tr>
             <tr>
                 <td><strong class="no-wrap">Moderation Reason</strong></td>
-                <td>{{#xif "this.moderate_reason == ''"}}-{{else}}{{moderate_reason}}{{/xif}}</td>
+                <td>{{#xif "this.moderate_reason == '' || !this.moderate_reason "}}NA{{else}}{{moderate_reason}}{{/xif}}</td>
             </tr>
+            {{/xif}}
             <tr>
-                <td><strong class="no-wrap">Rewarded On</strong></td>
-                <td><span class="time-text">{{#humanDate __utcdatecreated}}{{/humanDate}}</span></td>
+                <td><strong class="no-wrap">Updated On</strong></td>
+                <td><span class="time-text">{{#humanDate __utclastupdateddate}}{{/humanDate}}</span></td>
             </tr>
-            @if (ViewBag.Features.Contains(KarmaRewards.Web.Claims.KARMA_MODERATE))
+            @if (ViewBag.Features.Contains(KarmaRewards.Web.Claims.KARMA_REWARD) || ViewBag.Features.Contains(KarmaRewards.Web.Claims.KARMA_MODERATE))
             {
                 <tr>
                     <td colspan="2" class="text-right width100">
-                        <a href="/karma/moderate/{{__id}}" class="btn btn-xs bg-green"><i class="fa fa-pencil margin5-right"></i>Edit </a>
+                        @if (ViewBag.Features.Contains(KarmaRewards.Web.Claims.KARMA_REWARD))
+                        {
+                            <text>
+                            {{#if isOwner}}
+                                <a href="/karma/edit/{{__id}}" class="btn btn-xs bg-green"><i class="fa fa-pencil margin5-right"></i>Edit </a>
+                            {{/if}}
+                            </text>
+                        }
+                        @if (ViewBag.Features.Contains(KarmaRewards.Web.Claims.KARMA_MODERATE))
+                        {
+                            <a href="/karma/moderate/{{__id}}" class="btn btn-xs bg-green"><i class="fa fa-eye margin5-right"></i>Moderate </a>
+                        }
                     </td>
                 </tr>
             }
@@ -61,10 +74,8 @@
                      allowGlobalSearch: false,
                      allowFilters: true,
                      filter: {
-                         isPublished: hfl.viewPublished === '1',
-                         enabledOnly: hfl.viewEnabledOnly === '1',
-                         ownerId: hfl.ownerId,
-                         ownerType: hfl.ownerType
+                         enabledOnly: true,
+                         ownerId: karma.bag.ownerId
                      },
                      grid: {
                          allowDetails: true,
@@ -103,8 +114,8 @@
                                  }
                              }, {
                                  dName: 'Rewarded On',
-                                 binding: '__utclastupdateddate',
-                                 property: '__utclastupdateddate',
+                                 binding: '__utcdatecreated',
+                                 property: '__utcdatecreated',
                                  allowSort: true,
                                  style: 'width: 220px',
                                  format: 'DD-MMM-YYYY',

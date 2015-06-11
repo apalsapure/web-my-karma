@@ -20,7 +20,7 @@ body, .form-control, .btn { font-size: 13px; }
 .main-header .sidebar-toggle { float: right; padding: 7px; }
 .main-sidebar, .left-side { padding-top: 60px; }
 
-.content .box .box-body { min-height: 350px; }
+.content .box .box-body, .grid-container { min-height: 250px; }
 
 .form-group { margin-bottom: 12px; }
 .help-block { margin: 2px; font-size: 0.85em; font-style: italic; }

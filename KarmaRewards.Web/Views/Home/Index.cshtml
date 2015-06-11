@@ -22,6 +22,19 @@
                     <h3 class="box-title">Leader Board</h3>
                 </div>
                 <div class="box-body">
+                    <div>Showing top 10 users, who earned most of Karma Points. <a href="/karma/leader-board">View Full List.</a></div>
+                    <div id="divLeaderBoard" class="grid-container"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Upcoming Birthdays</h3>
+                </div>
+                <div class="box-body">
+                    <div>Showing top 10 users, who's birthday is latest.</div>
+                    <div id="divBirthday" class="grid-container"></div>
                 </div>
             </div>
         </div>
@@ -29,7 +42,7 @@
 </section>
 <script type="text/javascript">
     $(document).ready(function () {
-        var $container = $('.box-body'),
+        var $container = $('#divLeaderBoard'),
                  args = {
                      allowGlobalSearch: false,
                      allowFilters: false,
@@ -44,19 +57,58 @@
                          allowDetails: false,
                          allowSelect: false,
                          allowGroupSelect: false,
+                         showPaging: false,
                          columns: [
                              {
                                  dName: 'Employee Name',
                                  binding: 'name',
                                  property: 'firstname',
-                                 allowSort: true,
+                                 allowSort: false,
                                  style: ''
                              }, {
                                  dName: 'Points',
                                  binding: 'total_points',
                                  property: '$total_points',
-                                 allowSort: true,
+                                 allowSort: false,
+                                 style: 'width: 80px'
+                             }]
+                     }
+                 };
+
+        new karma.Views.UserListView(args).render($container);
+
+
+        var $container = $('#divBirthday'),
+                 args = {
+                     allowGlobalSearch: false,
+                     allowFilters: false,
+                     sorting: {
+                         sortBy: 'birth_days',
+                         ascending: true
+                     },
+                     filter: {
+                         excludeNoBirthDay: true
+                     },
+                     grid: {
+                         allowDetails: false,
+                         allowSelect: false,
+                         allowGroupSelect: false,
+                         showPaging: false,
+                         columns: [
+                             {
+                                 dName: 'Name',
+                                 binding: 'name',
+                                 property: 'firstname',
+                                 allowSort: false,
                                  style: ''
+                             }, {
+                                 dName: 'Birth Day',
+                                 binding: 'birth_day',
+                                 property: 'birth_days',
+                                 allowSort: false,
+                                 style: 'width: 160px',
+                                 format: 'DD-MMM-YYYY',
+                                 type: 'date'
                              }]
                      }
                  };

@@ -8,25 +8,12 @@ namespace KarmaRewards.Web.Controllers
 {
     public class HomeController : ErrorController
     {
+        private const string ROOT_TAB = "Dashboard";
+
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
+            ViewBag.Primary = ROOT_TAB;
             return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your app description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+        }      
     }
 }

@@ -7,6 +7,20 @@
         this.bindValidations();
     },
 
+    fetchToUser: function () {
+        var that = this;
+        var userCollection = new karma.Collection.UserCollection();
+        this.listenToOnce(userCollection, 'reset', function () {
+            $('#lblTo').text(userCollection.models[0].get('name'));
+            that.render();
+            that.hideLoader();
+        });
+        this.listenToOnce(userCollection, 'error', function (collection, error) {
+            new karma.Views.ErrorView(error).render();
+        });
+        userCollection.fetchByIds([$('#To').val()]);
+    },
+
     bindPlugins: function () {
         var that = this;
 
@@ -14,37 +28,38 @@
         this.$point = $('#Points', this.$el);
 
         this.userCollection = new karma.Collection.UserCollection();
-        // initialize auto complete plugin
-        this.toAutoCompleteView = new window.karma.Views.AutocompleteView({
-            element: this.$to,
-            target: this.el,
-            options: {
-                itemTemplate: "<div class='clearfix'>{{name}}</div>",
-                allowAddNew: false,
-                allowViewList: false,
-                onSearch: function (searchTerm, responseCallback) {
-                    var filter = Appacitive.Filter.Or(
-                                        Appacitive.Filter.Property('firstname').match(searchTerm),
-                                        Appacitive.Filter.Property('lastname').match(searchTerm)
-                                    );
+        if (this.$to.is(':visible')) {
+            // initialize auto complete plugin
+            this.toAutoCompleteView = new window.karma.Views.AutocompleteView({
+                element: this.$to,
+                target: this.el,
+                options: {
+                    itemTemplate: "<div class='clearfix'>{{name}}</div>",
+                    allowAddNew: false,
+                    allowViewList: false,
+                    onSearch: function (searchTerm, responseCallback) {
+                        var filter = Appacitive.Filter.Or(
+                                            Appacitive.Filter.Property('firstname').match(searchTerm),
+                                            Appacitive.Filter.Property('lastname').match(searchTerm)
+                                        );
 
-                    var op = {
-                        filter: filter,
-                        paging: { pnum: 1, psize: 10 },
-                        success: function () {
-                            responseCallback(that.userCollection.models);
-                        },
-                        reset: true
-                    };
-                    that.listenTo(that.userCollection, 'error', function (collection, error) {
-                        that.toAutoCompleteView.container.select2('close');
-                        new karma.Views.ErrorView({ model: error }).render();
-                    });
-                    that.userCollection.fetchAll(op);
+                        var op = {
+                            filter: filter,
+                            paging: { pnum: 1, psize: 10 },
+                            success: function () {
+                                responseCallback(that.userCollection.models);
+                            },
+                            reset: true
+                        };
+                        that.listenTo(that.userCollection, 'error', function (collection, error) {
+                            that.toAutoCompleteView.container.select2('close');
+                            new karma.Views.ErrorView({ model: error }).render();
+                        });
+                        that.userCollection.fetchAll(op);
+                    }
                 }
-            }
-        });
-
+            });
+        }
         if (this.$point.val() === '') this.$point.val('10');
 
         this.$point.TouchSpin({
@@ -59,6 +74,14 @@
         this.$to.change(function () {
             $(this).valid();//revalidate the chosen dropdown value and show error or success message for the input
         });
+    },
+
+    showLoader: function(){
+        this.$el.showLoader();
+    },
+
+    hideLoader: function() {
+        this.$el.hideLoader();
     },
 
     bindValidations: function () {

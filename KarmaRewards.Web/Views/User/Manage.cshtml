@@ -17,7 +17,6 @@
 <section class="content">
     <div class="box">
         <div class="box-body">
-            <div class="leader-board-container"></div>
         </div>
     </div>
 </section>
@@ -45,6 +44,10 @@
                 <td>{{#if isenabled}}Yes{{else}}No{{/if}}</td>
             </tr>
             <tr>
+                <td><strong class="no-wrap">Birth Date</strong></td>
+                <td>{{#humanDate birthdate 'DD-MMM-YYYY'}}{{/humanDate}}</td>
+            </tr>
+            <tr>
                 <td><strong class="no-wrap">Last Updated</strong></td>
                 <td><span class="time-text">{{#humanDate __utclastupdateddate}}{{/humanDate}}</span></td>
             </tr>
@@ -59,12 +62,11 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-
-        var $container = $('.leader-board-container'),
+        var $container = $('.box-body'),
                  args = {
                      showActions: true,
                      allowGlobalSearch: true,
-                     allowFilters: false,
+                     allowFilters: true,
                      sorting: {
                          sortBy: 'joining_date',
                          ascending: karma.config.sortAscending
@@ -87,9 +89,9 @@
                                      type: 'string'
                                  }
                              }, {
-                                 dName: 'Birth Date',
-                                 binding: 'birthdate',
-                                 property: 'birthdate',
+                                 dName: 'Birth Day',
+                                 binding: 'birth_day',
+                                 property: 'birth_days',
                                  allowSort: true,
                                  style: 'width: 160px',
                                  format: 'DD-MMM-YYYY',

@@ -1,0 +1,59 @@
+﻿@model KarmaRewards.Model.KarmaPoints
+
+@{
+    Layout = "~/Views/Shared/_MasterPage.cshtml";
+}
+
+@section customjs{
+    @System.Web.Optimization.Scripts.Render("~/bundles/scripts/reward-points")
+}
+
+<section class="content-header">
+    <h1>Karma Points
+            <small>Edit Reward Points</small>
+    </h1>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-lg-9 col-md-10 col-sm-12">
+            <div class="box">
+                <div class="box-body">
+                    @using (Html.BeginForm("RewardPoints", "Karma", FormMethod.Post, new { role = "form" }))
+                    {
+                        <div class="form-group">
+                            <label for="Username">Reward To Employee</label>
+                            
+                            <label id="lblTo" class="block font-normal">...</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="Reason">Reason</label>
+                            @Html.TextAreaFor(m => m.Reason, new { placeholder = "Points Rewarded because....", @class = "form-control", spellcheck = "false", autocomplete = "off", rows = "6" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Points">Points</label>
+                            <div class="row">
+                                <div class="col-sm-3">@Html.TextBoxFor(m => m.Points)</div>
+                            </div>
+                        </div>
+                        @Html.HiddenFor(m => m.Id)
+                        @Html.HiddenFor(m => m.To)
+                        @Html.HiddenFor(m => m.From)
+                        @Html.HiddenFor(m => m.ModeratedBy)
+                        @Html.HiddenFor(m => m.ModerateReason)
+                        <div class="box-footer pad0-left pad0-right">
+                            <button type="submit" class="btn btn-primary pad20-right"><i class="fa fa-check margin5-right"></i>Update</button>
+                        </div>       
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var view = new karma.Views.RewardPointView();
+        view.fetchToUser();
+        view.showLoader();
+    });
+</script>

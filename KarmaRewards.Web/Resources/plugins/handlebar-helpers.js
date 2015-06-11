@@ -19,8 +19,10 @@
         return markdown.toHTML(value || '');
     });
 
-    Handlebars.registerHelper('humanDate', function (value, options) {
-        return moment(value).format('MMM Do YYYY, h:mm:ss A');
+    Handlebars.registerHelper('humanDate', function (value, format) {
+        if (!_.isString(format)) format = 'MMM Do YYYY, h:mm:ss A';
+        if (!value || moment(value).isValid() == false) return '-';
+        return moment(value).format(format);
     });
 
     Handlebars.registerHelper('getMoney', function (value, options) {

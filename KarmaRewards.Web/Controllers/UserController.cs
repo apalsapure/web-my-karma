@@ -71,6 +71,7 @@ namespace KarmaRewards.Web.Controllers
                         if (user.DateOfBirthStr == "01/01/2000")
                         {
                             user.DateOfBirth = null;
+                            user.BirthInDays = 0;
                         }
                         else
                         {
@@ -81,6 +82,7 @@ namespace KarmaRewards.Web.Controllers
                                 return View();
                             }
                             user.DateOfBirth = birthDate;
+                            user.BirthInDays = birthDate.DayOfYear;
                         }
                     }
 

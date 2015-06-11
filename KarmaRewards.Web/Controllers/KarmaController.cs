@@ -36,6 +36,20 @@ namespace KarmaRewards.Web.Controllers
             return RedirectToAction("rewarded-points", "karma");
         }
 
+        [AuthorizeAccess(KarmaRewards.Web.Claims.KARMA_REWARD, "get")]
+        [ActionName("edit")]
+        public async Task<ActionResult> Edit(string id)
+        {
+            ViewBag.Primary = ROOT_TAB;
+            ViewBag.Secondary = "Reward Points";
+
+            var point = await this.KarmaPointService.Get(id);
+            if (point == null) return base.Http404();
+            if (point.From != base.CurrentUser.Id) return base.Http403();
+            return View(point);
+        }
+
+
         [AuthorizeAccess(KarmaRewards.Web.Claims.KARMA_LEADER_BOARD, "get")]
         [ActionName("leader-board")]
         public ActionResult LeaderBoard()

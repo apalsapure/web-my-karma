@@ -36,7 +36,8 @@ namespace KarmaRewards.Appacitive
                 IsEnabled = obj.Get<bool>("isenabled", false),
                 Gender = obj.Get<string>("gender", null),
                 Designation = obj.Get<string>("designation", null),
-                JoiningDate = obj.Get<DateTime>("joining_date")
+                JoiningDate = obj.Get<DateTime>("joining_date"),
+                BirthInDays = obj.Get<int>("birth_days", 0)
             };
             obj.CopyEntity(user);
             return user;
@@ -64,6 +65,7 @@ namespace KarmaRewards.Appacitive
             obj.Set<DateTime>("joining_date", user.JoiningDate);
             obj.Set("image_url", user.ImageUrl);
             obj.Set("isenabled", user.IsEnabled);
+            obj.Set("birth_days", user.BirthInDays);
 
             obj.FirstName = user.FirstName;
             obj.LastName = user.LastName;

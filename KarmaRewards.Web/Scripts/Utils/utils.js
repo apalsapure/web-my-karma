@@ -20,7 +20,7 @@
                 backgroundColor: 'none'
             },
             overlayCSS: {
-                backgroundColor: options.overlayColor ? options.overlayColor : '#555',
+                backgroundColor: options.overlayColor ? options.overlayColor : '#000',
                 opacity: options.boxed ? 0.05 : 0.1,
                 cursor: 'wait'
             }

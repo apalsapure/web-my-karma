@@ -59,25 +59,29 @@
                     </ul>
                 </li>
             }
-            <li class="treeview">
-                <a href="javascript:;">
-                    <i class="icon-settings"></i>
-                    <span>Settings</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="ui_general.html">General Components</a></li>
-                </ul>
-            </li>
+            @if (false)
+            {
+                <li class="treeview">
+                    <a href="javascript:;">
+                        <i class="icon-settings"></i>
+                        <span>Settings</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="ui_general.html">General Components</a></li>
+                    </ul>
+                </li>
+            }
         </ul>
     </section>
 </aside>
 <script type="text/javascript">
     $(function () {
         setTimeout(function () {
-            if (_.isEmpty(hfl.nav.primary)) return;
-            $('a:contains("' + hfl.nav.primary + '")', $('.main-sidebar')).parent().addClass('active');
-            $('a:contains("' + hfl.nav.secondary + '")', $('.main-sidebar')).parent().addClass('active');
+            if (!_.isEmpty(karma.nav.primary))
+                $('a:contains("' + karma.nav.primary + '")', $('.main-sidebar')).parent().addClass('active');
+            if (!_.isEmpty(karma.nav.secondary))
+                $('a:contains("' + karma.nav.secondary + '")', $('.main-sidebar')).parent().addClass('active');
         }, 0);
     });
 </script>

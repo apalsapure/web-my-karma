@@ -12,6 +12,8 @@
 
         // if filters are defined construct them
         if (args.filter) {
+            this.ownerId = args.filter.ownerId;
+
             if (args.filter.showFor)
                 this.options.filter = Appacitive.Filter.Property('to').equalTo(args.filter.showFor);
         }
@@ -21,6 +23,7 @@
 
     // method 
     formatDetailsRow: function (obj) {
+        obj['isOwner'] = obj.from === this.ownerId;
         return karma.hb.pointListDetailRow(obj);
     }
 });

@@ -12,7 +12,8 @@
             allowGroupSelect: false,
             allowSingleSelect: false,
             allowSelect: false,
-            allowDetails: true
+            allowDetails: true,
+            showPaging: true
         }
     },
 
@@ -279,6 +280,9 @@
                     });
                 }
             },
+            // show paging control
+            showPaging: that.args.grid.showPaging,
+
             // Formatting function for row details
             // obj is the original data object for the row
             format: function (obj) { return that.formatDetailsRow(obj); },
@@ -522,14 +526,14 @@ karma.Views.stringFilterView = karma.Views.baseFilterView.extend({
         this.$text.blur(function () { that._search(); });
 
         // on radio buttons change do search
-        //$('.radio-list input', this.$el).on('ifChecked', function (e) {
-        //    // this will enforce a search
-        //    that.query = '';
-        //    that._search();
-        //}).iCheck({
-        //    checkboxClass: 'icheckbox_minimal-blue',
-        //    radioClass: 'iradio_minimal-blue'
-        //});
+        $('.radio-list input', this.$el).on('ifChecked', function (e) {
+            // this will enforce a search
+            that.query = '';
+            that._search();
+        }).iCheck({
+            checkboxClass: 'icheckbox_minimal-blue',
+            radioClass: 'iradio_minimal-blue'
+        });
     },
 
     _search: function () {
@@ -682,14 +686,14 @@ karma.Views.multiChoiceFilterView = karma.Views.baseFilterView.extend({
         var that = this;
 
         // on radio buttons change do search
-        //$('.checkbox-list input', this.$el).on('ifChecked', function (e) {
-        //    // this will enforce a search
-        //    that.query = '';
-        //    that._search();
-        //}).iCheck({
-        //    checkboxClass: 'icheckbox_minimal-blue',
-        //    radioClass: 'iradio_minimal-blue'
-        //});
+        $('.checkbox-list input', this.$el).on('ifChecked', function (e) {
+            // this will enforce a search
+            that.query = '';
+            that._search();
+        }).iCheck({
+            checkboxClass: 'icheckbox_minimal-blue',
+            radioClass: 'iradio_minimal-blue'
+        });
     },
 
     _search: function () {
@@ -718,14 +722,14 @@ karma.Views.boolFilterView = karma.Views.baseFilterView.extend({
         var that = this;
 
         // on radio buttons change do search
-        //$('.radio-list input', this.$el).on('ifChecked', function (e) {
-        //    // this will enforce a search
-        //    that.query = '';
-        //    that._search();
-        //}).iCheck({
-        //    checkboxClass: 'icheckbox_minimal-blue',
-        //    radioClass: 'iradio_minimal-blue'
-        //});
+        $('.radio-list input', this.$el).on('ifChecked', function (e) {
+            // this will enforce a search
+            that.query = '';
+            that._search();
+        }).iCheck({
+            checkboxClass: 'icheckbox_minimal-blue',
+            radioClass: 'iradio_minimal-blue'
+        });
     },
 
     _search: function () {
@@ -765,14 +769,14 @@ karma.Views.boolLabeledFilterView = karma.Views.boolFilterView.extend({
         var that = this;
 
         // on radio buttons change do search
-        //$('.radio-list input', this.$el).on('ifChecked', function (e) {
-        //    // this will enforce a search
-        //    that.query = '';
-        //    that._search();
-        //}).iCheck({
-        //    checkboxClass: 'icheckbox_minimal-blue',
-        //    radioClass: 'iradio_minimal-blue'
-        //});
+        $('.radio-list input', this.$el).on('ifChecked', function (e) {
+            // this will enforce a search
+            that.query = '';
+            that._search();
+        }).iCheck({
+            checkboxClass: 'icheckbox_minimal-blue',
+            radioClass: 'iradio_minimal-blue'
+        });
     },
 
     _search: function () {
@@ -833,14 +837,14 @@ karma.Views.numberFilterView = karma.Views.baseFilterView.extend({
         this.$text.blur(function () { that._search(); });
 
         // on radio buttons change do search
-        //$('.radio-list input', this.$el).on('ifChecked', function (e) {
-        //    // this will enforce a search
-        //    that.query = '';
-        //    that._search();
-        //}).iCheck({
-        //    checkboxClass: 'icheckbox_minimal-blue',
-        //    radioClass: 'iradio_minimal-blue'
-        //});
+        $('.radio-list input', this.$el).on('ifChecked', function (e) {
+            // this will enforce a search
+            that.query = '';
+            that._search();
+        }).iCheck({
+            checkboxClass: 'icheckbox_minimal-blue',
+            radioClass: 'iradio_minimal-blue'
+        });
 
         // btn click events
         $('.btn-grey-cascade', this.$el).click(function () {

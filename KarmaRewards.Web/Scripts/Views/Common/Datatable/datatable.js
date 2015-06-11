@@ -22,7 +22,7 @@ var Datatable = function () {
                 resetGroupActionInputOnSuccess: true,
                 loadingMessage: 'Loading...',
                 dataTable: {
-                    "dom": "<'data-tables't><'row'<'col-sm-12'pli><'col-md-4 col-sm-12'>>", // datatable layout
+                    "dom": options.showPaging ? "<'data-tables't><'row'<'col-sm-12'pli><'col-md-4 col-sm-12'>>" : "<'data-tables't><'row'<'col-md-4 col-sm-12'>>", // datatable layout
                     "pageLength": karma.config.psize, // default records per page
                     "language": { // language settings
                         // metronic spesific

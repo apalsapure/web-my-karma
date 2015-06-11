@@ -26,6 +26,8 @@ namespace KarmaRewards.Model
 
         public string DateOfBirthStr { get; set; }
 
+        public int BirthInDays { get; set; }
+
         public string ImageUrl { get; set; }
 
         public string Gender { get; set; }

@@ -74,10 +74,14 @@ karma.Collection.UserCollection = Backbone.Collection.extend({
         json['name'] = json.firstname + ' ' + json.lastname;
         json['total_points'] = 0;
         if (sUser.aggregate('total_points')) json['total_points'] = parseInt(sUser.aggregate('total_points').all, 10);
+        if (json['birth_days']) {
+            json['birth_day'] = new moment('01/01/' + new Date().getFullYear(), 'MM/DD/YYYY').add(json['birth_days'] - 1, 'd').toDate();
+        }
         return new karma.Model.User(json);
     },
 
     fetchByIds: function (ids, options) {
+        options = options || {};
         options.reset = options.reset ? true : false;
         var that = this;
         // get the tours
