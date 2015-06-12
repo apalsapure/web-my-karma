@@ -1,11 +1,13 @@
 ﻿// appacitive storage for user
 karma.Storage.Models.User = Appacitive.Object.extend('user');
 karma.Storage.Collection.UserCollection = Appacitive.Collection.extend({
-    model: karma.Storage.Models.User,
-    query: (new Appacitive.Query(karma.Storage.Models.User))
-                .orderBy(karma.config.sortBy)
-                .isAscending(karma.config.sortAscending)
-                .pageSize(karma.config.psize)
+    initialize: function () {
+        this.query(new Appacitive.Query(karma.Storage.Models.User)
+                  .orderBy(karma.config.sortBy)
+                  .isAscending(karma.config.sortAscending)
+                  .pageSize(karma.config.psize));
+    },
+    model: karma.Storage.Models.User
 });
 
 

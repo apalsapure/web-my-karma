@@ -21,20 +21,40 @@
                     @using (Html.BeginForm("RewardPoints", "Karma", FormMethod.Post, new { role = "form" }))
                     {
                         <div class="form-group">
-                            <label for="Username">Reward To Employee</label>
-                            
+                            <label for="To">Reward To</label>
                             <label id="lblTo" class="block font-normal">...</label>
                         </div>
                         <div class="form-group">
                             <label for="Reason">Reason</label>
                             @Html.TextAreaFor(m => m.Reason, new { placeholder = "Points Rewarded because....", @class = "form-control", spellcheck = "false", autocomplete = "off", rows = "6" })
                         </div>
-                        <div class="form-group">
-                            <label for="Points">Points</label>
-                            <div class="row">
-                                <div class="col-sm-3">@Html.TextBoxFor(m => m.Points)</div>
+                        
+                        if(string.IsNullOrEmpty(Model.ModeratedBy))
+                        {
+                            <div class="form-group">
+                                <label for="Points">Points</label>
+                                <div class="row">
+                                        <div class="col-sm-3">@Html.TextBoxFor(m => m.Points)</div>
+                                </div>
                             </div>
-                        </div>
+                        }
+                        else
+                        {
+                            <div class="form-group">
+                                <label for="ModeratedBy">Moderated By</label>
+                                <label id="lblBy" class="block font-normal">...</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="ModerateReason">Reason for Moderation</label>
+                                @Html.LabelFor(m => m.ModerateReason, Model.ModerateReason, new { @class = "block font-normal pre-line" })
+                            </div>
+                            <div class="form-group">
+                                <label for="Points">Points</label>
+                                    <div class="row">
+                                        <div class="col-sm-3">@Html.TextBoxFor(m => m.Points, new { disabled = "disabled" })</div>
+                                    </div>
+                            </div>
+                        }
                         @Html.HiddenFor(m => m.Id)
                         @Html.HiddenFor(m => m.To)
                         @Html.HiddenFor(m => m.From)
@@ -53,7 +73,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         var view = new karma.Views.RewardPointView();
-        view.fetchToUser();
+        view.fetchUser();
         view.showLoader();
     });
 </script>

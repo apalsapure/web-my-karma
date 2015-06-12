@@ -85,22 +85,34 @@
                              {
                                  dName: 'Rewarded To',
                                  binding: 'to_name',
-                                 property: 'to',
+                                 property: 'to_name',
                                  allowSort: false,
                                  style: '',
                                  filter: {
-                                     cssClass: 'filter-width-225 name-filter',
-                                     type: 'string'
+                                     cssClass: 'filter-width-180',
+                                     type: 'autocomplete',
+                                     collection: new karma.Collection.UserCollection(),
+                                     displayColumn: 'name',
+                                     filterColumn: 'firstname',
+                                     collectionOptions: {
+                                         intitialFilter: null
+                                     }
                                  }
                              }, {
                                  dName: 'Rewarded By',
                                  binding: 'from_name',
-                                 property: 'from',
+                                 property: 'from_name',
                                  allowSort: false,
                                  style: '',
                                  filter: {
-                                     cssClass: 'filter-width-225 name-filter',
-                                     type: 'string'
+                                     cssClass: 'filter-width-180',
+                                     type: 'autocomplete',
+                                     collection: new karma.Collection.UserCollection(),
+                                     displayColumn: 'name',
+                                     filterColumn: 'firstname',
+                                     collectionOptions: {
+                                         intitialFilter: null
+                                     }
                                  }
                              }, {
                                  dName: 'Points',
@@ -109,8 +121,8 @@
                                  allowSort: true,
                                  style: '',
                                  filter: {
-                                     cssClass: 'filter-width-225 name-filter',
-                                     type: 'string'
+                                     cssClass: 'filter-width-225',
+                                     type: 'number'
                                  }
                              }, {
                                  dName: 'Rewarded On',
@@ -121,7 +133,8 @@
                                  format: 'DD-MMM-YYYY',
                                  type: 'date',
                                  filter: {
-                                     cssClass: 'filter-width-225 name-filter',
+                                     opens: 'left',
+                                     cssClass: 'filter-width-180',
                                      type: 'date'
                                  }
                              }]

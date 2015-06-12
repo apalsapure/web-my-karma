@@ -10,10 +10,11 @@ namespace KarmaRewards.Web.Controllers
     {
         private const string ROOT_TAB = "Dashboard";
 
+        [AuthorizeAccess(KarmaRewards.Web.Claims.DASHBOARD_VIEW, "get")]
         public ActionResult Index()
         {
             ViewBag.Primary = ROOT_TAB;
             return View();
-        }      
+        }
     }
 }

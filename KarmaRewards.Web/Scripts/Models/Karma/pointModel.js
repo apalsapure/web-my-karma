@@ -1,11 +1,13 @@
 ﻿// appacitive storage for karma
 karma.Storage.Models.Point = Appacitive.Object.extend('points');
 karma.Storage.Collection.PointCollection = Appacitive.Collection.extend({
-    model: karma.Storage.Models.Point,
-    query: (new Appacitive.Query(karma.Storage.Models.Point))
-                .orderBy(karma.config.sortBy)
-                .isAscending(karma.config.sortAscending)
-                .pageSize(karma.config.psize)
+    initialize: function () {
+        this.query(new Appacitive.Query(karma.Storage.Models.Point)
+                  .orderBy(karma.config.sortBy)
+                  .isAscending(karma.config.sortAscending)
+                  .pageSize(karma.config.psize));
+    },
+    model: karma.Storage.Models.Point
 });
 
 
@@ -39,6 +41,7 @@ karma.Collection.PointCollection = Backbone.Collection.extend({
 
         // set the filter
         if (options.filter) query.filter(options.filter);
+        //else query.filter('');
 
         // fetch all points
         points.fetch().then(function (points) {

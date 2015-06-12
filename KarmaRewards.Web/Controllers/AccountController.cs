@@ -65,7 +65,6 @@ namespace KarmaRewards.Web.Controllers
                 #endregion
 
                 #region Redirect User Back
-                identity = new Identity("apalsapure", "", AuthenticationProvider.Windows, "");
                 if (identity != null) { await FormAuth(identity); }
 
                 return RedirectToLocal("~/");
@@ -135,15 +134,6 @@ namespace KarmaRewards.Web.Controllers
             }
 
             return RedirectToAction("login", new { returnUrl = returnUrl });
-        }
-
-        //
-        // GET: /Account/Register
-
-        [AllowAnonymous]
-        public ActionResult Register()
-        {
-            return View();
         }
 
         #region Helpers

@@ -168,7 +168,7 @@
                 onFilterChange: function (changeFilter) {
                     // if filter found remove the older one and updated one
                     that.filters = _.reject(that.filters, function (f) { return f.id == changeFilter.id });
-                    that.filters.push(changeFilter);
+                    if (changeFilter.value != null) that.filters.push(changeFilter);
                     that._reDrawGrid();
                 }
             }
@@ -581,7 +581,7 @@ karma.Views.dateFilterView = karma.Views.baseFilterView.extend({
             minDate: that.args.filter.range.min,
             maxDate: that.args.filter.range.max,
             dateLimit: {
-                days: 60
+                days: 360
             },
             showDropdowns: true,
             showWeekNumbers: true,
@@ -865,8 +865,8 @@ karma.Views.numberFilterView = karma.Views.baseFilterView.extend({
 
         if (!_.isEmpty(this.query)) {
             var condition = $('.radio-list input:checked', this.$el).val();
-            if (_.isEmpty(condition)) return;
-            this.model.set('value', karma.Filter.Property(this.args.property)[condition](parseInt(this.query, 10)));
+            if (!_.isEmpty(condition))
+                this.model.set('value', karma.Filter.Property(this.args.property)[condition](parseInt(this.query, 10)));
         }
 
         this.notifyFilterChange();
@@ -874,8 +874,7 @@ karma.Views.numberFilterView = karma.Views.baseFilterView.extend({
 
 });
 
-// view that will render autocomplete
-
+// view that will render auto complete
 karma.Views.autocompleteFilterView = karma.Views.baseFilterView.extend({
     template: '#tmplAutocompleteFilterTemplate',
     hbTemplateName: 'autocompleteFilterView',
@@ -900,7 +899,7 @@ karma.Views.autocompleteFilterView = karma.Views.baseFilterView.extend({
 
     renderChild: function () {
         var that = this;
-        
+
         this.bindAutocomplete();
     },
     bindAutocomplete: function () {
@@ -920,19 +919,13 @@ karma.Views.autocompleteFilterView = karma.Views.baseFilterView.extend({
                 allowAddNew: false,
                 allowViewList: false,
                 onSearch: function (searchTerm, responseCallback) {
-                    //$('.select2-container', that.$search).removeClass('has-error');
-
-                    //var filter = that.getLocationFilter(searchTerm);
-
                     var op = {
-                        filter: that.collectionOptions.intitialFilter ? Appacitive.Filter.And(that.collectionOptions.intitialFilter, Appacitive.Filter.Property(that.displayColumn).match(searchTerm)) : Appacitive.Filter.Property(that.displayColumn).match(searchTerm),
+                        filter: that.collectionOptions.intitialFilter ? Appacitive.Filter.And(that.collectionOptions.intitialFilter, Appacitive.Filter.Property(that.filterColumn).match(searchTerm)) : Appacitive.Filter.Property(that.filterColumn).match(searchTerm),
                         paging: { pnum: 1, psize: 10 },
                         success: function () {
                             var result = [];
                             that.queryCollection.forEach(function (m) {
-                                // if (!that.collection.findWhere({ id: m.id })) {
                                 result.push(m);
-                                //}
                             });
                             responseCallback(result);
                         },

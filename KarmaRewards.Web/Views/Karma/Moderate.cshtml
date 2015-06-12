@@ -10,7 +10,7 @@
 
 <section class="content-header">
     <h1>Karma Points
-            <small>Reward Points</small>
+            <small>Moderate Reward Points</small>
     </h1>
 </section>
 <section class="content">
@@ -18,15 +18,19 @@
         <div class="col-lg-9 col-md-10 col-sm-12">
             <div class="box">
                 <div class="box-body">
-                    @using (Html.BeginForm("RewardPoints", "Karma", FormMethod.Post, new { role = "form" }))
+                    @using (Html.BeginForm("Moderate", "Karma", FormMethod.Post, new { role = "form" }))
                     {
                         <div class="form-group">
-                            <label for="Username">Reward To Employee</label>
-                            @Html.TextBoxFor(m => m.To, new { placeholder = "Type employee name to whom points will be rewarded", @class = "form-control", spellcheck = "false", autocomplete = "off" })
+                            <label for="To">Reward To</label>
+                            <label id="lblTo" class="block font-normal">...</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="From">Reward By</label>
+                            <label id="lblFrom" class="block font-normal">...</label>
                         </div>
                         <div class="form-group">
                             <label for="Reason">Reason</label>
-                            @Html.TextAreaFor(m => m.Reason, new { placeholder = "Points Rewarded because....", @class = "form-control", spellcheck = "false", autocomplete = "off", rows = "6" })
+                            @Html.LabelFor(m => m.Reason, Model.Reason, new { @class = "block font-normal pre-line" })
                         </div>
                         <div class="form-group">
                             <label for="Points">Points</label>
@@ -34,11 +38,18 @@
                                 <div class="col-sm-3">@Html.TextBoxFor(m => m.Points)</div>
                             </div>
                         </div>
+                        @Html.HiddenFor(m => m.Id)
+                        @Html.HiddenFor(m => m.Reason)
+                        @Html.HiddenFor(m => m.To)
                         @Html.HiddenFor(m => m.From)
                         @Html.HiddenFor(m => m.ModeratedBy)
-                        @Html.HiddenFor(m => m.ModerateReason)
+                        <div class="form-group">
+                            <label for="Reason">Reason for Moderation</label>
+                            @Html.TextAreaFor(m => m.ModerateReason, new { placeholder = "Moderation of Rewarded Points is done because....", @class = "form-control", spellcheck = "false", autocomplete = "off", rows = "6" })
+                        </div>
+                        
                         <div class="box-footer pad0-left pad0-right">
-                            <button type="submit" class="btn btn-primary pad20-right"><i class="fa fa-check margin5-right"></i>Reward</button>
+                            <button type="submit" class="btn btn-primary pad20-right"><i class="fa fa-eye margin5-right"></i>Moderate</button>
                         </div>       
                     }
                 </div>
@@ -50,6 +61,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         var view = new karma.Views.RewardPointView();
-        view.render();
+        view.fetchUser();
+        view.showLoader();
     });
 </script>

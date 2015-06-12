@@ -134,7 +134,7 @@ namespace KarmaRewards.Appacitive
             obj.Set("reason", points.Reason);
             obj.Set("points", points.Points);
             obj.Set("moderated_by", points.ModeratedBy);
-            obj.Set("moderated_reason", points.ModerateReason);
+            obj.Set("moderate_reason", points.ModerateReason);
 
             return obj;
         }
@@ -147,7 +147,7 @@ namespace KarmaRewards.Appacitive
             point.From = obj.Get<string>("from", string.Empty);
             point.Reason = obj.Get<string>("reason", string.Empty);
             point.ModeratedBy = obj.Get<string>("moderated_by", string.Empty);
-            point.ModerateReason = obj.Get<string>("moderated_reason", string.Empty);
+            point.ModerateReason = obj.Get<string>("moderate_reason", string.Empty);
             point.Points = obj.Get<int>("points", 0);
 
             obj.CopyEntity(point);

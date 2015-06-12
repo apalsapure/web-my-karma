@@ -317,6 +317,7 @@ table.dataTable thead .no-bg.bg-dark-gray { background-image: none !important; }
                     .filter-section .filter-block .filter-thirds > div ul li .checkbox-list, .filter-section .filter-block .filter-thirds > div ul li .radio-list { margin-left: -4px; }
                         .filter-section .filter-block .filter-thirds > div ul li .checkbox-list label, .filter-section .filter-block .filter-thirds > div ul li .radio-list label { color: #777777; font-size: 13px !important; }
 .filter-width-225 { width: 225px; min-width: 20%; max-width: 250px; }
+.filter-width-180 { width: 180px; min-width: 15%; max-width: 200px; }
 
 /*Input icons*/
 .input-icon { position: relative; }

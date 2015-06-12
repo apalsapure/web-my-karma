@@ -10,7 +10,7 @@ window.karma.config = new (function () {
     var _allowedPageSizes = [10, 20, 50];
     var _dateRangePicker = {
         startDate: 15,
-        minDate: '01/01/12',
+        minDate: '01/01/08',
         maxDate: '12/31/25'
     };
 

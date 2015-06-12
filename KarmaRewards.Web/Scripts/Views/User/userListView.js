@@ -20,11 +20,19 @@
                                 );
 
             // remove user who doesn't have birth day set
-            if (args.filter.excludeNoBirthDay)
-                this.options.filter = Appacitive.Filter.And(
+            if (args.filter.excludeNoBirthDay) {
+                var filter = Appacitive.Filter.And(
                                         Appacitive.Filter.Property('birthdate').isNotNull(),
                                         Appacitive.Filter.Property('birth_days').greaterThanEqualTo(moment().dayOfYear())
                                 );
+                if (this.options.filter) this.options.filter = Appacitive.Filter.And(this.options.filter, filter);
+            }
+
+            // remove disabled users
+            if (args.filter.enabled) {
+                var filter = Appacitive.Filter.Property('isenabled').equalTo(true);
+                if (this.options.filter) this.options.filter = Appacitive.Filter.And(this.options.filter, filter);
+            }
         }
 
         this.hbDetailTemplateName = 'userListDetailRow';

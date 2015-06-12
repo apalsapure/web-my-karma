@@ -7,18 +7,27 @@
         this.bindValidations();
     },
 
-    fetchToUser: function () {
-        var that = this;
+    fetchUser: function () {
+        var that = this,
+            to = $('#To').val(),
+            from = $('#From').val(),
+            moderatedBy = $('#ModeratedBy').val(),
+            ids = [];
         var userCollection = new karma.Collection.UserCollection();
         this.listenToOnce(userCollection, 'reset', function () {
-            $('#lblTo').text(userCollection.models[0].get('name'));
+            if (!_.isEmpty(to)) $('#lblTo').text(userCollection.findWhere({ __id: to }).get('name'));
+            if (!_.isEmpty(from)) $('#lblFrom').text(userCollection.findWhere({ __id: from }).get('name'));
+            if (!_.isEmpty(moderatedBy)) $('#lblBy').text(userCollection.findWhere({ __id: from }).get('name'));
             that.render();
             that.hideLoader();
         });
         this.listenToOnce(userCollection, 'error', function (collection, error) {
             new karma.Views.ErrorView(error).render();
         });
-        userCollection.fetchByIds([$('#To').val()]);
+        if (!_.isEmpty(to)) ids.push(to);
+        if (!_.isEmpty(from)) ids.push(from);
+        if (!_.isEmpty(moderatedBy)) ids.push(moderatedBy);
+        userCollection.fetchByIds(ids);
     },
 
     bindPlugins: function () {
@@ -60,8 +69,8 @@
                 }
             });
         }
-        if (this.$point.val() === '') this.$point.val('10');
 
+        if (this.$point.val() === '') this.$point.val('10');
         this.$point.TouchSpin({
             buttondown_class: 'btn btn-grey-cascade',
             buttonup_class: 'btn btn-grey-cascade',
@@ -76,11 +85,11 @@
         });
     },
 
-    showLoader: function(){
+    showLoader: function () {
         this.$el.showLoader();
     },
 
-    hideLoader: function() {
+    hideLoader: function () {
         this.$el.hideLoader();
     },
 
@@ -89,7 +98,8 @@
             rules: {
                 'To': 'required',
                 'Reason': 'required',
-                'Points': 'required'
+                'Points': 'required',
+                'ModerateReason': 'required'
             },
             errorPlacement: function (error, element) {
                 return true;

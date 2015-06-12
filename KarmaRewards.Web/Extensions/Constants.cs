@@ -10,6 +10,7 @@ namespace KarmaRewards.Web
         public const string DASHBOARD_VIEW = "dashboard-view";
 
         public const string KARMA_REWARD = "karma-reward";
+        public const string KARMA_REWARDED_POINTS = "karma-rewarded";
         public const string KARMA_MODERATE = "karma-moderate";
         public const string KARMA_LEADER_BOARD = "karma-leader-board";
         public const string KARMA_MY_ACCOUNT = "karma-my-account";

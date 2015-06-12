@@ -46,12 +46,13 @@
         <div class="content-wrapper">
             @RenderBody()
         </div>
-    </div>
-    <!-- ******  Footer ****** -->
-    <div class="page-footer">
-        <div class="page-footer-inner">
-            @RenderPage("~/Views/Shared/_CopyRight.cshtml", null)
-        </div>
+        <!-- ******  Footer ****** -->
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 0.9
+            </div>
+            <strong>@RenderPage("~/Views/Shared/_CopyRight.cshtml", null)</strong>
+        </footer>
     </div>
 </body>
 </html>
