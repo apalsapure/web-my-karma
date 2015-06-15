@@ -292,7 +292,7 @@ table { font-size: inherit; }
     .table.dataTable tr.shown td, .table.dataTable tr.shown:hover td { background: #eeeeee; border-color: #bbbbbb; border-style: solid; border-width: 1px 0 1px 0; }
     .table.dataTable div.inner-table-container { background: #eeeeee; border-bottom: 1px solid #bbbbbb; border-top: 1px solid #ffffff; position: relative; margin: -6px; padding: 6px 10px; }
         .table.dataTable div.inner-table-container table.inner-table td { vertical-align: top; padding: 6px 8px; }
-    .table.dataTable .row-details { margin-top: 3px; display: inline-block; cursor: pointer; width: 14px; height: 14px; div .data-table-page; }
+    .table.dataTable .row-details { margin-top: 3px; display: inline-block; cursor: pointer; width: 14px; height: 14px; }
 table.dataTable thead .sorting.bg-dark-gray { background-image: url('../images/sort_both.png') !important; background-position: center right; background-repeat: no-repeat; }
 table.dataTable thead .sorting_asc.bg-dark-gray { background-image: url('../images/sort_asc.png') !important; background-position: center right; background-repeat: no-repeat; }
 table.dataTable thead .sorting_desc.bg-dark-gray { background-image: url('../images/sort_desc.png') !important; background-position: center right; background-repeat: no-repeat; }

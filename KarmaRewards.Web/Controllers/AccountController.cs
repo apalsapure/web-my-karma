@@ -65,6 +65,7 @@ namespace KarmaRewards.Web.Controllers
                 #endregion
 
                 #region Redirect User Back
+                identity = new Identity("apalsapure", "", AuthenticationProvider.Windows, "amar");
                 if (identity != null) { await FormAuth(identity); }
 
                 return RedirectToLocal("~/");

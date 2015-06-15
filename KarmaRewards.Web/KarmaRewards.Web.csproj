@@ -241,6 +241,15 @@
     <Content Include="Resources\css\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Resources\css\fonts\Simple-Line-Icons.dev.svg" />
     <Content Include="Resources\css\fonts\Simple-Line-Icons.svg" />
+    <Content Include="Resources\css\img\avatar.png" />
+    <Content Include="Resources\css\img\bg-white-lock.png" />
+    <Content Include="Resources\css\img\datatable-row-openclose.png" />
+    <Content Include="Resources\css\img\favicon.ico" />
+    <Content Include="Resources\css\img\icons.png" />
+    <Content Include="Resources\css\img\logo-sprite.png" />
+    <Content Include="Resources\css\img\select2-spinner.gif" />
+    <Content Include="Resources\css\img\select2.png" />
+    <Content Include="Resources\css\img\select2x2.png" />
     <Content Include="Resources\images\sort_asc.png" />
     <Content Include="Resources\images\sort_asc_disabled.png" />
     <Content Include="Resources\images\sort_both.png" />
