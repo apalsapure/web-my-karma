@@ -26,12 +26,14 @@
                                         Appacitive.Filter.Property('birth_days').greaterThanEqualTo(moment().dayOfYear())
                                 );
                 if (this.options.filter) this.options.filter = Appacitive.Filter.And(this.options.filter, filter);
+                else this.options.filter = filter;
             }
 
             // remove disabled users
             if (args.filter.enabled) {
                 var filter = Appacitive.Filter.Property('isenabled').equalTo(true);
                 if (this.options.filter) this.options.filter = Appacitive.Filter.And(this.options.filter, filter);
+                else this.options.filter = filter;
             }
         }
 

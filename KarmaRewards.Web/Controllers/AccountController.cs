@@ -70,7 +70,7 @@ namespace KarmaRewards.Web.Controllers
                 return RedirectToLocal("~/");
                 #endregion
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 // TODO: handle error
             }
