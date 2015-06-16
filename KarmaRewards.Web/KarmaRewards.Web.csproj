@@ -842,7 +842,6 @@
     <Content Include="Views\Karma\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\PublishProfiles\test.pubxml" />
     <Content Include="Resources\css\fonts\fontawesome-webfont.eot" />
     <Content Include="Resources\css\fonts\fontawesome-webfont.ttf" />
     <Content Include="Resources\css\fonts\fontawesome-webfont.woff" />
