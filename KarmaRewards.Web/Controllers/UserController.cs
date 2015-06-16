@@ -88,6 +88,8 @@ namespace KarmaRewards.Web.Controllers
 
                     // set user name in lower case
                     user.Username = user.Username.ToLower();
+                    user.Email = user.Email.ToLower();
+                    user.ImageUrl = Helper.GetProfileImageForEmail(user.Email);
 
                     // set the password
                     if (string.IsNullOrEmpty(user.Id))

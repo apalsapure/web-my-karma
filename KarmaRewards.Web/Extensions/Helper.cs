@@ -2,8 +2,11 @@
 using KarmaRewards.Model;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 
 namespace KarmaRewards.Web
@@ -60,6 +63,37 @@ namespace KarmaRewards.Web
         public static string ToDateString(DateTime dateTime)
         {
             return dateTime.ToString(DATE_FORMAT);
+        }
+
+        public static string GetProfileImageForEmail(string email)
+        {
+            return ConfigurationManager.AppSettings["gravatar-url"] + CalculateMD5Hash(email);
+        }
+
+        public static string GetProfileImage(string userImage, string size)
+        {
+            return string.IsNullOrEmpty(userImage) ? "/Resources/img/avatar.png" : userImage + "?s=" + size + "&d=" + KarmaRewards.Web.Helper.GetDefaultProfileImage();
+        }
+
+        public static string GetDefaultProfileImage()
+        {
+            return ConfigurationManager.AppSettings["default-image"];
+        }
+
+        public static string CalculateMD5Hash(string input)
+        {
+            // step 1, calculate MD5 hash from input
+            MD5 md5 = System.Security.Cryptography.MD5.Create();
+            byte[] inputBytes = System.Text.Encoding.Default.GetBytes(input);
+            byte[] hash = md5.ComputeHash(inputBytes);
+
+            // step 2, convert byte array to hex string
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < hash.Length; i++)
+            {
+                sb.Append(hash[i].ToString("X2"));
+            }
+            return sb.ToString().ToLower();
         }
     }
 }

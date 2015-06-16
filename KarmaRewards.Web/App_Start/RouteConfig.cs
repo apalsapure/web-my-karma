@@ -13,6 +13,11 @@ namespace KarmaRewards.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute(name: "Profile",
+                url: "account/profile/{state}",
+                defaults: new { controller = "Account", action = "Profile", state = UrlParameter.Optional }
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

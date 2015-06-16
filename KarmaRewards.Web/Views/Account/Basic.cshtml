@@ -1,0 +1,59 @@
+﻿@{
+    Layout = "~/Views/Account/_ProfileLayout.cshtml";
+}
+
+@model KarmaRewards.Model.User
+
+<style type="text/css">
+    .image-container { position: relative; margin: 20px auto; width: 136px; }
+        .image-container .edit-image { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.5); color: #fff; padding: 4px; }
+</style>
+
+<div class="tab-pane active" id="tab_1">
+    @using (Html.BeginForm("UpdateBasicProfile", "Account", FormMethod.Post, new { role = "form" }))
+    {
+        <div class="row">
+            <div class="col-sm-12 col-md-4 col-lg-3">
+                <div class="text-center" style="margin: auto;">
+                    <div class="image-container text-center">
+                        <img src="@KarmaRewards.Web.Helper.GetProfileImage(ViewBag.User.ImageUrl, "136")" width="136" height="136"/>
+                        <a target="_blank" href="https://en.gravatar.com/" class="edit-image">Change Picture</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-8 col-lg-9">
+                <div class="form-group">
+                    <label for="FirstName">First Name</label>
+                    @Html.TextBoxFor(m => m.FirstName, new { placeholder = "Your first name", @class = "form-control", spellcheck = "false", autocomplete = "off" })
+                </div>
+                <div class="form-group">
+                    <label for="LastName">Last Name</label>
+                    @Html.TextBoxFor(m => m.LastName, new { placeholder = "Your last name", @class = "form-control", spellcheck = "false", autocomplete = "off" })
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="form-group">
+                            <label for="JoiningDate">Date of Birth</label>
+                            <div class="input-group">
+                                @Html.TextBoxFor(m => m.DateOfBirthStr, new { placeholder = "Date of Birth", @class = "form-control" })
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="box-footer pad0-left pad0-right">
+            <button type="submit" class="btn btn-primary pad20-right"><i class="fa fa-check margin5-right"></i>Update</button>
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        new karma.Views.BasicProfileView().render();
+    });
+</script>

@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "~/Views/Shared/_MasterPage.cshtml";
+}
+
+@section customjs{
+    @System.Web.Optimization.Scripts.Render("~/bundles/scripts/input-mask")
+    @System.Web.Optimization.Scripts.Render("~/bundles/scripts/profile")
+}
+
+@functions{
+    public string IsActive(string tab)
+    {
+        return string.Equals(ViewBag.ActiveTab, tab) ? "active" : "";
+    }
+}
+
+<section class="content-header">
+    <h1>My Profile
+            <small>Edit Profile</small>
+    </h1>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-lg-9 col-md-10 col-sm-12">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="@IsActive("basic")">@Html.ActionLink("Basic Information", "profile/basic")</li>
+                    <li class="@IsActive("advance")">@Html.ActionLink("Profile Information", "profile/advance")</li>
+                </ul>
+                <div class="tab-content">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

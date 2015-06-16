@@ -641,6 +641,7 @@
     <Content Include="Scripts\Models\User\userModel.js" />
     <Content Include="Scripts\Utils\modalWin.js" />
     <Content Include="Scripts\Utils\utils.js" />
+    <Content Include="Scripts\Views\Account\profileView.js" />
     <Content Include="Scripts\Views\Common\AutoComplete\autoCompleteView.js" />
     <Content Include="Scripts\Views\Common\Datatable\datatable.js" />
     <Content Include="Scripts\Views\Common\Datatable\gridView.js" />
@@ -660,14 +661,7 @@
     </Content>
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Web.config" />
@@ -859,6 +853,9 @@
     <Content Include="Resources\css\fonts\Simple-Line-Icons.eot" />
     <Content Include="Resources\css\fonts\Simple-Line-Icons.ttf" />
     <Content Include="Resources\css\fonts\Simple-Line-Icons.woff" />
+    <Content Include="Views\Account\Basic.cshtml" />
+    <Content Include="Views\Account\_ProfileLayout.cshtml" />
+    <Content Include="Views\Account\Advance.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

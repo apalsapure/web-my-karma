@@ -140,6 +140,13 @@ namespace KarmaRewards.Web
                 "~/Scripts/Views/User/userListView.js"
                 ));
             #endregion
+
+            #region Profile
+            bundles.Add(new ScriptBundle("~/bundles/scripts/profile")
+                .Include(
+                    "~/Scripts/Views/Account/profileView.js"
+                ));
+            #endregion
         }
     }
 }
